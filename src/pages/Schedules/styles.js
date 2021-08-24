@@ -1,15 +1,12 @@
-// estilização da página CreatProduct
-
-import styled from "styled-components";
-import { mixins } from "../../styles/mixins";
+// estilização da página Home
+import styled from 'styled-components'
 
 export const Styled = {
-  Error: styled.p`
-    margin-top: 4px;
-    align-self: center;
-    justify-self: center;
-    color: ${mixins.colors.red};
-    font-family: ${mixins.fonts.semi_bold};
-    font-size: ${mixins.typograph.paragraph};
+  CardWrapper: styled.div`
+    display: grid;
+    margin: 0 auto;
+    width: 70%;
+    grid-template-columns: repeat(4, auto);
+
   `
 }

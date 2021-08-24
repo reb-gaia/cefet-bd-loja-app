@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
 import Container from '../../components/Container';
 import { Styled } from './styles';
-import { useProduct } from '../../hooks/contexts/ProductProvider';
+import { useEmployee } from '../../hooks/contexts/EmployeeProvider';
 import { validationSchema } from './validation';
 
 
@@ -12,7 +12,7 @@ function CreateEmployee() {
   const history = useHistory();
   const { id } = useParams()
   const { state } = useLocation()
-  const { error, postProduct, putProduct } = useProduct();
+  const { error, postEmployee, putEmployee } = useEmployee();
     
   useEffect(() => {
     console.log(state);
@@ -27,7 +27,7 @@ function CreateEmployee() {
     validationSchema,
     onSubmit: async values => {
       if(!!id) {
-        await putProduct({
+        await putEmployee({
           id,
           name: values.name, 
           description: values.description, 
@@ -36,7 +36,7 @@ function CreateEmployee() {
         history.push("/home");
         return
       }
-      await postProduct(values);
+      await postEmployee(values);
       history.push("/home");
     }
   });

@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import Container from '../../components/Container';
 import { Styled } from './styles';
-import { useProduct } from '../../hooks/contexts/ProductProvider'
+import { usePatients } from '../../hooks/contexts/PatientsProvider'
 
 function Patients() {
 
-  const { products, getProduct } = useProduct();
+  const { patients, getPatients } = usePatients();
 
   // useEffect -> renderizar os produtos
   useEffect(() => {
-    getProduct()
+    getPatients()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -19,12 +19,10 @@ function Patients() {
       size="lg"
     >
       <Styled.CardWrapper>
-        {products.map(product => (
-          <CardItem 
-            key={product.id}
-            product={product}>
-              
-          </CardItem>
+        {patients.map(patient => (
+          <div key={patient.id}>
+            <h1>{patient.name}</h1>
+          </div>
         ))}
       </Styled.CardWrapper>
     </Container>

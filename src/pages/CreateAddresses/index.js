@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
 import Container from '../../components/Container';
 import { Styled } from './styles';
-import { useProduct } from '../../hooks/contexts/ProductProvider';
+import { useAddresses } from '../../hooks/contexts/AddressesProvider';
 import { validationSchema } from './validation';
 
 
@@ -12,7 +12,7 @@ function CreateAdresses() {
   const history = useHistory();
   const { id } = useParams()
   const { state } = useLocation()
-  const { error, postProduct, putProduct } = useProduct();
+  const { error, postAddresses, putAddresses } = useAddresses();
     
   useEffect(() => {
     console.log(state);
@@ -27,7 +27,7 @@ function CreateAdresses() {
     validationSchema,
     onSubmit: async values => {
       if(!!id) {
-        await putProduct({
+        await putAddresses({
           id,
           name: values.name, 
           description: values.description, 
@@ -36,7 +36,7 @@ function CreateAdresses() {
         history.push("/home");
         return
       }
-      await postProduct(values);
+      await postAddresses(values);
       history.push("/home");
     }
   });

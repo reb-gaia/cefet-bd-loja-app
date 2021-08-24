@@ -17,6 +17,7 @@ import Schedules from "../pages/Schedules";
 
 import NotFound from "../pages/NotFound";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 import { Styled } from './styles';
 import { useAuth } from '../hooks/contexts/AuthProvider';
@@ -48,6 +49,7 @@ export default function Routes() {
           <Redirect from="*" to={NotFound} />
         </Switch>
       </Styled.PageLayout>
+      <Footer />
     </Styled.AppLayout>
   )
 }

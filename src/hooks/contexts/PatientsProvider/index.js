@@ -14,7 +14,7 @@ function PatientsProvider({children}) {
     async () => {
       try {
         const { data } = await api.get('/patients');
-        setPatientss(data);
+        setPatients(data);
       } catch (error) {
         setError("Erro ao adquirir a lista de produtos");
       }
@@ -67,7 +67,7 @@ function PatientsProvider({children}) {
     async ({id}) => {
       try {
         await api.delete(`/patients/${id}`);
-        setPatientss(pState => pState.filter(
+        setPatients(pState => pState.filter(
           state => state.id !== id
         ));
       } catch (error) {
