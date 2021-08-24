@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "login": "teste",
+      "password": "admin729",
+      "name": "teste",
+      "access_token": "liberado"
+    }
+  ],
+  "products": [
+    {
+      "name": "Carro 2",
+      "description": "Chevrolet Onix preto",
+      "price": 500,
+      "id": 2
+    },
+    {
+      "name": "Carro 3",
+      "description": "Jeep Renegade Branco",
+      "price": 900,
+      "id": 3
+    },
+    {
+      "name": "rebeca",
+      "description": "bruno",
+      "price": 12,
+      "id": 4
+    }
+  ]
+}
