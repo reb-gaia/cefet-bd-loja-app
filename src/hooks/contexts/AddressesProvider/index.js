@@ -9,7 +9,6 @@ function AddressesProvider({children}) {
   const [addresses, setAddresses] = useState([]);
   const [error, setError] = useState("");
   
-
   const getAddresses = useCallback(
     async () => {
       try {

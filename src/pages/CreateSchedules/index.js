@@ -1,19 +1,22 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
-import { Form, Button, FormControl } from 'react-bootstrap';
+import { Form, Button, FormControl, Row, Col } from 'react-bootstrap';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
 import { Styled } from './styles';
 import { validationSchema } from './validation';
 import { useSchedule } from '../../hooks/contexts/ScheduleProvider';
 import Container from '../../components/Container';
+import { api } from '../../services/api'
+
 
 
 function CreateSchedules() {
   const history = useHistory();
   const { id } = useParams()
   const { state } = useLocation()
-  const { error, postSchedule, putSchedule } = useSchedule();
-    
+  const [error, setError] = useState("");
+  const { postSchedule, putSchedule } = useSchedule();
+
   useEffect(() => {
     console.log(state);
   });
@@ -29,8 +32,8 @@ function CreateSchedules() {
       hour: state ? state.schedule.hour : "",
     },
     validationSchema,
-    onSubmit: async values => {
-      if(!!id) {
+    onSubmit: async ({name, email, phone, doctorType, doctor, date, hour}) => {
+      /* if(!!id) {
         await putSchedule({
           id,
           name: values.name, 
@@ -43,11 +46,25 @@ function CreateSchedules() {
         });
         history.push("/");
         return
+      } */
+      try {
+        await api.post('/schedules', {
+          name, 
+          email, 
+          phone,
+          doctorType,
+          doctor, 
+          date, 
+          hour       
+        });
+      } catch (error) {
+        setError("Erro ao postar um produto");
       }
-      await postSchedule(values);
       history.push("/");
     }
   });
+
+  
 
   const AppError = useMemo(
     () => <Styled.Error>{error}</Styled.Error>, [error]
@@ -86,7 +103,7 @@ function CreateSchedules() {
       title="Agendar uma consulta"
       size="sm"
     >
-      <Form onSubmit={formik.handleSubmit}>
+      <Form onSubmit={formik.handleSubmit} style={{overflowY: "scroll"}}>
         <Form.Group className="mb-2">
           <Styled.ProfileLabel>Especialidade</Styled.ProfileLabel>
           <Styled.ProfileSelect
@@ -96,9 +113,9 @@ function CreateSchedules() {
             isValid={formik.touched.doctorType && !formik.errors.doctorType}
             isInvalid={formik.errors.doctorType}>
               <Styled.ProfileOption>Selecione a especialidade</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Feminino</Styled.ProfileOption>
-              <Styled.ProfileOption value="female">Masculino</Styled.ProfileOption>
-              <Styled.ProfileOption value="others">Prefiro não responder</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Clínico Geral</Styled.ProfileOption>
+              <Styled.ProfileOption value="female">Ortopedista</Styled.ProfileOption>
+              <Styled.ProfileOption value="others">Oftamologista</Styled.ProfileOption>
           </Styled.ProfileSelect>
           {ValidationDoctorTypeError}
         </Form.Group>
@@ -112,39 +129,43 @@ function CreateSchedules() {
             isValid={formik.touched.doctor && !formik.errors.doctor}
             isInvalid={formik.errors.doctor}>
               <Styled.ProfileOption>Selecione o médico</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Feminino</Styled.ProfileOption>
-              <Styled.ProfileOption value="female">Masculino</Styled.ProfileOption>
-              <Styled.ProfileOption value="others">Prefiro não responder</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Teste 1</Styled.ProfileOption>
+              <Styled.ProfileOption value="female">Teste 2</Styled.ProfileOption>
           </Styled.ProfileSelect>
           {ValidationDoctorError}
         </Form.Group>
         
-        <Form.Group className="mb-2">
-          <Form.Label>Data</Form.Label>
-          <FormControl
-            id="date"
-            name="date"
-            type="date"
-          />
-          {ValidationDateError}
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-          <Styled.ProfileLabel>Hora</Styled.ProfileLabel>
-          <Styled.ProfileSelect
-            id="hour"
-            name="hour"
-            onChange={formik.handleChange}            
-            isValid={formik.touched.hour && !formik.errors.hour}
-            isInvalid={formik.errors.hour}>
-              <Styled.ProfileOption>Selecione a especialidade</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Feminino</Styled.ProfileOption>
-              <Styled.ProfileOption value="female">Masculino</Styled.ProfileOption>
-              <Styled.ProfileOption value="others">Prefiro não responder</Styled.ProfileOption>
-          </Styled.ProfileSelect>
-          {ValidationHourError}
-        </Form.Group>
-
+        <Row>
+          <Col xs={6}>
+            <Form.Group className="mb-2">
+              <Form.Label>Data</Form.Label>
+              <FormControl
+                id="date"
+                name="date"
+                type="date"
+                onChange={formik.handleChange}            
+                isValid={formik.touched.date && !formik.errors.date}
+                isInvalid={formik.errors.date} />
+              {ValidationDateError}
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-2">
+              <Styled.ProfileLabel>Hora</Styled.ProfileLabel>
+              <Styled.ProfileSelect
+                id="hour"
+                name="hour"
+                onChange={formik.handleChange}            
+                isValid={formik.touched.hour && !formik.errors.hour}
+                isInvalid={formik.errors.hour}>
+                  <Styled.ProfileOption>Selecione a hora</Styled.ProfileOption>
+                  <Styled.ProfileOption value='1'>1</Styled.ProfileOption>
+              </Styled.ProfileSelect>
+              {ValidationHourError}
+            </Form.Group>
+          </Col>
+        </Row>
+        
         <Form.Group className="mb-2">
           <Form.Label>Nome</Form.Label>
           <Form.Control
@@ -158,35 +179,39 @@ function CreateSchedules() {
           {ValidationNameError}
         </Form.Group>
 
-        <Form.Group className="mb-2">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            id="email"
-            name="email"
-            placeholder="Digite seu email"
-            onChange={formik.handleChange}            
-            isValid={formik.touched.email && !formik.errors.email}
-            isInvalid={formik.errors.email}
-          />
-          {ValidationEmailError}
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-          <Form.Label>Telefone</Form.Label>
-          <Form.Control
-            id="phone"
-            name="phone"
-            placeholder="Digite seu telefone"
-            onChange={formik.handleChange}            
-            isValid={formik.touched.phone && !formik.errors.phone}
-            isInvalid={formik.errors.phone}
-          />
-          {ValidationPhoneError}
-        </Form.Group>
-        
+        <Row>
+          <Col xs={7}>
+            <Form.Group className="mb-2">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                id="email"
+                name="email"
+                placeholder="Digite seu email"
+                onChange={formik.handleChange}            
+                isValid={formik.touched.email && !formik.errors.email}
+                isInvalid={formik.errors.email}
+              />
+              {ValidationEmailError}
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-2">
+              <Form.Label>Telefone</Form.Label>
+              <Form.Control
+                id="phone"
+                name="phone"
+                placeholder="Digite seu telefone"
+                onChange={formik.handleChange}            
+                isValid={formik.touched.phone && !formik.errors.phone}
+                isInvalid={formik.errors.phone}
+              />
+              {ValidationPhoneError}
+            </Form.Group>
+          </Col>
+        </Row>
         {AppError}
         <Button variant="primary" type="submit">
-          Salvar
+          Agendar
         </Button>
       </Form> 
     </Container>

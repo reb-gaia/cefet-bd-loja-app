@@ -3,14 +3,14 @@
     {
       "name": "Rebeca",
       "email": "teste",
-      "phone": "8459-4564", 
+      "phone": "8459-4564",
       "password": "teste",
-      "cep": "32223550", 
-      "street": "Rua A", 
-      "district": "Teste", 
-      "city": "Teste", 
-      "state": "Teste", 
-      "startDate": "08-25-2021", 
+      "cep": "32223550",
+      "street": "Rua A",
+      "district": "Teste",
+      "city": "Teste",
+      "state": "Teste",
+      "startDate": "08-25-2021",
       "salary": "3000"
     }
   ],
@@ -25,5 +25,16 @@
     }
   ],
   "patients": [],
-  "schedules": []
+  "schedules": [
+    {
+      "name": "teste",
+      "email": "w@gmail.com",
+      "phone": "1324-4356",
+      "doctorType": "female",
+      "doctor": "male",
+      "date": "2021-08-25",
+      "hour": "1",
+      "id": 1
+    }
+  ]
 }

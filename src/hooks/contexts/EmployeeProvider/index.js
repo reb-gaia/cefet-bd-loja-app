@@ -22,7 +22,7 @@ function EmployeeProvider({children}) {
   }, []);
   
   const postEmployee = useCallback(
-    async ({name, email, phone, cep, street, district, city, state, startDate, salary, password}) => {
+    async ({name, email, phone, cep, street, district, city, estado, startDate, salary, password}) => {
       try {
         await api.post('/employees', {
           name, 
@@ -32,7 +32,7 @@ function EmployeeProvider({children}) {
           street, 
           district, 
           city, 
-          state, 
+          estado, 
           startDate, 
           salary, 
           password       
@@ -43,7 +43,7 @@ function EmployeeProvider({children}) {
   }, []);
 
   const putEmployee = useCallback(
-    async ({id, name, email, phone, cep, street, district, city, state, startDate, salary, password}) => {
+    async ({id, name, email, phone, cep, street, district, city, estado, startDate, salary, password}) => {
       try {
         await api.put(`/employees/${id}`, {
           name, 
@@ -53,7 +53,7 @@ function EmployeeProvider({children}) {
           street, 
           district, 
           city, 
-          state, 
+          estado, 
           startDate, 
           salary, 
           password 
