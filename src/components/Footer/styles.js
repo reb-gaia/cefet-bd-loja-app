@@ -3,8 +3,8 @@ import { mixins } from "../../styles/mixins";
 
 export const Box = styled.div`
 	padding: 50px 0 30px 0;
-	background: rgb(240,36,45);
-        background: linear-gradient(340deg, rgba(240,36,45,1) 0%, rgba(246,160,32,1) 64%);	position: relative;
+	background: #fffffe;	
+	position: relative;
 	bottom: 0;
 	width: 100%;
 
@@ -40,26 +40,22 @@ export const Row = styled.div`
 }
 `;
 
-export const FooterLink = styled.a`
-	margin-bottom: 20px;
-	font-size: 18px;
-	text-decoration: none;
-	color: white;
-
-	&:hover {
-		color: yellow;
-		transition: 200ms ease-in;
-	}
-`;
-
-export const Heading = styled.p`
-	font-size: ${mixins.typograph.subTitle};
-	margin-bottom: 40px;
-	font-weight: bold;
-`;
-
 export const Title = styled.h5`
-	margin-top: 30px;
+	color: #2d334a;
+	display: flex;        
+	flex-direction: row;
+	font-family: ${mixins.fonts.bold};
+	font-size: ${mixins.typograph.paragraph};
+`;
+
+export const Paragraph = styled.h5`
+	display: flex;        
+	flex-direction: row;
+	font-size: ${mixins.typograph.paragraph};
+`;
+
+export const Text = styled.h5`
+	color: #2d334a;
 	display: flex;        
 	flex-direction: row;
 	align-items: center;

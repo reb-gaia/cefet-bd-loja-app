@@ -2,11 +2,13 @@
 import styled from 'styled-components'
 
 export const Styled = {
-  CardWrapper: styled.div`
-    display: grid;
-    margin: 0 auto;
-    width: 70%;
-    grid-template-columns: repeat(4, auto);
-
-  `
+  Container: styled.div`
+    width: 100%;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+  `,
 }

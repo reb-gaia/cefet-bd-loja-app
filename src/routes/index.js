@@ -17,7 +17,6 @@ import Schedules from "../pages/Schedules";
 
 import NotFound from "../pages/NotFound";
 import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
 
 import { Styled } from './styles';
 import { useAuth } from '../hooks/contexts/AuthProvider';
@@ -43,13 +42,12 @@ export default function Routes() {
 
           {auth && <Route path="/employee" component={Employee} />}
           {auth && <Route path="/patients" component={Patients} />}
-          {auth && <Route path="/adresses" component={Addresses} />}
+          {auth && <Route path="/addresses" component={Addresses} />}
           {auth && <Route path="/schedules" component={Schedules} />}
           
           <Redirect from="*" to={NotFound} />
         </Switch>
       </Styled.PageLayout>
-      <Footer />
     </Styled.AppLayout>
   )
 }

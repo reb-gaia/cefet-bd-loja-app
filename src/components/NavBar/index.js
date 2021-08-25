@@ -1,42 +1,35 @@
 import React from 'react';
-import { FiHome, FiLogOut, FiBriefcase } from 'react-icons/fi';
 import { useAuth } from '../../hooks/contexts/AuthProvider'
 import { useHistory } from 'react-router-dom';
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import { FiLogIn, FiLogOut } from 'react-icons/fi'
 import { Styled } from './styled';
-import Logo from '../../assets/logo.png';
 
 function NavBar() {
-  const { SignOut } = useAuth();
+  const { auth, SignOut } = useAuth();
   const history = useHistory();
-  const items = [
-    {
-      link: '/home',
-      icon: <FiHome />
-    },
-    {
-      link: '/create-product',
-      icon: <FiBriefcase />
-    }
-  ]
+  
   const handleClick = async () => {
     await SignOut();
-    history.push("/");
+    history.push("/login");
   }
 
   return (
-    <Styled.NavBar>
-      <Styled.Logo src={Logo}/>
-      <Styled.NavArea>
-        {items.map((item, key) => (
-          <Styled.NavItem key={key} to={item.link}>
-            {item.icon}
-          </Styled.NavItem>
-        ))}
-        <Styled.NavButton onClick={handleClick}>
-          <FiLogOut />
-        </Styled.NavButton>
-      </Styled.NavArea>
-    </Styled.NavBar>
+    <Navbar style={{backgroundColor: '#ffd803'}} variant="dark" fixed="top">
+      <Container>
+        <Navbar.Brand href="/">Clínica Médica</Navbar.Brand>
+        <Nav className="me-auto">
+          <Nav.Link href="/galery">Galeria</Nav.Link>
+          <Nav.Link href="/addresses">Endereços</Nav.Link>
+          <Nav.Link href="/employee">Funcionários</Nav.Link>
+          <Nav.Link href="/patients">Pacientes</Nav.Link>
+          <Nav.Link href="/schedules">Agendamentos</Nav.Link>
+        </Nav>
+        <Nav className="me-auto">
+          <Styled.NavItem> {auth ? <FiLogOut onClick={SignOut}/> : <FiLogIn onClick={handleClick} /> }</Styled.NavItem>
+        </Nav>
+      </Container>
+    </Navbar>
   )
 }
 

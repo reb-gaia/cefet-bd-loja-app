@@ -1,7 +1,7 @@
-
+// https://www.happyhues.co/palettes/14
 export const mixins = {
   colors: {
-    background: "#E4E4E4",
+    background: "#e3f6f5",
     primary: "#0D6EFD",
     secondary: "#FFF",
     green: "green",
@@ -14,7 +14,7 @@ export const mixins = {
       normal: "Montserrat-Normal"
   },
   typograph: {
-      title: "24px",
+      title: "36px",
       subtitle: "16px",
       paragraph: "12px"
   },
