@@ -21,8 +21,8 @@ function NavBar() {
         <Nav className="me-auto">
           <Nav.Link href="/galery">Galeria</Nav.Link>
           <Nav.Link href="/create-addresses">Endereços</Nav.Link>
-          {auth && <Nav.Link href="/employee">Funcionários</Nav.Link>}
-          {auth && <Nav.Link href="/patients">Pacientes</Nav.Link>}
+          {auth && <Nav.Link href="/create-employee">Funcionários</Nav.Link>}
+          {auth && <Nav.Link href="/create-patients">Pacientes</Nav.Link>}
           <Nav.Link href="/create-schedules">Agendamentos</Nav.Link>
         </Nav>
         <Nav className="d-flex">

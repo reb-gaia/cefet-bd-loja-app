@@ -24,7 +24,7 @@ function ScheduleProvider({children}) {
   const postSchedule = useCallback(
     async ({name, email, phone, doctorType, doctor, date, hour}) => {
       try {
-        await api.post('/Schedules', {
+        await api.post('/schedules', {
           name, 
           email, 
           phone,
@@ -41,7 +41,7 @@ function ScheduleProvider({children}) {
   const putSchedule = useCallback(
     async ({id, name, email, phone, doctorType, doctor, date, hour}) => {
       try {
-        await api.put(`/Schedules/${id}`, {
+        await api.put(`/schedules/${id}`, {
           id,
           name, 
           email, 
@@ -59,7 +59,7 @@ function ScheduleProvider({children}) {
   const deleteSchedule = useCallback(
     async ({id}) => {
       try {
-        await api.delete(`/Schedules/${id}`);
+        await api.delete(`/schedules/${id}`);
         setSchedules(pState => pState.filter(
           state => state.id !== id
         ));

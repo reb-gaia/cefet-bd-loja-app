@@ -22,8 +22,7 @@ function CreateAdresses() {
     console.log(state);
   });
 
-  const formik = useFormik({
-    
+  const formik = useFormik({  
     initialValues: {
       cep: state ? state.address.cep : "",
       street: state ? state.address.street : "",

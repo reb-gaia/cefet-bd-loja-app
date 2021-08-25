@@ -1,4 +1,4 @@
-// estilização da página CreatProduct
+// estilização da página CreateSchedules
 
 import styled from "styled-components";
 import { mixins } from "../../styles/mixins";
