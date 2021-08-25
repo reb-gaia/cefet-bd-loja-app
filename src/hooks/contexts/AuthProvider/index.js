@@ -21,23 +21,23 @@ function AuthProvider({children}) {
 
   // useCallback -> melhora a performance das funções
   const SignIn = useCallback(
-    async ({login, password}) => {
+    async ({email, password}) => {
       setError("");
       try {
-        if(!login || !password) {
-          setError("Login e senha inválidos");
+        if(!email || !password) {
+          setError("Email e senha inválidos");
           return
         }
 
-        const { data } = await api.get(`/users?login=${login}`);
+        const { data } = await api.get(`/employees?email=${email}`);
 
         if(data.length === 0) {
-          setError("Login e senha inválidos");
+          setError("Email e senha inválidos");
           return
         }
 
         if(data[0].password !== password) {
-          setError("Login e senha inválidos");
+          setError("Email e senha inválidos");
           return
         }
 
@@ -46,7 +46,7 @@ function AuthProvider({children}) {
         api.defaults.headers.Authorization = `Bearer ${data[0].access_token}`
 
       } catch (error) {
-        setError("Login e senha inválidos");
+        setError("Email e senha inválidos");
       }
   }, []);
 

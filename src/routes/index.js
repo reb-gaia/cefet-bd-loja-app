@@ -30,10 +30,13 @@ export default function Routes() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/galery" component={Galery} />
-          <Route path="/create-adresses" component={CreateAddresses} />
-          <Route path="/create-schedules" component={CreateSchedules} />
           <Route path="/login" component={Login} />
+          <Route path="/create-addresses" component={CreateAddresses} />
+          <Route path="/edit-addresses/:id" component={CreateAddresses} />
 
+          <Route path="/create-schedules" component={CreateSchedules} />
+          <Route path="/edit-schedules/:id" component={CreateSchedules} />
+        
           {auth && <Route path="/create-employee" component={CreateEmployee} />}
           {auth && <Route path="/edit-employee/:id" component={CreateEmployee} />}
 

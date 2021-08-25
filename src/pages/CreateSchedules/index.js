@@ -17,7 +17,7 @@ function CreateSchedules() {
   useEffect(() => {
     console.log(state);
   });
-
+  
   const formik = useFormik({
     initialValues: {
       name: state ? state.product.name : "",
@@ -59,50 +59,114 @@ function CreateSchedules() {
 
   return (
     <Container
-      title="Criar Produto"
+      title="Agendar uma consulta"
       size="sm"
     >
       <Form onSubmit={formik.handleSubmit}>
-        <Form.Group className="mb-5">
-          <Form.Label>Nome do Produto</Form.Label>
+        <Form.Group className="mb-2">
+          <Styled.ProfileLabel>Especialidade</Styled.ProfileLabel>
+          <Styled.ProfileSelect
+            id="doctorType"
+            name="doctorType"
+            onChange={formik.handleChange}            
+            isValid={formik.touched.doctorType && !formik.errors.doctorType}
+            isInvalid={formik.errors.doctorType}>
+              <Styled.ProfileOption>Selecione a especialidade</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Feminino</Styled.ProfileOption>
+              <Styled.ProfileOption value="female">Masculino</Styled.ProfileOption>
+              <Styled.ProfileOption value="others">Prefiro não responder</Styled.ProfileOption>
+          </Styled.ProfileSelect>
+          {ValidationNameError}
+        </Form.Group>
+
+        <Form.Group className="mb-2">
+          <Styled.ProfileLabel>Médico</Styled.ProfileLabel>
+          <Styled.ProfileSelect
+            id="doctor"
+            name="doctor"
+            onChange={formik.handleChange}            
+            isValid={formik.touched.doctor && !formik.errors.doctor}
+            isInvalid={formik.errors.doctor}>
+              <Styled.ProfileOption>Selecione a especialidade</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Feminino</Styled.ProfileOption>
+              <Styled.ProfileOption value="female">Masculino</Styled.ProfileOption>
+              <Styled.ProfileOption value="others">Prefiro não responder</Styled.ProfileOption>
+          </Styled.ProfileSelect>
+          {ValidationNameError}
+        </Form.Group>
+        
+        <Form.Group className="mb-2">
+          <Styled.ProfileLabel>Data</Styled.ProfileLabel>
+          <Styled.ProfileSelect
+            id="date"
+            name="date"
+            onChange={formik.handleChange}            
+            isValid={formik.touched.doctor && !formik.errors.doctor}
+            isInvalid={formik.errors.doctor}>
+              <Styled.ProfileOption>Selecione a especialidade</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Feminino</Styled.ProfileOption>
+              <Styled.ProfileOption value="female">Masculino</Styled.ProfileOption>
+              <Styled.ProfileOption value="others">Prefiro não responder</Styled.ProfileOption>
+          </Styled.ProfileSelect>
+          {ValidationNameError}
+        </Form.Group>
+
+        <Form.Group className="mb-2">
+          <Styled.ProfileLabel>Hora</Styled.ProfileLabel>
+          <Styled.ProfileSelect
+            id="date"
+            name="date"
+            onChange={formik.handleChange}            
+            isValid={formik.touched.doctor && !formik.errors.doctor}
+            isInvalid={formik.errors.doctor}>
+              <Styled.ProfileOption>Selecione a especialidade</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Feminino</Styled.ProfileOption>
+              <Styled.ProfileOption value="female">Masculino</Styled.ProfileOption>
+              <Styled.ProfileOption value="others">Prefiro não responder</Styled.ProfileOption>
+          </Styled.ProfileSelect>
+          {ValidationNameError}
+        </Form.Group>
+
+        <Form.Group className="mb-2">
+          <Form.Label>Nome</Form.Label>
           <Form.Control
-            id="name"
-            name="name"
-            placeholder="Coloque o nome do produto"
+            id="cep"
+            name="cep"
+            placeholder="Coloque o CEP"
             onChange={formik.handleChange}
-            isValid={formik.touched.name && !formik.errors.name}
-            isInvalid={formik.errors.name}
+            isValid={formik.touched.cep && !formik.errors.cep}
+            isInvalid={formik.errors.cep}
           />
           {ValidationNameError}
         </Form.Group>
-        <Form.Group className="mb-5">
-          <Form.Label>Descrição</Form.Label>
+        <Form.Group className="mb-2">
+          <Form.Label>Email</Form.Label>
           <Form.Control
-            id="description"
-            name="description"
-            placeholder="Coloque uma descrição do produto"
+            id="street"
+            name="street"
+            placeholder="Coloque o logradouro"
             onChange={formik.handleChange}            
-            isValid={formik.touched.description && !formik.errors.description}
-            isInvalid={formik.errors.description}
+            isValid={formik.touched.street && !formik.errors.street}
+            isInvalid={formik.errors.street}
           />
-          {ValidationDescriptionError}
+          {ValidationNameError}
         </Form.Group>
-        <Form.Group className="mb-5">
-          <Form.Label>Preço</Form.Label>
+        <Form.Group className="mb-2">
+          <Form.Label>Telefone</Form.Label>
           <Form.Control
-            id="price"
-            name="price"
-            type="number"
-            placeholder="Digite o preço do produto"
-            onChange={formik.handleChange}
-            isValid={formik.touched.price && !formik.errors.price}
-            isInvalid={formik.errors.price}          
+            id="district"
+            name="district"
+            placeholder="Coloque o bairro"
+            onChange={formik.handleChange}            
+            isValid={formik.touched.district && !formik.errors.district}
+            isInvalid={formik.errors.district}
           />
-          {ValidationPriceError}
+          {ValidationNameError}
         </Form.Group>
+        
         {AppError}
         <Button variant="primary" type="submit">
-          Criar produto
+          Salvar
         </Button>
       </Form> 
     </Container>

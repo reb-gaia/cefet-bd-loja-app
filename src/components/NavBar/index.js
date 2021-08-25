@@ -20,12 +20,12 @@ function NavBar() {
         <Navbar.Brand href="/">Clínica Médica</Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link href="/galery">Galeria</Nav.Link>
-          <Nav.Link href="/addresses">Endereços</Nav.Link>
-          <Nav.Link href="/employee">Funcionários</Nav.Link>
-          <Nav.Link href="/patients">Pacientes</Nav.Link>
-          <Nav.Link href="/schedules">Agendamentos</Nav.Link>
+          <Nav.Link href="/create-addresses">Endereços</Nav.Link>
+          {auth && <Nav.Link href="/employee">Funcionários</Nav.Link>}
+          {auth && <Nav.Link href="/patients">Pacientes</Nav.Link>}
+          <Nav.Link href="/create-schedules">Agendamentos</Nav.Link>
         </Nav>
-        <Nav className="me-auto">
+        <Nav className="d-flex">
           <Styled.NavItem> {auth ? <FiLogOut onClick={SignOut}/> : <FiLogIn onClick={handleClick} /> }</Styled.NavItem>
         </Nav>
       </Container>

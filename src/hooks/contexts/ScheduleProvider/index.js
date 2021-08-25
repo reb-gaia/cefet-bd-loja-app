@@ -22,12 +22,13 @@ function ScheduleProvider({children}) {
   }, []);
   
   const postSchedule = useCallback(
-    async ({name, email, phone, doctor, date, hour}) => {
+    async ({name, email, phone, doctorType, doctor, date, hour}) => {
       try {
         await api.post('/Schedules', {
           name, 
           email, 
-          phone, 
+          phone,
+          doctorType,
           doctor, 
           date, 
           hour       
@@ -38,13 +39,14 @@ function ScheduleProvider({children}) {
   }, []);
 
   const putSchedule = useCallback(
-    async ({id, name, email, phone, doctor, date, hour}) => {
+    async ({id, name, email, phone, doctorType, doctor, date, hour}) => {
       try {
         await api.put(`/Schedules/${id}`, {
           id,
           name, 
           email, 
-          phone, 
+          phone,
+          doctorType,
           doctor, 
           date, 
           hour

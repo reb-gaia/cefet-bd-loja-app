@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../../components/Footer';
-import { Card, CardGroup } from 'react-bootstrap';
+import { Card, CardGroup, Button } from 'react-bootstrap';
 import { Styled } from './styles';
 
 function Home() {
@@ -17,7 +17,7 @@ function Home() {
           <Card style={{padding: '40px'}}>
             <Card.Body>
               <Card.Title>Missão</Card.Title>
-              <Card.Text>
+              <Card.Text style={{textAlign: 'justify'}}>
               Atuar com excelência, em benefício da sociedade, na supervisão da ética profissional médica, por meio de ações regulamentadoras, educacionais, fiscalizadoras, judicantes, cartoriais e políticas.
               </Card.Text>
             </Card.Body>
@@ -26,16 +26,20 @@ function Home() {
           <Card style={{padding: '40px'}}>
             <Card.Body>
               <Card.Title>Valores</Card.Title>
-              <Card.Text>
+              <Card.Text style={{textAlign: 'justify'}}> 
                 Ética, justiça, equidade, sustentabilidade, credibilidade, comprometimento com o cliente e interesse público.
               </Card.Text>              
             </Card.Body>
           </Card>
         </CardGroup>
 
-        <Styled.Img>
-          <img src="https://img-premium.flaticon.com/png/512/1806/premium/1806299.png?token=exp=1629856467~hmac=4a2f79e88fc068a2c9d35b46a05381c2" />
-        </Styled.Img>
+        <div className="row justify-content-center">
+          <Styled.Img className="col-9">
+            <img src="https://img-premium.flaticon.com/png/512/1806/premium/1806299.png?token=exp=1629856467~hmac=4a2f79e88fc068a2c9d35b46a05381c2" />
+          </Styled.Img>
+
+          <Button className="col-3 align-self-center" variant="warning" href="/create-schedules">Agendar uma consulta</Button>{' '}
+        </div>
 
       </Styled.Container>
 

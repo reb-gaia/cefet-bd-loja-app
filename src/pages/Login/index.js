@@ -13,13 +13,13 @@ function Login() {
 
   const formik = useFormik({
     initialValues: {
-      login: "",
+      email: "",
       password: "",
     },
     validationSchema,
     onSubmit: async values => {
       await SignIn(values);
-      history.push("/home");
+      history.push("/");
     }
   });
 
@@ -27,8 +27,8 @@ function Login() {
     () => <Styled.Error>{error}</Styled.Error>, [error]
   );
 
-  const ValidationLoginError = useMemo(
-    () => <Styled.Error>{formik.errors.login}</Styled.Error>, [formik.errors.login]
+  const ValidationEmailError = useMemo(
+    () => <Styled.Error>{formik.errors.email}</Styled.Error>, [formik.errors.email]
   );
   const ValidationPasswordError = useMemo(
     () => <Styled.Error>{formik.errors.password}</Styled.Error>, [formik.errors.password]
@@ -40,19 +40,19 @@ function Login() {
       size="sm"
     >
       <Form onSubmit={formik.handleSubmit}>
-        <Form.Group className="mb-5">
-          <Form.Label>Login</Form.Label>
+        <Form.Group className="mb-3">
+          <Form.Label>Email</Form.Label>
           <Form.Control
-            id="login"
-            name="login"
-            placeholder="Coloque aqui o seu melhor login"
+            id="email"
+            name="email"
+            placeholder="Seu email"
             onChange={formik.handleChange}
-            isValid={formik.touched.login && !formik.errors.login}
-            isInvalid={formik.errors.login}
+            isValid={formik.touched.email && !formik.errors.email}
+            isInvalid={formik.errors.email}
           />
-          {ValidationLoginError}
+          {ValidationEmailError}
         </Form.Group>
-        <Form.Group className="mb-5">
+        <Form.Group className="mb-3">
           <Form.Label>Senha</Form.Label>
           <Form.Control
             id="password"

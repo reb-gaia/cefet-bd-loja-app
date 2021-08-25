@@ -5,7 +5,8 @@ import { mixins } from "../../styles/mixins";
 
 export const Styled = {
   Container: styled.div`
-    margin: 80px 0;
+    margin: 2rem 0;
+    padding: 5rem;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -13,7 +14,6 @@ export const Styled = {
     border-radius: 25px;
     align-items: top;
     justify-content: center;
-    padding: 50px;
   `,
 
   Box: styled.div`
@@ -26,12 +26,15 @@ export const Styled = {
   `,
 
   Img: styled.div`
-    paddind-top: 50px;
-    width: 200px;    
+    background-color: #fffffe;
+    padding: 30px;
+    margin: 60px 150px 0 60px;
+    width: 350px;    
     display: flex;
     flex-direction: column;
     align-self: center;
     justify-content: center;
+    border-radius: 35px;
   `,
 
   Title: styled.h1`

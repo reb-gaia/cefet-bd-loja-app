@@ -15,7 +15,7 @@ export const mixins = {
   },
   typograph: {
       title: "36px",
-      subtitle: "16px",
+      subtitle: "20px",
       paragraph: "12px"
   },
   sizes: {

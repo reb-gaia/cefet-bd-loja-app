@@ -27,10 +27,10 @@ export const Styled = {
     padding: none;
   `,
   Title: styled.h1`
-    margin: 50px 0;
+    margin: 20px 0;
     align-self: center;
     color: ${mixins.colors.primary};
     font-family: ${mixins.fonts.bold};
-    font-size: ${mixins.typograph.title};
+    font-size: ${mixins.typograph.subtitle};
   `
 }

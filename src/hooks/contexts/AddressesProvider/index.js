@@ -22,14 +22,14 @@ function AddressesProvider({children}) {
   }, []);
   
   const postAddresses = useCallback(
-    async ({cep, street, district, city, state}) => {
+    async ({cep, street, district, city, estado}) => {
       try {
         await api.post('/addresses', {
           cep, 
           street, 
           district, 
           city, 
-          state       
+          estado       
         });
       } catch (error) {
         setError("Erro ao postar um endereço");
@@ -37,14 +37,14 @@ function AddressesProvider({children}) {
   }, []);
 
   const putAddresses = useCallback(
-    async ({id, cep, street, district, city, state}) => {
+    async ({id, cep, street, district, city, estado}) => {
       try {
         await api.put(`/addresses/${id}`, {
           cep, 
           street, 
           district, 
           city, 
-          state
+          estado
         });
       } catch (error) {
         setError("Erro ao editar o endereço");
