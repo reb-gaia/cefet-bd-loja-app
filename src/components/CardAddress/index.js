@@ -4,7 +4,7 @@ import { useAddresses } from '../../hooks/contexts/AddressesProvider'
 import Swal from 'sweetalert2';
 import { useHistory } from 'react-router-dom';
 
-function CardItem({address}) {
+function CardAddress({address}) {
   const history = useHistory();
 
   const { deleteAddresses } = useAddresses();
@@ -69,4 +69,4 @@ function CardItem({address}) {
   );
 }
 
-export default CardItem;
+export default CardAddress;
