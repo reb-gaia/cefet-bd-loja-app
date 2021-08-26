@@ -34,9 +34,8 @@ export const Styled = {
     }
   `,
   ProfileSelect: styled(FormSelect) `
-    background-color: #eee;
-    border: none;
-    border-bottom: 1px solid ${mixins.colors.secondary};
+    border: 1px solid #ced4da;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     width: 100%;  
     height: 35px;   
     color: rgba(0,0,0,0.5); 
@@ -48,6 +47,7 @@ export const Styled = {
       margin: 20px 0px;
     }
   `,
+
   ProfileLabel: styled(FormLabel) `
     color: ${mixins.colors.dark};
     font-size: ${mixins.typograph.paragraph};

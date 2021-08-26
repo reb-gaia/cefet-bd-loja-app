@@ -181,7 +181,7 @@ function CreatePatients() {
           <Form.Control
             id="cep"
             name="cep"
-            placeholder="Coloque o CEP"
+            placeholder="Digite seu CEP"
             onChange={formik.handleChange}
             isValid={formik.touched.cep && !formik.errors.cep}
             isInvalid={formik.errors.cep}
@@ -193,7 +193,7 @@ function CreatePatients() {
           <Form.Control
             id="street"
             name="street"
-            placeholder="Coloque o logradouro"
+            placeholder="Digite seu logradouro"
             onChange={formik.handleChange}            
             isValid={formik.touched.street && !formik.errors.street}
             isInvalid={formik.errors.street}
@@ -205,7 +205,7 @@ function CreatePatients() {
           <Form.Control
             id="district"
             name="district"
-            placeholder="Coloque o bairro"
+            placeholder="Digite seu bairro"
             onChange={formik.handleChange}            
             isValid={formik.touched.district && !formik.errors.district}
             isInvalid={formik.errors.district}
@@ -220,7 +220,7 @@ function CreatePatients() {
               <Form.Control
                 id="city"
                 name="city"
-                placeholder="Coloque a cidade"
+                placeholder="Digite sua cidade"
                 onChange={formik.handleChange}            
                 isValid={formik.touched.city && !formik.errors.city}
                 isInvalid={formik.errors.city}
@@ -234,7 +234,7 @@ function CreatePatients() {
               <Form.Control
                 id="estado"
                 name="estado"
-                placeholder="Coloque o estado"
+                placeholder="Digite seu estado"
                 onChange={formik.handleChange}            
                 isValid={formik.touched.estado && !formik.errors.estado}
                 isInvalid={formik.errors.estado}
@@ -251,7 +251,7 @@ function CreatePatients() {
               <Form.Control
                 id="weight"
                 name="weight"
-                placeholder="Coloque seu peso"
+                placeholder="Digite seu peso"
                 onChange={formik.handleChange}            
                 isValid={formik.touched.weight && !formik.errors.weight}
                 isInvalid={formik.errors.weight}/>
@@ -265,7 +265,7 @@ function CreatePatients() {
               <Form.Control
                 id="height"
                 name="height"
-                placeholder="Coloque sua altura"
+                placeholder="Digite sua altura"
                 onChange={formik.handleChange}            
                 isValid={formik.touched.height && !formik.errors.height}
                 isInvalid={formik.errors.height}/>
@@ -282,7 +282,7 @@ function CreatePatients() {
               onChange={formik.handleChange}            
               isValid={formik.touched.bloodType && !formik.errors.bloodType}
               isInvalid={formik.errors.bloodType}>
-                <Styled.ProfileOption>Selecione o tipo sanguíneo</Styled.ProfileOption>
+                <Styled.ProfileOption>Selecione seu tipo sanguíneo</Styled.ProfileOption>
                 <Styled.ProfileOption value="A+">A+</Styled.ProfileOption>
                 <Styled.ProfileOption value="A-">A-</Styled.ProfileOption>
                 <Styled.ProfileOption value="B+">B+</Styled.ProfileOption>

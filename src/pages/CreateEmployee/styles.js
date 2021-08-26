@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 import { mixins } from "../../styles/mixins";
-import { FormControl, FormSelect, Button, FormLabel } from 'react-bootstrap';
+import { FormSelect, Button, FormLabel } from 'react-bootstrap';
 
 export const Styled = {
   Error: styled.p`
@@ -15,8 +15,8 @@ export const Styled = {
   `,
 
   ProfileSelect: styled(FormSelect) `
-    border: 1px solid ${mixins.colors.background};
-    border-bottom: 1px solid ${mixins.colors.secondary};
+    border: 1px solid #ced4da;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     width: 100%;  
     height: 35px;   
     color: rgba(0,0,0,0.5); 

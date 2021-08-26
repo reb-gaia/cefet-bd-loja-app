@@ -11,7 +11,26 @@
       "city": "Teste",
       "state": "Teste",
       "startDate": "08-25-2021",
-      "salary": "3000"
+      "salary": "3000",
+      "id": 1
+    },
+    {
+      "name": "gywqfgyuf",
+      "email": "erji@gmail.com",
+      "phone": "253454",
+      "cep": "okfgjk",
+      "street": "kijgfip",
+      "district": "jgrigjij",
+      "city": "jgriojgij",
+      "estado": "jgirj",
+      "startDate": "2021-08-25",
+      "isDoctor": [
+        "on"
+      ],
+      "doctorType": "male",
+      "salary": "2343",
+      "password": "fokropk",
+      "id": 2
     }
   ],
   "addresses": [

@@ -1,5 +1,5 @@
 import React, { useMemo, useEffect, useState } from 'react';
-import { useFormik } from 'formik';
+import { useFormik,  } from 'formik';
 import { Form, Button, Row, Col, FormControl } from 'react-bootstrap';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
 import Container from '../../components/Container';
@@ -18,7 +18,7 @@ function CreateEmployee() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    console.log(state);
+
   });
 
   const formik = useFormik({
@@ -38,7 +38,7 @@ function CreateEmployee() {
       salary: state ? state.employee.salary : "",
     },
     validationSchema,
-    onSubmit: async ({name, email, phone, cep, street, district, city, estado, startDate, salary, password}) => {
+    onSubmit: async ({name, email, phone, cep, street, district, city, estado, startDate, isDoctor, doctorType, salary, password}) => {
       /* if(!!id) {
         await putEmployee({
           id,
@@ -60,6 +60,7 @@ function CreateEmployee() {
         return
       }
       await postEmployee(values); */
+      console.log("entrei", name, email);
       try {
         await api.post('/employees', {
           name, 
@@ -71,6 +72,8 @@ function CreateEmployee() {
           city, 
           estado, 
           startDate, 
+          isDoctor,
+          doctorType,
           salary, 
           password       
         });
@@ -121,10 +124,6 @@ function CreateEmployee() {
     () => <Styled.Error>{formik.errors.doctorType}</Styled.Error>, [formik.errors.doctorType]
   );
 
-  const ValidationDoctorError = useMemo(
-    () => <Styled.Error>{formik.errors.doctor}</Styled.Error>, [formik.errors.doctor]
-  );
-
   const ValidationStartDateError = useMemo(
     () => <Styled.Error>{formik.errors.startDate}</Styled.Error>, [formik.errors.startDate]
   );
@@ -137,6 +136,7 @@ function CreateEmployee() {
     () => <Styled.Error>{formik.errors.password}</Styled.Error>, [formik.errors.password]
   );
 
+ 
   return (
     <Container
       title="Cadastrar funcionário"
@@ -193,7 +193,7 @@ function CreateEmployee() {
             id="password"
             name="password"
             type="password"
-            placeholder="Sua senha"
+            placeholder="Digite sua senha"
             onChange={formik.handleChange}
             isValid={formik.touched.password && !formik.errors.password}
             isInvalid={formik.errors.password}
@@ -206,7 +206,7 @@ function CreateEmployee() {
           <Form.Control
             id="cep"
             name="cep"
-            placeholder="Coloque o CEP"
+            placeholder="Digite seu CEP"
             onChange={formik.handleChange}
             isValid={formik.touched.cep && !formik.errors.cep}
             isInvalid={formik.errors.cep}
@@ -218,7 +218,7 @@ function CreateEmployee() {
           <Form.Control
             id="street"
             name="street"
-            placeholder="Coloque o logradouro"
+            placeholder="Digite seu logradouro"
             onChange={formik.handleChange}            
             isValid={formik.touched.street && !formik.errors.street}
             isInvalid={formik.errors.street}
@@ -230,7 +230,7 @@ function CreateEmployee() {
           <Form.Control
             id="district"
             name="district"
-            placeholder="Coloque o bairro"
+            placeholder="Digite seu bairro"
             onChange={formik.handleChange}            
             isValid={formik.touched.district && !formik.errors.district}
             isInvalid={formik.errors.district}
@@ -245,7 +245,7 @@ function CreateEmployee() {
               <Form.Control
                 id="city"
                 name="city"
-                placeholder="Coloque a cidade"
+                placeholder="Digite sua cidade"
                 onChange={formik.handleChange}            
                 isValid={formik.touched.city && !formik.errors.city}
                 isInvalid={formik.errors.city}
@@ -259,7 +259,7 @@ function CreateEmployee() {
               <Form.Control
                 id="estado"
                 name="estado"
-                placeholder="Coloque o estado"
+                placeholder="Digite seu estado"
                 onChange={formik.handleChange}            
                 isValid={formik.touched.estado && !formik.errors.estado}
                 isInvalid={formik.errors.estado}
@@ -268,49 +268,18 @@ function CreateEmployee() {
             </Form.Group>
           </Col>
         </Row>
-
-        <Form.Group className="mb-2">
-          <Styled.ProfileLabel>Especialidade</Styled.ProfileLabel>
-          <Styled.ProfileSelect
-            id="doctorType"
-            name="doctorType"
-            onChange={formik.handleChange}            
-            isValid={formik.touched.doctorType && !formik.errors.doctorType}
-            isInvalid={formik.errors.doctorType}>
-              <Styled.ProfileOption>Selecione a especialidade</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Clínico Geral</Styled.ProfileOption>
-              <Styled.ProfileOption value="female">Ortopedista</Styled.ProfileOption>
-              <Styled.ProfileOption value="others">Oftamologista</Styled.ProfileOption>
-          </Styled.ProfileSelect>
-          {ValidationDoctorTypeError}
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-          <Styled.ProfileLabel>Médico</Styled.ProfileLabel>
-          <Styled.ProfileSelect
-            id="doctor"
-            name="doctor"
-            onChange={formik.handleChange}            
-            isValid={formik.touched.doctor && !formik.errors.doctor}
-            isInvalid={formik.errors.doctor}>
-              <Styled.ProfileOption>Selecione o médico</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Teste 1</Styled.ProfileOption>
-              <Styled.ProfileOption value="female">Teste 2</Styled.ProfileOption>
-          </Styled.ProfileSelect>
-          {ValidationDoctorError}
-        </Form.Group>
-        
+           
         <Row>
           <Col xs={6}>
             <Form.Group className="mb-2">
               <Styled.ProfileLabel>Data de inicio</Styled.ProfileLabel>
               <FormControl
-                id="date"
-                name="date"
+                id="startDate"
+                name="startDate"
                 type="date"
                 onChange={formik.handleChange}            
-                isValid={formik.touched.date && !formik.errors.date}
-                isInvalid={formik.errors.date} />
+                isValid={formik.touched.startDate && !formik.errors.startDate}
+                isInvalid={formik.errors.startDate} />
               {ValidationStartDateError}
             </Form.Group>
           </Col>
@@ -320,21 +289,51 @@ function CreateEmployee() {
               <Form.Control
                 id="salary"
                 name="salary"
-                onChange={formik.handleChange}            
+                onChange={formik.handleChange}       
+                placeholder="3.000,00"     
                 isValid={formik.touched.salary && !formik.errors.salary}
                 isInvalid={formik.errors.salary}/>
               {ValidationSalaryError}
             </Form.Group>
           </Col>
-        </Row>      
-      
+        </Row>
+
+        <Form.Group className="mb-2">
+          <Styled.ProfileLabel>Médico</Styled.ProfileLabel>
+            <Form.Check type="checkbox" 
+              style={{fontSize: '15px'}}
+              label="É médico?" 
+              id="isDoctor"
+              name="isDoctor"
+              onChange={formik.handleChange} />
+        </Form.Group>
+
+        <Form.Group className="mb-2">
+          <Styled.ProfileLabel>Especialidade</Styled.ProfileLabel>
+          <Styled.ProfileSelect
+            id="doctorType"
+            name="doctorType"
+            onChange={formik.handleChange}            
+            isValid={formik.touched.doctorType && !formik.errors.doctorType}
+            isInvalid={formik.errors.doctorType}>
+              <Styled.ProfileOption>Selecione sua especialidade</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Clínico Geral</Styled.ProfileOption>
+              <Styled.ProfileOption value="female">Ortopedista</Styled.ProfileOption>
+              <Styled.ProfileOption value="others">Oftamologista</Styled.ProfileOption>
+          </Styled.ProfileSelect>
+          {ValidationDoctorTypeError}
+        </Form.Group>
+
         {AppError}
-        <Button variant="primary" type="submit">
+        <Button variant="outline-warning" type="submit">
           Cadastrar funcionário
         </Button>
       </Form> 
     </Container>
+  
   );
+  
 }
+
 
 export default CreateEmployee;

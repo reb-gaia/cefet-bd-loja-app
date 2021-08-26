@@ -22,20 +22,22 @@ function EmployeeProvider({children}) {
   }, []);
   
   const postEmployee = useCallback(
-    async ({name, email, phone, cep, street, district, city, estado, startDate, salary, password}) => {
+    async ({name, email, password, phone, cep, street, district, city, estado, isDoctor, doctorType, startDate, salary}) => {
       try {
         await api.post('/employees', {
           name, 
           email, 
+          password,
           phone, 
           cep, 
           street, 
           district, 
           city, 
-          estado, 
+          estado,
+          isDoctor,
+          doctorType,
           startDate, 
-          salary, 
-          password       
+          salary
         });
       } catch (error) {
         setError("Erro ao postar um produto");
@@ -43,20 +45,23 @@ function EmployeeProvider({children}) {
   }, []);
 
   const putEmployee = useCallback(
-    async ({id, name, email, phone, cep, street, district, city, estado, startDate, salary, password}) => {
+    async ({id, name, email, password, phone, cep, street, district, city, estado, isDoctor, doctorType, startDate, salary}) => {
       try {
         await api.put(`/employees/${id}`, {
+          id,
           name, 
           email, 
+          password,
           phone, 
           cep, 
           street, 
           district, 
           city, 
-          estado, 
+          estado,
+          isDoctor,
+          doctorType,
           startDate, 
-          salary, 
-          password 
+          salary
         });
       } catch (error) {
         setError("Erro ao editar o produto");
