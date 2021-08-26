@@ -28,6 +28,7 @@ export default function Routes() {
           <Route path="/" exact component={Home} />
           <Route path="/galery" component={Galery} />
           <Route path="/login" component={Login} />
+
           
           <Route path="/create-addresses" component={CreateAddresses} />
           <Route path="/edit-addresses/:id" component={CreateAddresses} />
@@ -41,7 +42,8 @@ export default function Routes() {
           {auth && <Route path="/create-patients" component={CreatePatients} />}
           {auth && <Route path="/edit-patients/:id" component={CreatePatients} />}
 
-          {auth && <Route path="/queries" component={Queries} />}
+          {/* {auth && <Route path="/queries" component={Queries} />} */}
+          <Route path="/queries" component={Queries} />
           
           <Redirect from="*" to={NotFound} />
         </Switch>

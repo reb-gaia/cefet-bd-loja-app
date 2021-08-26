@@ -1,21 +1,17 @@
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { useFormik,  } from 'formik';
 import { Form, Button, Row, Col, FormControl } from 'react-bootstrap';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 import Container from '../../components/Container';
 import { Styled } from './styles';
-// import { useEmployee } from '../../hooks/contexts/EmployeeProvider';
+import { useEmployee } from '../../hooks/contexts/EmployeeProvider';
 import { validationSchema } from './validation';
-import { api } from '../../services/api'
-
 
 function CreateEmployee() {
   const history = useHistory();
-  // const { id } = useParams()
+  const { id } = useParams()
   const { state } = useLocation()
-  // const { postEmployee, putEmployee } = useEmployee();
-
-  const [error, setError] = useState("");
+  const { error, postEmployee, putEmployee } = useEmployee();
 
   useEffect(() => {
 
@@ -38,8 +34,8 @@ function CreateEmployee() {
       salary: state ? state.employee.salary : "",
     },
     validationSchema,
-    onSubmit: async ({name, email, phone, cep, street, district, city, estado, startDate, isDoctor, doctorType, salary, password}) => {
-      /* if(!!id) {
+    onSubmit: async values => {
+      if(!!id) {
         await putEmployee({
           id,
           name: values.name, 
@@ -59,27 +55,7 @@ function CreateEmployee() {
         history.push("/");
         return
       }
-      await postEmployee(values); */
-      console.log("entrei", name, email);
-      try {
-        await api.post('/employees', {
-          name, 
-          email, 
-          phone, 
-          cep, 
-          street, 
-          district, 
-          city, 
-          estado, 
-          startDate, 
-          isDoctor,
-          doctorType,
-          salary, 
-          password       
-        });
-      } catch (error) {
-        setError("Erro ao postar um produto");
-      }
+      await postEmployee(values);
       history.push("/");
     }
   });

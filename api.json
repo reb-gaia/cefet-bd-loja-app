@@ -35,19 +35,11 @@
   ],
   "addresses": [
     {
-      "cep": "32647846",
-      "street": "teste",
-      "district": "teste",
-      "city": "teste",
-      "estado": "teste",
-      "id": 1
-    },
-    {
-      "cep": "32223550",
-      "street": "Rua Rio Negro",
-      "district": "Amazonas",
-      "city": "Contagem",
-      "estado": "MG",
+      "cep": "000000",
+      "street": "eu",
+      "district": "eu",
+      "city": "eu",
+      "estado": "eu",
       "id": 2
     },
     {
@@ -65,6 +57,14 @@
       "city": "Belo Horizonte",
       "estado": "MG",
       "id": 4
+    },
+    {
+      "cep": "26337486",
+      "street": "Agora vai",
+      "district": "Teste",
+      "city": "Teste",
+      "estado": "MG",
+      "id": 5
     }
   ],
   "patients": [

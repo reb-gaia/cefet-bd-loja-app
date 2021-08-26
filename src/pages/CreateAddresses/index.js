@@ -1,21 +1,19 @@
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { Form, Button, Col, Row } from 'react-bootstrap';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 import Container from '../../components/Container';
 import { Styled } from './styles';
-// import { useAddresses } from '../../hooks/contexts/AddressesProvider';
+import { useAddresses } from '../../hooks/contexts/AddressesProvider';
 import { validationSchema } from './validation';
-import { api } from '../../services/api'
 
 
 function CreateAdresses() {
   const history = useHistory();
-  // const { id } = useParams()
+  const { id } = useParams()
   const { state } = useLocation()
 
-  const [error, setError] = useState("");
-  // const { postAddresses, putAddresses } = useAddresses();
+  const { error, postAddresses, putAddresses } = useAddresses();
      
   useEffect(() => {
     console.log(state);
@@ -30,8 +28,8 @@ function CreateAdresses() {
       estado: state ? state.address.estado : "",
     },
     validationSchema,
-    onSubmit: async ({cep, street, district, city, estado}) => {
-      /* if(!!id) {
+    onSubmit: async values => {
+      if(!!id) {
         await putAddresses({
           id,
           cep: values.cep,
@@ -42,18 +40,8 @@ function CreateAdresses() {
         });
         history.push("/");
         return
-      } */
-      try {
-        await api.post('/addresses', {
-          cep, 
-          street, 
-          district, 
-          city, 
-          estado       
-        });
-      } catch (error) {
-        setError("Erro ao postar um endereço");
       }
+      await postAddresses(values);
       history.push("/");
     }
   });

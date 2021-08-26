@@ -1,23 +1,18 @@
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { Form, Button, Row, Col } from 'react-bootstrap';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 import Container from '../../components/Container';
 import { Styled } from './styles';
-// import { usePatients } from '../../hooks/contexts/PatientsProvider';
+import { usePatients } from '../../hooks/contexts/PatientsProvider';
 import { validationSchema } from './validation';
-import { api } from '../../services/api'
-
-
 
 function CreatePatients() {
   const history = useHistory();
-  // const { id } = useParams()
+  const { id } = useParams()
   const { state } = useLocation()
-  // const { postPatients, putPatients } = usePatients();
+  const { error, postPatients, putPatients } = usePatients();
   
-  const [error, setError] = useState("");
-
   useEffect(() => {
     console.log(state);
   });
@@ -37,8 +32,8 @@ function CreatePatients() {
       bloodType: state ? state.patient.bloodType : "",
     },
     validationSchema,
-    onSubmit: async ({name, email, phone, cep, street, district, city, state, weight, height, bloodType}) => {
-      /* if(!!id) {
+    onSubmit: async values => {
+      if(!!id) {
         await putPatients({
           id,
           name: values.name, 
@@ -56,24 +51,7 @@ function CreatePatients() {
         history.push("/");
         return
       }
-      await postPatients(values); */
-      try {
-        await api.post('/patients', {
-          name, 
-          email, 
-          phone, 
-          cep, 
-          street, 
-          district, 
-          city, 
-          state, 
-          weight, 
-          height, 
-          bloodType        
-        });
-      } catch (error) {
-        setError("Erro ao postar um produto");
-      }
+      await postPatients(values);
       history.push("/");
     }
   });

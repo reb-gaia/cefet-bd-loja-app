@@ -1,21 +1,19 @@
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { Form, Button, FormControl, Row, Col } from 'react-bootstrap';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 import { Styled } from './styles';
 import { validationSchema } from './validation';
-// import { useSchedule } from '../../hooks/contexts/ScheduleProvider';
+import { useSchedule } from '../../hooks/contexts/ScheduleProvider';
 import Container from '../../components/Container';
-import { api } from '../../services/api'
 
 
 
 function CreateSchedules() {
   const history = useHistory();
-  // const { id } = useParams()
-  const { state } = useLocation()
-  const [error, setError] = useState("");
-  // const { postSchedule, putSchedule } = useSchedule();
+  const { id } = useParams()
+  const { state } = useLocation();
+  const { error, postSchedule, putSchedule } = useSchedule();
 
   useEffect(() => {
     console.log(state);
@@ -32,8 +30,8 @@ function CreateSchedules() {
       hour: state ? state.schedule.hour : "",
     },
     validationSchema,
-    onSubmit: async ({name, email, phone, doctorType, doctor, date, hour}) => {
-      /* if(!!id) {
+    onSubmit: async values => {
+      if(!!id) {
         await putSchedule({
           id,
           name: values.name, 
@@ -46,24 +44,11 @@ function CreateSchedules() {
         });
         history.push("/");
         return
-      } */
-      try {
-        await api.post('/schedules', {
-          name, 
-          email, 
-          phone,
-          doctorType,
-          doctor, 
-          date, 
-          hour       
-        });
-      } catch (error) {
-        setError("Erro ao postar um produto");
       }
+      await postSchedule(values);
       history.push("/");
     }
   });
-
   
 
   const AppError = useMemo(
