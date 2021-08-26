@@ -10,10 +10,7 @@ import CreateSchedules from "../pages/CreateSchedules";
 import CreateEmployee from "../pages/CreateEmployee";
 import CreatePatients from "../pages/CreatePatients";
 
-import Employee from "../pages/Employee";
-import Patients from "../pages/Patients";
-import Addresses from "../pages/Addresses";
-import Schedules from "../pages/Schedules";
+import Queries from "../pages/Queries";
 
 import NotFound from "../pages/NotFound";
 import NavBar from "../components/NavBar";
@@ -31,6 +28,7 @@ export default function Routes() {
           <Route path="/" exact component={Home} />
           <Route path="/galery" component={Galery} />
           <Route path="/login" component={Login} />
+          
           <Route path="/create-addresses" component={CreateAddresses} />
           <Route path="/edit-addresses/:id" component={CreateAddresses} />
 
@@ -43,10 +41,7 @@ export default function Routes() {
           {auth && <Route path="/create-patients" component={CreatePatients} />}
           {auth && <Route path="/edit-patients/:id" component={CreatePatients} />}
 
-          {auth && <Route path="/employee" component={Employee} />}
-          {auth && <Route path="/patients" component={Patients} />}
-          {auth && <Route path="/addresses" component={Addresses} />}
-          {auth && <Route path="/schedules" component={Schedules} />}
+          {auth && <Route path="/queries" component={Queries} />}
           
           <Redirect from="*" to={NotFound} />
         </Switch>

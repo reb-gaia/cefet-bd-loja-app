@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 import { mixins } from "../../styles/mixins";
-import { FormSelect, FormControl, FormLabel } from 'react-bootstrap';
+import { FormSelect, FormControl, FormLabel, Button } from 'react-bootstrap';
 
 
 export const Styled = {
@@ -63,3 +63,12 @@ export const Styled = {
     }
   `
 }
+
+export const ProfileButton = styled(Button)  `
+  background-color:#ffd803;
+  opacity: 1;
+  padding: 0.8rem;
+  margin-right: 1rem; 
+  box-shadow: 0 5px 5px rgba(0,0,0,0.25), 
+                        0 5px 5px rgba(0,0,0,0.22);
+`;

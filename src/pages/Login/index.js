@@ -37,7 +37,7 @@ function Login() {
   return (
     <Container
       title="Login"
-      size="sm"
+      size="login"
     >
       <Form onSubmit={formik.handleSubmit}>
         <Form.Group className="mb-3">

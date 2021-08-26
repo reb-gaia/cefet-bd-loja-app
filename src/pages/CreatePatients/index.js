@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { Form, Button, Row, Col, FormControl } from 'react-bootstrap';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
@@ -6,38 +6,75 @@ import Container from '../../components/Container';
 import { Styled } from './styles';
 import { usePatients } from '../../hooks/contexts/PatientsProvider';
 import { validationSchema } from './validation';
+import { api } from '../../services/api'
+
 
 
 function CreatePatients() {
   const history = useHistory();
   const { id } = useParams()
   const { state } = useLocation()
-  const { error, postPatients, putPatients } = usePatients();
-    
+  const { postPatients, putPatients } = usePatients();
+  
+  const [error, setError] = useState("");
+
   useEffect(() => {
     console.log(state);
   });
 
   const formik = useFormik({
     initialValues: {
-      name: state ? state.product.name : "",
-      description: state ? state.product.description : "",
-      price: state ? state.product.price : 0,
+      name: state ? state.patient.name : "",
+      phone: state ? state.patient.phone : "",
+      email: state ? state.patient.email : "",
+      cep: state ? state.patient.cep : "",
+      street: state ? state.patient.street : "",
+      district: state ? state.patient.district : "",
+      city: state ? state.patient.city : "",
+      estado: state ? state.patient.estado : "",
+      weight: state ? state.patient.weight : "",
+      height: state ? state.patient.height : "",
+      bloodType: state ? state.patient.bloodType : "",
     },
     validationSchema,
-    onSubmit: async values => {
-      if(!!id) {
+    onSubmit: async ({name, email, phone, cep, street, district, city, state, weight, height, bloodType}) => {
+      /* if(!!id) {
         await putPatients({
           id,
           name: values.name, 
-          description: values.description, 
-          price: values.price,
+          phone: values.phone,
+          email: values.email, 
+          cep: values.cep,
+          street: values.street,
+          district: values.district,
+          city: values.city,
+          estado: values.estado,
+          weight: values.weight,
+          height: values.height,
+          bloodType: values.bloodType,
         });
-        history.push("/home");
+        history.push("/");
         return
       }
-      await postPatients(values);
-      history.push("/home");
+      await postPatients(values); */
+      try {
+        await api.post('/patients', {
+          name, 
+          email, 
+          phone, 
+          cep, 
+          street, 
+          district, 
+          city, 
+          state, 
+          weight, 
+          height, 
+          bloodType        
+        });
+      } catch (error) {
+        setError("Erro ao postar um produto");
+      }
+      history.push("/");
     }
   });
 
@@ -52,11 +89,7 @@ function CreatePatients() {
   const ValidationEmailError = useMemo(
     () => <Styled.Error>{formik.errors.email}</Styled.Error>, [formik.errors.email]
     );
-    
-  const ValidationPasswordError = useMemo(
-    () => <Styled.Error>{formik.errors.password}</Styled.Error>, [formik.errors.password]
-  );
-
+  
   const ValidationPhoneError = useMemo(
     () => <Styled.Error>{formik.errors.phone}</Styled.Error>, [formik.errors.phone]
   );
@@ -96,11 +129,11 @@ function CreatePatients() {
   return (
     <Container
       title="Cadastrar Paciente"
-      size="sm"
+      size="form"
     >
       <Form onSubmit={formik.handleSubmit} style={{overflowY: "scroll"}}>
         <Form.Group className="mb-2">
-          <Form.Label>Nome</Form.Label>
+          <Styled.ProfileLabel>Nome</Styled.ProfileLabel>
           <Form.Control
             id="name"
             name="name"
@@ -115,7 +148,7 @@ function CreatePatients() {
         <Row>
           <Col xs={7}>
             <Form.Group className="mb-2">
-              <Form.Label>Email</Form.Label>
+              <Styled.ProfileLabel>Email</Styled.ProfileLabel>
               <Form.Control
                 id="email"
                 name="email"
@@ -129,7 +162,7 @@ function CreatePatients() {
           </Col>
           <Col>
             <Form.Group className="mb-2">
-              <Form.Label>Telefone</Form.Label>
+              <Styled.ProfileLabel>Telefone</Styled.ProfileLabel>
               <Form.Control
                 id="phone"
                 name="phone"
@@ -144,7 +177,7 @@ function CreatePatients() {
         </Row>
 
         <Form.Group className="mb-2">
-          <Form.Label>CEP</Form.Label>
+          <Styled.ProfileLabel>CEP</Styled.ProfileLabel>
           <Form.Control
             id="cep"
             name="cep"
@@ -156,7 +189,7 @@ function CreatePatients() {
           {ValidationCepError}
         </Form.Group>
         <Form.Group className="mb-2">
-          <Form.Label>Logradouro</Form.Label>
+          <Styled.ProfileLabel>Logradouro</Styled.ProfileLabel>
           <Form.Control
             id="street"
             name="street"
@@ -168,7 +201,7 @@ function CreatePatients() {
           {ValidationStreetError}
         </Form.Group>
         <Form.Group className="mb-2">
-          <Form.Label>Bairro</Form.Label>
+          <Styled.ProfileLabel>Bairro</Styled.ProfileLabel>
           <Form.Control
             id="district"
             name="district"
@@ -183,7 +216,7 @@ function CreatePatients() {
         <Row>
           <Col xs={7}>
             <Form.Group className="mb-2">
-              <Form.Label>Cidade</Form.Label>
+              <Styled.ProfileLabel>Cidade</Styled.ProfileLabel>
               <Form.Control
                 id="city"
                 name="city"
@@ -197,7 +230,7 @@ function CreatePatients() {
           </Col>
           <Col>
             <Form.Group className="mb-2">
-              <Form.Label>Estado</Form.Label>
+              <Styled.ProfileLabel>Estado</Styled.ProfileLabel>
               <Form.Control
                 id="estado"
                 name="estado"
@@ -211,67 +244,59 @@ function CreatePatients() {
           </Col>
         </Row>
 
-        <Form.Group className="mb-2">
-          <Styled.ProfileLabel>Especialidade</Styled.ProfileLabel>
-          <Styled.ProfileSelect
-            id="doctorType"
-            name="doctorType"
-            onChange={formik.handleChange}            
-            isValid={formik.touched.doctorType && !formik.errors.doctorType}
-            isInvalid={formik.errors.doctorType}>
-              <Styled.ProfileOption>Selecione a especialidade</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Clínico Geral</Styled.ProfileOption>
-              <Styled.ProfileOption value="female">Ortopedista</Styled.ProfileOption>
-              <Styled.ProfileOption value="others">Oftamologista</Styled.ProfileOption>
-          </Styled.ProfileSelect>
-          {ValidationWeightTypeError}
-        </Form.Group>
-
-        <Form.Group className="mb-2">
-          <Styled.ProfileLabel>Médico</Styled.ProfileLabel>
-          <Styled.ProfileSelect
-            id="doctor"
-            name="doctor"
-            onChange={formik.handleChange}            
-            isValid={formik.touched.doctor && !formik.errors.doctor}
-            isInvalid={formik.errors.doctor}>
-              <Styled.ProfileOption>Selecione o médico</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Teste 1</Styled.ProfileOption>
-              <Styled.ProfileOption value="female">Teste 2</Styled.ProfileOption>
-          </Styled.ProfileSelect>
-          {ValidationHeightError}
-        </Form.Group>
-        
         <Row>
-          <Col xs={6}>
+          <Col xs={4}>
             <Form.Group className="mb-2">
-              <Form.Label>Data de inicio</Form.Label>
-              <FormControl
-                id="date"
-                name="date"
-                type="date"
+              <Styled.ProfileLabel>Peso</Styled.ProfileLabel>
+              <Form.Control
+                id="weight"
+                name="weight"
+                placeholder="Coloque seu peso"
                 onChange={formik.handleChange}            
-                isValid={formik.touched.date && !formik.errors.date}
-                isInvalid={formik.errors.date} />
+                isValid={formik.touched.weight && !formik.errors.weight}
+                isInvalid={formik.errors.weight}/>
+              {ValidationWeightTypeError}
+            </Form.Group>
+          </Col>
+
+          <Col xs={4}>
+            <Form.Group className="mb-2">
+            <Styled.ProfileLabel>Altura</Styled.ProfileLabel>
+              <Form.Control
+                id="height"
+                name="height"
+                placeholder="Coloque sua altura"
+                onChange={formik.handleChange}            
+                isValid={formik.touched.height && !formik.errors.height}
+                isInvalid={formik.errors.height}/>
+              {ValidationHeightError}
+            </Form.Group>
+          </Col>
+
+          <Col xs={4}>
+            <Form.Group className="mb-2">
+            <Styled.ProfileLabel>Tipo Sanguíneo</Styled.ProfileLabel>
+            <Styled.ProfileSelect
+              id="bloodType"
+              name="bloodType"
+              onChange={formik.handleChange}            
+              isValid={formik.touched.bloodType && !formik.errors.bloodType}
+              isInvalid={formik.errors.bloodType}>
+                <Styled.ProfileOption>Selecione o tipo sanguíneo</Styled.ProfileOption>
+                <Styled.ProfileOption value="A+">A+</Styled.ProfileOption>
+                <Styled.ProfileOption value="A-">A-</Styled.ProfileOption>
+                <Styled.ProfileOption value="B+">B+</Styled.ProfileOption>
+                <Styled.ProfileOption value="B-">B-</Styled.ProfileOption>
+                <Styled.ProfileOption value="AB+">AB+</Styled.ProfileOption>
+                <Styled.ProfileOption value="AB-">AB-</Styled.ProfileOption>
+                <Styled.ProfileOption value="O+">O+</Styled.ProfileOption>
+                <Styled.ProfileOption value="O-">O-</Styled.ProfileOption>
+            </Styled.ProfileSelect>
               {ValidationBloodTypeError}
             </Form.Group>
           </Col>
           
         </Row>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Senha</Form.Label>
-          <Form.Control
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Sua senha"
-            onChange={formik.handleChange}
-            isValid={formik.touched.password && !formik.errors.password}
-            isInvalid={formik.errors.password}
-          />
-          {ValidationPasswordError}
-        </Form.Group>
       
         {AppError}
         <Button variant="primary" type="submit">

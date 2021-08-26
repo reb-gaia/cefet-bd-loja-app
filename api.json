@@ -22,9 +22,47 @@
       "city": "teste",
       "estado": "teste",
       "id": 1
+    },
+    {
+      "cep": "32223550",
+      "street": "Rua Rio Negro",
+      "district": "Amazonas",
+      "city": "Contagem",
+      "estado": "MG",
+      "id": 2
+    },
+    {
+      "cep": "30493165",
+      "street": "Rua Dr Lucidio Avelar",
+      "district": "Buritis",
+      "city": "Belo Horizonte",
+      "estado": "MG",
+      "id": 3
+    },
+    {
+      "cep": "33333333",
+      "street": "Rua Teste",
+      "district": "Buritis",
+      "city": "Belo Horizonte",
+      "estado": "MG",
+      "id": 4
     }
   ],
-  "patients": [],
+  "patients": [
+    {
+      "name": "Paciente1",
+      "email": "teste@gmail.com",
+      "phone": "3265-5569",
+      "cep": "325646465",
+      "street": "teste",
+      "district": "teste",
+      "city": "teste",
+      "weight": "60",
+      "height": "1.64",
+      "bloodType": "A-",
+      "id": 1
+    }
+  ],
   "schedules": [
     {
       "name": "teste",
@@ -35,6 +73,16 @@
       "date": "2021-08-25",
       "hour": "1",
       "id": 1
+    },
+    {
+      "name": "ewe",
+      "email": "teste@gmail.com",
+      "phone": "34325-4355",
+      "doctorType": "female",
+      "doctor": "male",
+      "date": "2021-09-01",
+      "hour": "1",
+      "id": 2
     }
   ]
 }

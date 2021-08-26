@@ -3,7 +3,7 @@ import { Styled } from './styles';
 
 function Container({ children, title, size }) {
   switch(size) {
-    case "lg":
+    case "login":
       return (
         <Styled.ContainerLG>
           <Styled.Title>
@@ -12,7 +12,7 @@ function Container({ children, title, size }) {
           {children}
         </Styled.ContainerLG>
       );
-    case "sm":
+    case "form":
       return (
         <Styled.ContainerSM>
           <Styled.Title>

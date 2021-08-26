@@ -9,7 +9,6 @@ export const validationSchema = yup.object({
   name: yup.string().required("O campo nome é obrigatório"),
   phone: yup.string().required("O campo telefone é obrigatório").matches(phoneRegExp, 'Insira um telefone válido'),
   email: yup.string().required("O campo email é obrigatório").email(),
-  password: yup.string().required("O campo senha é obrigatório"),
   
   cep: yup.string().required("O campo CEP é obrigatório"),
   street: yup.string().required("O campo logradouro é obrigatório"),

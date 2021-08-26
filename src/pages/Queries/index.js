@@ -1,32 +1,33 @@
 import React, { useEffect } from 'react';
 import Container from '../../components/Container';
 import { Styled } from './styles';
-import { usePatients } from '../../hooks/contexts/PatientsProvider'
+import { useAddresses } from '../../hooks/contexts/AddressesProvider'
 
-function Patients() {
-
-  const { patients, getPatients } = usePatients();
+function Queries() {
+  const { addresses, getAddresses } = useAddresses();
 
   // useEffect -> renderizar os produtos
   useEffect(() => {
-    getPatients()
+    getAddresses();
+    console.log("teste", addresses);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Container 
-      title="Últimos Cadastros" 
+      title="Endereços" 
       size="lg"
     >
       <Styled.CardWrapper>
-        {patients.map(patient => (
-          <div key={patient.id}>
-            <h1>{patient.name}</h1>
+        {addresses.map(address => (
+          <div key={address.id}>
+            <h1>{address}</h1>
           </div>
+          
         ))}
       </Styled.CardWrapper>
     </Container>
   )
 }
 
-export default Patients;
+export default Queries;

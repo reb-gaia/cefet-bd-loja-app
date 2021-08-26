@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { Form, Button, Row, Col, FormControl } from 'react-bootstrap';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
@@ -6,37 +6,40 @@ import Container from '../../components/Container';
 import { Styled } from './styles';
 import { useEmployee } from '../../hooks/contexts/EmployeeProvider';
 import { validationSchema } from './validation';
+import { api } from '../../services/api'
 
 
 function CreateEmployee() {
   const history = useHistory();
   const { id } = useParams()
   const { state } = useLocation()
-  const { error, postEmployee, putEmployee } = useEmployee();
-    
+  const { postEmployee, putEmployee } = useEmployee();
+
+  const [error, setError] = useState("");
+
   useEffect(() => {
     console.log(state);
   });
 
   const formik = useFormik({
     initialValues: {
-      name: state ? state.schedule.name : "",
-      phone: state ? state.schedule.phone : "",
-      email: state ? state.schedule.email : "",
-      password: state ? state.schedule.password : "",
-      cep: state ? state.address.cep : "",
-      street: state ? state.address.street : "",
-      district: state ? state.address.district : "",
-      city: state ? state.address.city : "",
-      estado: state ? state.address.estado : "",
-      doctorType: state ? state.schedule.doctorType : "",
-      isDoctor: state ? state.schedule.isDoctor : "",
-      startDate: state ? state.schedule.startDate : "",
-      salary: state ? state.schedule.salary : "",
+      name: state ? state.employee.name : "",
+      phone: state ? state.employee.phone : "",
+      email: state ? state.employee.email : "",
+      password: state ? state.employee.password : "",
+      cep: state ? state.employee.cep : "",
+      street: state ? state.employee.street : "",
+      district: state ? state.employee.district : "",
+      city: state ? state.employee.city : "",
+      estado: state ? state.employee.estado : "",
+      doctorType: state ? state.employee.doctorType : "",
+      isDoctor: state ? state.employee.isDoctor : "",
+      startDate: state ? state.employee.startDate : "",
+      salary: state ? state.employee.salary : "",
     },
     validationSchema,
-    onSubmit: async values => {
-      if(!!id) {
+    onSubmit: async ({name, email, phone, cep, street, district, city, estado, startDate, salary, password}) => {
+      /* if(!!id) {
         await putEmployee({
           id,
           name: values.name, 
@@ -56,7 +59,24 @@ function CreateEmployee() {
         history.push("/");
         return
       }
-      await postEmployee(values);
+      await postEmployee(values); */
+      try {
+        await api.post('/employees', {
+          name, 
+          email, 
+          phone, 
+          cep, 
+          street, 
+          district, 
+          city, 
+          estado, 
+          startDate, 
+          salary, 
+          password       
+        });
+      } catch (error) {
+        setError("Erro ao postar um produto");
+      }
       history.push("/");
     }
   });
@@ -120,11 +140,11 @@ function CreateEmployee() {
   return (
     <Container
       title="Cadastrar funcionário"
-      size="sm"
+      size="form"
     >
       <Form onSubmit={formik.handleSubmit} style={{overflowY: "scroll"}}>
         <Form.Group className="mb-2">
-          <Form.Label>Nome</Form.Label>
+          <Styled.ProfileLabel>Nome</Styled.ProfileLabel>
           <Form.Control
             id="name"
             name="name"
@@ -139,7 +159,7 @@ function CreateEmployee() {
         <Row>
           <Col xs={7}>
             <Form.Group className="mb-2">
-              <Form.Label>Email</Form.Label>
+              <Styled.ProfileLabel>Email</Styled.ProfileLabel>
               <Form.Control
                 id="email"
                 name="email"
@@ -153,7 +173,7 @@ function CreateEmployee() {
           </Col>
           <Col>
             <Form.Group className="mb-2">
-              <Form.Label>Telefone</Form.Label>
+              <Styled.ProfileLabel>Telefone</Styled.ProfileLabel>
               <Form.Control
                 id="phone"
                 name="phone"
@@ -167,8 +187,22 @@ function CreateEmployee() {
           </Col>
         </Row>
 
+        <Form.Group className="mb-3">
+          <Styled.ProfileLabel>Senha</Styled.ProfileLabel>
+          <Form.Control
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Sua senha"
+            onChange={formik.handleChange}
+            isValid={formik.touched.password && !formik.errors.password}
+            isInvalid={formik.errors.password}
+          />
+          {ValidationPasswordError}
+        </Form.Group>
+
         <Form.Group className="mb-2">
-          <Form.Label>CEP</Form.Label>
+          <Styled.ProfileLabel>CEP</Styled.ProfileLabel>
           <Form.Control
             id="cep"
             name="cep"
@@ -180,7 +214,7 @@ function CreateEmployee() {
           {ValidationCepError}
         </Form.Group>
         <Form.Group className="mb-2">
-          <Form.Label>Logradouro</Form.Label>
+          <Styled.ProfileLabel>Logradouro</Styled.ProfileLabel>
           <Form.Control
             id="street"
             name="street"
@@ -192,7 +226,7 @@ function CreateEmployee() {
           {ValidationStreetError}
         </Form.Group>
         <Form.Group className="mb-2">
-          <Form.Label>Bairro</Form.Label>
+          <Styled.ProfileLabel>Bairro</Styled.ProfileLabel>
           <Form.Control
             id="district"
             name="district"
@@ -207,7 +241,7 @@ function CreateEmployee() {
         <Row>
           <Col xs={7}>
             <Form.Group className="mb-2">
-              <Form.Label>Cidade</Form.Label>
+              <Styled.ProfileLabel>Cidade</Styled.ProfileLabel>
               <Form.Control
                 id="city"
                 name="city"
@@ -221,7 +255,7 @@ function CreateEmployee() {
           </Col>
           <Col>
             <Form.Group className="mb-2">
-              <Form.Label>Estado</Form.Label>
+              <Styled.ProfileLabel>Estado</Styled.ProfileLabel>
               <Form.Control
                 id="estado"
                 name="estado"
@@ -269,7 +303,7 @@ function CreateEmployee() {
         <Row>
           <Col xs={6}>
             <Form.Group className="mb-2">
-              <Form.Label>Data de inicio</Form.Label>
+              <Styled.ProfileLabel>Data de inicio</Styled.ProfileLabel>
               <FormControl
                 id="date"
                 name="date"
@@ -281,35 +315,18 @@ function CreateEmployee() {
             </Form.Group>
           </Col>
           <Col>
-            <Form.Group className="mb-2">
-              <Styled.ProfileLabel>Salario</Styled.ProfileLabel>
-              <Styled.ProfileSelect
-                id="hour"
-                name="hour"
+          <Form.Group className="mb-2">
+              <Styled.ProfileLabel>Salário</Styled.ProfileLabel>
+              <Form.Control
+                id="salary"
+                name="salary"
                 onChange={formik.handleChange}            
-                isValid={formik.touched.hour && !formik.errors.hour}
-                isInvalid={formik.errors.hour}>
-                  <Styled.ProfileOption>Selecione a hora</Styled.ProfileOption>
-                  <Styled.ProfileOption value='1'>1</Styled.ProfileOption>
-              </Styled.ProfileSelect>
+                isValid={formik.touched.salary && !formik.errors.salary}
+                isInvalid={formik.errors.salary}/>
               {ValidationSalaryError}
             </Form.Group>
           </Col>
-        </Row>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Senha</Form.Label>
-          <Form.Control
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Sua senha"
-            onChange={formik.handleChange}
-            isValid={formik.touched.password && !formik.errors.password}
-            isInvalid={formik.errors.password}
-          />
-          {ValidationPasswordError}
-        </Form.Group>
+        </Row>      
       
         {AppError}
         <Button variant="primary" type="submit">

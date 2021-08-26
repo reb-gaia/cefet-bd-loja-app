@@ -4,7 +4,7 @@ import { Form, Button, Col, Row } from 'react-bootstrap';
 import { useHistory, useParams, useLocation } from 'react-router-dom';
 import Container from '../../components/Container';
 import Footer from '../../components/Footer';
-import { Styled } from './styles';
+import { Styled, ProfileButton } from './styles';
 import { useAddresses } from '../../hooks/contexts/AddressesProvider';
 import { validationSchema } from './validation';
 import { api } from '../../services/api'
@@ -55,7 +55,7 @@ function CreateAdresses() {
       } catch (error) {
         setError("Erro ao postar um endereço");
       }
-      //history.push("/");
+      history.push("/");
     }
   });
 
@@ -86,11 +86,11 @@ function CreateAdresses() {
   return (
       <Container
         title="Cadastrar novo endereço"
-        size="sm"
+        size="form"
       >
         <Form onSubmit={formik.handleSubmit} style={{overflowY: "scroll"}}>
           <Form.Group className="mb-2">
-            <Form.Label>CEP</Form.Label>
+            <Styled.ProfileLabel>CEP</Styled.ProfileLabel>
             <Form.Control
               id="cep"
               name="cep"
@@ -102,7 +102,7 @@ function CreateAdresses() {
             {ValidationCepError}
           </Form.Group>
           <Form.Group className="mb-2">
-            <Form.Label>Logradouro</Form.Label>
+            <Styled.ProfileLabel>Logradouro</Styled.ProfileLabel>
             <Form.Control
               id="street"
               name="street"
@@ -114,7 +114,7 @@ function CreateAdresses() {
             {ValidationStreetError}
           </Form.Group>
           <Form.Group className="mb-2">
-            <Form.Label>Bairro</Form.Label>
+            <Styled.ProfileLabel>Bairro</Styled.ProfileLabel>
             <Form.Control
               id="district"
               name="district"
@@ -129,7 +129,7 @@ function CreateAdresses() {
           <Row>
             <Col xs={7}>
               <Form.Group className="mb-2">
-                <Form.Label>Cidade</Form.Label>
+                <Styled.ProfileLabel>Cidade</Styled.ProfileLabel>
                 <Form.Control
                   id="city"
                   name="city"
@@ -143,7 +143,7 @@ function CreateAdresses() {
             </Col>
             <Col>
               <Form.Group className="mb-2">
-                <Form.Label>Estado</Form.Label>
+                <Styled.ProfileLabel>Estado</Styled.ProfileLabel>
                 <Form.Control
                   id="estado"
                   name="estado"
@@ -157,7 +157,7 @@ function CreateAdresses() {
             </Col>
           </Row>
           {AppError}
-          <Button variant="primary" type="submit">
+          <Button variant="outline-warning" type="submit">
             Cadastrar endereço
           </Button>
         </Form> 

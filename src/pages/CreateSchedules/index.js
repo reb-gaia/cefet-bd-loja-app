@@ -101,7 +101,7 @@ function CreateSchedules() {
   return (
     <Container
       title="Agendar uma consulta"
-      size="sm"
+      size="form"
     >
       <Form onSubmit={formik.handleSubmit} style={{overflowY: "scroll"}}>
         <Form.Group className="mb-2">
@@ -138,7 +138,7 @@ function CreateSchedules() {
         <Row>
           <Col xs={6}>
             <Form.Group className="mb-2">
-              <Form.Label>Data</Form.Label>
+              <Styled.ProfileLabel>Data</Styled.ProfileLabel>
               <FormControl
                 id="date"
                 name="date"
@@ -167,7 +167,7 @@ function CreateSchedules() {
         </Row>
         
         <Form.Group className="mb-2">
-          <Form.Label>Nome</Form.Label>
+          <Styled.ProfileLabel>Nome</Styled.ProfileLabel>
           <Form.Control
             id="name"
             name="name"
@@ -182,7 +182,7 @@ function CreateSchedules() {
         <Row>
           <Col xs={7}>
             <Form.Group className="mb-2">
-              <Form.Label>Email</Form.Label>
+              <Styled.ProfileLabel>Email</Styled.ProfileLabel>
               <Form.Control
                 id="email"
                 name="email"
@@ -196,7 +196,7 @@ function CreateSchedules() {
           </Col>
           <Col>
             <Form.Group className="mb-2">
-              <Form.Label>Telefone</Form.Label>
+              <Styled.ProfileLabel>Telefone</Styled.ProfileLabel>
               <Form.Control
                 id="phone"
                 name="phone"
@@ -210,7 +210,7 @@ function CreateSchedules() {
           </Col>
         </Row>
         {AppError}
-        <Button variant="primary" type="submit">
+        <Button style={{backgroundColor: '#272343'}} variant="primary" type="submit">
           Agendar
         </Button>
       </Form> 
