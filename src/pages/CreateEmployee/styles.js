@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 import { mixins } from "../../styles/mixins";
-import { FormSelect, Button, FormLabel } from 'react-bootstrap';
+import { FormSelect, FormLabel } from 'react-bootstrap';
 
 export const Styled = {
   Error: styled.p`

@@ -1,19 +1,19 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { useFormik,  } from 'formik';
 import { Form, Button, Row, Col, FormControl } from 'react-bootstrap';
-import { useHistory, useParams, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import Container from '../../components/Container';
 import { Styled } from './styles';
-import { useEmployee } from '../../hooks/contexts/EmployeeProvider';
+// import { useEmployee } from '../../hooks/contexts/EmployeeProvider';
 import { validationSchema } from './validation';
 import { api } from '../../services/api'
 
 
 function CreateEmployee() {
   const history = useHistory();
-  const { id } = useParams()
+  // const { id } = useParams()
   const { state } = useLocation()
-  const { postEmployee, putEmployee } = useEmployee();
+  // const { postEmployee, putEmployee } = useEmployee();
 
   const [error, setError] = useState("");
 

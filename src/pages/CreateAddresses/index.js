@@ -1,22 +1,21 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { Form, Button, Col, Row } from 'react-bootstrap';
-import { useHistory, useParams, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import Container from '../../components/Container';
-import Footer from '../../components/Footer';
-import { Styled, ProfileButton } from './styles';
-import { useAddresses } from '../../hooks/contexts/AddressesProvider';
+import { Styled } from './styles';
+// import { useAddresses } from '../../hooks/contexts/AddressesProvider';
 import { validationSchema } from './validation';
 import { api } from '../../services/api'
 
 
 function CreateAdresses() {
   const history = useHistory();
-  const { id } = useParams()
+  // const { id } = useParams()
   const { state } = useLocation()
 
   const [error, setError] = useState("");
-  const { postAddresses, putAddresses } = useAddresses();
+  // const { postAddresses, putAddresses } = useAddresses();
      
   useEffect(() => {
     console.log(state);

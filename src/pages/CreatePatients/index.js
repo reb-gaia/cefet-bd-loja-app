@@ -1,10 +1,10 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
-import { Form, Button, Row, Col, FormControl } from 'react-bootstrap';
-import { useHistory, useParams, useLocation } from 'react-router-dom';
+import { Form, Button, Row, Col } from 'react-bootstrap';
+import { useHistory, useLocation } from 'react-router-dom';
 import Container from '../../components/Container';
 import { Styled } from './styles';
-import { usePatients } from '../../hooks/contexts/PatientsProvider';
+// import { usePatients } from '../../hooks/contexts/PatientsProvider';
 import { validationSchema } from './validation';
 import { api } from '../../services/api'
 
@@ -12,9 +12,9 @@ import { api } from '../../services/api'
 
 function CreatePatients() {
   const history = useHistory();
-  const { id } = useParams()
+  // const { id } = useParams()
   const { state } = useLocation()
-  const { postPatients, putPatients } = usePatients();
+  // const { postPatients, putPatients } = usePatients();
   
   const [error, setError] = useState("");
 

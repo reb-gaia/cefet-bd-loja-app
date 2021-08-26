@@ -1,10 +1,10 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { Form, Button, FormControl, Row, Col } from 'react-bootstrap';
-import { useHistory, useParams, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Styled } from './styles';
 import { validationSchema } from './validation';
-import { useSchedule } from '../../hooks/contexts/ScheduleProvider';
+// import { useSchedule } from '../../hooks/contexts/ScheduleProvider';
 import Container from '../../components/Container';
 import { api } from '../../services/api'
 
@@ -12,10 +12,10 @@ import { api } from '../../services/api'
 
 function CreateSchedules() {
   const history = useHistory();
-  const { id } = useParams()
+  // const { id } = useParams()
   const { state } = useLocation()
   const [error, setError] = useState("");
-  const { postSchedule, putSchedule } = useSchedule();
+  // const { postSchedule, putSchedule } = useSchedule();
 
   useEffect(() => {
     console.log(state);

@@ -4,7 +4,7 @@ const today = new Date();
 today.setHours(0, 0, 0, 0);
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
-var currencyRegex = /^[1-9]\d*(((.\d{3}){1})?(\,\d{0,2})?)$/;
+var currencyRegex = /^[1-9]\d*(((.\d{3}){1})?(,\d{0,2})?)$/;
 
 export const validationSchema = yup.object({
   name: yup.string().required("O campo nome é obrigatório"),
