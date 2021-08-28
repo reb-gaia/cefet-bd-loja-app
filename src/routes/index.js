@@ -42,6 +42,8 @@ export default function Routes() {
           {auth && <Route path="/create-patients" component={CreatePatients} />}
           {auth && <Route path="/edit-patients/:id" component={CreatePatients} />}
 
+          {auth && <Route path="/queries" component={Queries} />}
+
           {/* {auth && <Route path="/queries" component={Queries} />} */}
           <Route path="/queries" component={Queries} />
           

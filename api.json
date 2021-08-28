@@ -1,6 +1,59 @@
 {
-  "employees": [],
-  "addresses": [],
-  "patients": [],
-  "schedules": []
+  "employees": [
+    {
+      "name": "Rebeca",
+      "email": "r@gmail.com",
+      "password": "teste",
+      "phone": "23445342",
+      "cep": "1344455",
+      "street": "Rua Teste",
+      "district": "jnfeb",
+      "city": "hybyu",
+      "estado": "MG",
+      "isDoctor": [
+        "on"
+      ],
+      "doctorType": "male",
+      "startDate": "2021-08-27",
+      "salary": "1.000,00",
+      "id": 1
+    }
+  ],
+  "addresses": [
+    {
+      "cep": "3324534",
+      "street": "Rua Teste",
+      "district": "Bairro",
+      "city": "Cidade",
+      "estado": "MG",
+      "id": 1
+    }
+  ],
+  "patients": [
+    {
+      "name": "Bruno",
+      "email": "b@gmail.com",
+      "phone": "3094893",
+      "cep": "23345",
+      "street": "Rgfokgjij",
+      "district": "lekrm",
+      "city": "mkemfp",
+      "weight": "2245",
+      "height": "3456",
+      "bloodType": "A+",
+      "id": 1
+    }
+  ],
+  "schedules": [
+    {
+      "name": "Bruno",
+      "email": "b@gmail.com",
+      "phone": "3245654",
+      "doctorType": "male",
+      "doctor": "male",
+      "date": "2021-08-27",
+      "hour": "1",
+      "id": 1
+    }
+  ]
 }

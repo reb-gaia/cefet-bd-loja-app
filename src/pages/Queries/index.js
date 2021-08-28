@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import Container from '../../components/Container';
+import React, { useEffect, useState } from 'react';
 import { Styled } from './styles';
 import { useAddresses } from '../../hooks/contexts/AddressesProvider'
 import { useEmployee } from '../../hooks/contexts/EmployeeProvider'
@@ -9,12 +8,16 @@ import CardAddress from '../../components/CardAddress';
 import CardEmployee from '../../components/CardEmployee';
 import CardPatient from '../../components/CardPatient';
 import CardSchedule from '../../components/CardSchedule';
+import { Button } from 'react-bootstrap';
+
 
 function Queries() {
   const { addresses, getAddresses } = useAddresses();
   const { employees, getEmployee } = useEmployee();
   const { patients, getPatients } = usePatients();
   const { schedules, getSchedule } = useSchedule();
+
+  const [ filter, setFilter ] = useState('schedule');
 
   // useEffect -> renderizar os produtos
   useEffect(() => {
@@ -26,11 +29,13 @@ function Queries() {
   }, []);
 
   return (
-    <Container 
-      title="Endereços" 
-      size="form"
-    >
-      <Styled.CardWrapper>
+    <div style={{overflowY: "scroll", margin: "100px"}}>
+      <Button variant="primary" onClick={() => setFilter('schedule')}>Agendamentos</Button>{' '}
+      <Button variant="secondary" onClick={() => setFilter('patient')}>Pacientes</Button>{' '}
+      <Button variant="success" onClick={() => setFilter('employee')}>Funcionários</Button>{' '}
+      <Button variant="warning" onClick={() => setFilter('address')}>Endereços</Button>{' '}
+
+      {filter === 'address' && <Styled.CardWrapper>
         {addresses.map(address => (
           <CardAddress
             key={address.id}
@@ -38,9 +43,9 @@ function Queries() {
               
           </CardAddress>
         ))}
-      </Styled.CardWrapper>
+      </Styled.CardWrapper>}
 
-      <Styled.CardWrapper>
+      {filter === 'employee' && <Styled.CardWrapper>
         {employees.map(employee => (
           <CardEmployee
             key={employee.id}
@@ -48,9 +53,9 @@ function Queries() {
               
           </CardEmployee>
         ))}
-      </Styled.CardWrapper>
+      </Styled.CardWrapper>}
 
-      <Styled.CardWrapper>
+      {filter === 'patient' && <Styled.CardWrapper>
         {patients.map(patient => (
           <CardPatient
             key={patient.id}
@@ -58,9 +63,9 @@ function Queries() {
               
           </CardPatient>
         ))}
-      </Styled.CardWrapper>
+      </Styled.CardWrapper>}
 
-      <Styled.CardWrapper>
+      {filter === 'schedule' && <Styled.CardWrapper>
         {schedules.map(schedule => (
           <CardSchedule
             key={schedule.id}
@@ -68,8 +73,8 @@ function Queries() {
               
           </CardSchedule>
         ))}
-      </Styled.CardWrapper>
-    </Container>
+      </Styled.CardWrapper>}
+    </div>
   )
 }
 
