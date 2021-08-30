@@ -18,7 +18,7 @@ function CardPatient({patient}) {
     })
     
     swalWithBootstrapButtons.fire({
-      title: 'Você deseja excluuir esse produto?',
+      title: 'Você deseja excluir o paciente?',
       text: "Caso exclua, será permanente!",
       icon: 'warning',
       showCancelButton: true,
@@ -30,7 +30,7 @@ function CardPatient({patient}) {
         deletePatients({id: patient.id});
         swalWithBootstrapButtons.fire(
           'Excluido!',
-          'Seu produto foi excluido!',
+          'Paciente foi excluido!',
           'Sucesso'
         )
       } else if (
@@ -39,7 +39,7 @@ function CardPatient({patient}) {
       ) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
-          'Seu produto foi salvo!',
+          'Paciente não foi excluido!',
           'Error'
         )
       }

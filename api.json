@@ -27,6 +27,22 @@
       "city": "Cidade",
       "estado": "MG",
       "id": 1
+    },
+    {
+      "cep": "32223550",
+      "street": "Rua Rio Negro ",
+      "district": "Amazonas ",
+      "city": "Contagem ",
+      "estado": "MG ",
+      "id": 2
+    },
+    {
+      "cep": "30493-165",
+      "street": "Rua Doutor Lucídio Avelar ",
+      "district": "Buritis ",
+      "city": "Belo Horizonte ",
+      "estado": "MG ",
+      "id": 3
     }
   ],
   "patients": [

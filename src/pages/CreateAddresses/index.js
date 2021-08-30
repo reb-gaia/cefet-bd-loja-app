@@ -6,7 +6,7 @@ import Container from '../../components/Container';
 import { Styled } from './styles';
 import { useAddresses } from '../../hooks/contexts/AddressesProvider';
 import { validationSchema } from './validation';
-
+import Swal from 'sweetalert2';
 
 function CreateAdresses() {
   const history = useHistory();
@@ -50,6 +50,13 @@ function CreateAdresses() {
         return
       }
       await postAddresses(values);
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Endereço cadastrado',
+        showConfirmButton: false,
+        timer: 1500
+      })
       history.push("/");
     }
   });

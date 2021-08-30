@@ -18,7 +18,7 @@ function CardAddress({address}) {
     })
     
     swalWithBootstrapButtons.fire({
-      title: 'Você deseja excluuir esse produto?',
+      title: 'Você deseja excluir esse endereço?',
       text: "Caso exclua, será permanente!",
       icon: 'warning',
       showCancelButton: true,
@@ -30,7 +30,7 @@ function CardAddress({address}) {
         deleteAddresses({id: address.id});
         swalWithBootstrapButtons.fire(
           'Excluido!',
-          'Seu produto foi excluido!',
+          'Endereço foi excluido!',
           'Sucesso'
         )
       } else if (
@@ -39,7 +39,7 @@ function CardAddress({address}) {
       ) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
-          'Seu produto foi salvo!',
+          'Endereço não foi excluido!',
           'Error'
         )
       }

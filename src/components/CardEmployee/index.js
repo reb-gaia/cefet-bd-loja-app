@@ -18,7 +18,7 @@ function CardEmployee({employee}) {
     })
     
     swalWithBootstrapButtons.fire({
-      title: 'Você deseja excluuir esse produto?',
+      title: 'Você deseja excluir esse funcionário?',
       text: "Caso exclua, será permanente!",
       icon: 'warning',
       showCancelButton: true,
@@ -30,7 +30,7 @@ function CardEmployee({employee}) {
         deleteEmployee({id: employee.id});
         swalWithBootstrapButtons.fire(
           'Excluido!',
-          'Seu produto foi excluido!',
+          'Funcionário foi excluido!',
           'Sucesso'
         )
       } else if (
@@ -39,7 +39,7 @@ function CardEmployee({employee}) {
       ) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
-          'Seu produto foi salvo!',
+          'Funcionário não foi excluido!',
           'Error'
         )
       }

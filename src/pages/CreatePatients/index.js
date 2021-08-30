@@ -7,6 +7,7 @@ import { Styled } from './styles';
 import { usePatients } from '../../hooks/contexts/PatientsProvider';
 import { useAddresses } from '../../hooks/contexts/AddressesProvider';
 import { validationSchema } from './validation';
+import Swal from 'sweetalert2';
 
 function CreatePatients() {
   const history = useHistory();
@@ -58,6 +59,13 @@ function CreatePatients() {
         return
       }
       await postPatients(values);
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Paciente cadastrado',
+        showConfirmButton: false,
+        timer: 1500
+      })
       history.push("/");
     }
   });

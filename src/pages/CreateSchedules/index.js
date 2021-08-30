@@ -6,8 +6,7 @@ import { Styled } from './styles';
 import { validationSchema } from './validation';
 import { useSchedule } from '../../hooks/contexts/ScheduleProvider';
 import Container from '../../components/Container';
-
-
+import Swal from 'sweetalert2';
 
 function CreateSchedules() {
   const history = useHistory();
@@ -46,6 +45,13 @@ function CreateSchedules() {
         return
       }
       await postSchedule(values);
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Agendamento feito com sucesso!',
+        showConfirmButton: false,
+        timer: 1500
+      })
       history.push("/");
     }
   });

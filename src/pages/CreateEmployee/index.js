@@ -6,6 +6,7 @@ import Container from '../../components/Container';
 import { Styled } from './styles';
 import { useEmployee } from '../../hooks/contexts/EmployeeProvider';
 import { validationSchema } from './validation';
+import Swal from 'sweetalert2';
 
 function CreateEmployee() {
   const history = useHistory();
@@ -56,6 +57,13 @@ function CreateEmployee() {
         return
       }
       await postEmployee(values);
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Funcionário cadastrado',
+        showConfirmButton: false,
+        timer: 1500
+      })
       history.push("/");
     }
   });
