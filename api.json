@@ -1,24 +1,5 @@
 {
-  "employees": [
-    {
-      "name": "Rebeca",
-      "email": "r@gmail.com",
-      "password": "teste",
-      "phone": "23445342",
-      "cep": "1344455",
-      "street": "Rua Teste",
-      "district": "jnfeb",
-      "city": "hybyu",
-      "estado": "MG",
-      "isDoctor": [
-        "on"
-      ],
-      "doctorType": "male",
-      "startDate": "2021-08-27",
-      "salary": "1.000,00",
-      "id": 1
-    }
-  ],
+  "employees": [],
   "addresses": [
     {
       "cep": "3324534",

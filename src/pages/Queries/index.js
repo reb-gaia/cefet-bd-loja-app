@@ -29,11 +29,13 @@ function Queries() {
   }, []);
 
   return (
-    <div style={{overflowY: "scroll", margin: "100px"}}>
-      <Button variant="primary" onClick={() => setFilter('schedule')}>Agendamentos</Button>{' '}
-      <Button variant="secondary" onClick={() => setFilter('patient')}>Pacientes</Button>{' '}
-      <Button variant="success" onClick={() => setFilter('employee')}>Funcionários</Button>{' '}
-      <Button variant="warning" onClick={() => setFilter('address')}>Endereços</Button>{' '}
+    <div style={{ margin: "100px"}}>
+      <div style={{marginBottom: "50px", justifyContent:"center", }}>
+        <Button variant="primary" onClick={() => setFilter('schedule')}>Agendamentos</Button>{' '}
+        <Button variant="secondary" onClick={() => setFilter('patient')}>Pacientes</Button>{' '}
+        <Button variant="success" onClick={() => setFilter('employee')}>Funcionários</Button>{' '}
+        <Button variant="warning" onClick={() => setFilter('address')}>Endereços</Button>{' '}
+      </div>
 
       {filter === 'address' && <Styled.CardWrapper>
         {addresses.map(address => (

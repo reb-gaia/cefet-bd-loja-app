@@ -60,7 +60,7 @@ function CardEmployee({employee}) {
         </Card.Text>
         <Button variant="primary" onClick={handleDelete}>
           Excluir
-        </Button>
+        </Button>{" "}
         <Button variant="primary" type="submit" onClick={handleEdit}>
           Editar
         </Button>

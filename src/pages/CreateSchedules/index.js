@@ -103,10 +103,40 @@ function CreateSchedules() {
             onChange={formik.handleChange}            
             isValid={formik.touched.doctorType && !formik.errors.doctorType}
             isInvalid={formik.errors.doctorType}>
-              <Styled.ProfileOption>Selecione a especialidade</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Clínico Geral</Styled.ProfileOption>
-              <Styled.ProfileOption value="female">Ortopedista</Styled.ProfileOption>
-              <Styled.ProfileOption value="others">Oftamologista</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Selecione a especialidade</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Acupuntura</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Alergia e Imunologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Anestesiologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Angiologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Cardiologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Coloproctologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Dermatologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Endocrinologia e Metabologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Endoscopia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Gastroenterologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Genética Médica</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Geriatria</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Ginecologia e Obstetrícia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Hematologia e Hemoterapia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Homeopatia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Infectologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Mastologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Nefrologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Neurocirurgia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Neurologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Nutrologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Oftalmologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Oncologia Clínica</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Ortopedia e Traumatologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Otorrinolaringologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Patologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Pediatria</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Pneumologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Psiquiatria</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Radiologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Radioterapia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Reumatologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Urologia</Styled.ProfileOption>
           </Styled.ProfileSelect>
           {ValidationDoctorTypeError}
         </Form.Group>
@@ -119,9 +149,8 @@ function CreateSchedules() {
             onChange={formik.handleChange}            
             isValid={formik.touched.doctor && !formik.errors.doctor}
             isInvalid={formik.errors.doctor}>
-              <Styled.ProfileOption>Selecione o médico</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Teste 1</Styled.ProfileOption>
-              <Styled.ProfileOption value="female">Teste 2</Styled.ProfileOption>
+              <Styled.ProfileOption value="male">Selecione o médico</Styled.ProfileOption>
+              
           </Styled.ProfileSelect>
           {ValidationDoctorError}
         </Form.Group>
@@ -134,6 +163,7 @@ function CreateSchedules() {
                 id="date"
                 name="date"
                 type="date"
+                data-date-format="DD/MM/YYYY"
                 onChange={formik.handleChange}            
                 isValid={formik.touched.date && !formik.errors.date}
                 isInvalid={formik.errors.date} />
@@ -150,7 +180,16 @@ function CreateSchedules() {
                 isValid={formik.touched.hour && !formik.errors.hour}
                 isInvalid={formik.errors.hour}>
                   <Styled.ProfileOption>Selecione a hora</Styled.ProfileOption>
-                  <Styled.ProfileOption value='1'>1</Styled.ProfileOption>
+                  <Styled.ProfileOption value='8'>08:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='9'>09:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='10'>10:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='11'>11:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='12'>12:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='13'>13:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='14'>14:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='15'>15:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='16'>16:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='17'>17:00</Styled.ProfileOption>
               </Styled.ProfileSelect>
               {ValidationHourError}
             </Form.Group>

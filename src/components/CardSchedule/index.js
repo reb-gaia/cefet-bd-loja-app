@@ -53,14 +53,14 @@ function CardSchedule({schedule}) {
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>{schedule.cep}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">$ {schedule.street}</Card.Subtitle>
+        <Card.Title>{schedule.name}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{schedule.date} às {schedule.hour}</Card.Subtitle>
         <Card.Text>
-          {schedule.city}
+          {schedule.doctor}, {schedule.doctorType}
         </Card.Text>
         <Button variant="primary" onClick={handleDelete}>
           Excluir
-        </Button>
+        </Button>{" "}
         <Button variant="primary" type="submit" onClick={handleEdit}>
           Editar
         </Button>

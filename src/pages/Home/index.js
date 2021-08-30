@@ -4,7 +4,6 @@ import { Card, CardGroup, Button } from 'react-bootstrap';
 import { Styled } from './styles';
 
 function Home() {
-  
   return (
     <div style={{overflowY: "scroll"}}>
       <Styled.Container>
