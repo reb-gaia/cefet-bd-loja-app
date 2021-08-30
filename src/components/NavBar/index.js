@@ -24,7 +24,7 @@ function NavBar() {
           {auth && <Nav.Link href="/create-employee">Funcionários</Nav.Link>}
           {auth && <Nav.Link href="/create-patients">Pacientes</Nav.Link>}
           <Nav.Link href="/create-schedules">Agendamentos</Nav.Link>
-          <Nav.Link href="/queries">Consultas</Nav.Link>
+          {auth && <Nav.Link href="/queries">Consultas</Nav.Link>}
         </Nav>
         <Nav className="d-flex">
           <Styled.NavItem> {auth ? <FiLogOut onClick={SignOut}/> : <FiLogIn onClick={handleClick} /> }</Styled.NavItem>

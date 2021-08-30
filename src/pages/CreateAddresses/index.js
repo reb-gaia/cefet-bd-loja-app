@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { Form, Button, Col, Row } from 'react-bootstrap';
 import { useHistory, useLocation, useParams } from 'react-router-dom';
@@ -14,6 +14,14 @@ function CreateAdresses() {
   const { state } = useLocation()
 
   const { error, postAddresses, putAddresses } = useAddresses();
+  const [cep, setCep] = useState({});
+
+  function handleTextChange(e) {
+    e.preventDefault();
+    fetch(`https://viacep.com.br/ws/${e.target.value}/json`)
+    .then(res => res.json())
+    .then(res => setCep(res));
+  }
      
   useEffect(() => {
     console.log(state);
@@ -82,7 +90,7 @@ function CreateAdresses() {
               id="cep"
               name="cep"
               placeholder="Digite seu CEP"
-              onChange={formik.handleChange}
+              onChange={e => { formik.handleChange(e); handleTextChange(e); }}
               isValid={formik.touched.cep && !formik.errors.cep}
               isInvalid={formik.errors.cep}
             />
@@ -93,6 +101,7 @@ function CreateAdresses() {
             <Form.Control
               id="street"
               name="street"
+              value={cep.logradouro}
               placeholder="Digite seu logradouro"
               onChange={formik.handleChange}            
               isValid={formik.touched.street && !formik.errors.street}
@@ -105,6 +114,7 @@ function CreateAdresses() {
             <Form.Control
               id="district"
               name="district"
+              value={cep.bairro}
               placeholder="Digite seu bairro"
               onChange={formik.handleChange}            
               isValid={formik.touched.district && !formik.errors.district}
@@ -120,6 +130,7 @@ function CreateAdresses() {
                 <Form.Control
                   id="city"
                   name="city"
+                  value={cep.localidade}
                   placeholder="Digite sua cidade"
                   onChange={formik.handleChange}            
                   isValid={formik.touched.city && !formik.errors.city}
@@ -134,6 +145,7 @@ function CreateAdresses() {
                 <Form.Control
                   id="estado"
                   name="estado"
+                  value={cep.uf}
                   placeholder="Digite seu estado"
                   onChange={formik.handleChange}            
                   isValid={formik.touched.estado && !formik.errors.estado}
@@ -144,7 +156,7 @@ function CreateAdresses() {
             </Col>
           </Row>
           {AppError}
-          <Button variant="outline-warning" type="submit">
+          <Button style={{backgroundColor: '#272343'}} variant="primary" type="submit">
             Cadastrar endereço
           </Button>
         </Form> 

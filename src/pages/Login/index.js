@@ -20,6 +20,7 @@ function Login() {
     onSubmit: async values => {
       await SignIn(values);
       history.push("/");
+      history.go(0);
     }
   });
 

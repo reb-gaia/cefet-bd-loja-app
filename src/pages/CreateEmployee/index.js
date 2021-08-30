@@ -112,6 +112,10 @@ function CreateEmployee() {
     () => <Styled.Error>{formik.errors.password}</Styled.Error>, [formik.errors.password]
   );
 
+  const ValidationCrmError = useMemo(
+    () => <Styled.Error>{formik.errors.crm}</Styled.Error>, [formik.errors.crm]
+  );
+
  
   return (
     <Container
@@ -299,9 +303,20 @@ function CreateEmployee() {
           </Styled.ProfileSelect>
           {ValidationDoctorTypeError}
         </Form.Group>
-
+        <Form.Group className="mb-2">
+          <Styled.ProfileLabel>CRM</Styled.ProfileLabel>
+          <Form.Control
+            id="crm"
+            name="crm"
+            placeholder="Digite seu CRM"
+            onChange={formik.handleChange}            
+            isValid={formik.touched.crm && !formik.errors.crm}
+            isInvalid={formik.errors.crm}
+          />
+          {ValidationCrmError}
+        </Form.Group>
         {AppError}
-        <Button variant="outline-warning" type="submit">
+        <Button style={{backgroundColor: '#272343'}} variant="primary" type="submit">
           Cadastrar funcionário
         </Button>
       </Form> 

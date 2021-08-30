@@ -5,6 +5,7 @@ import { useHistory, useLocation, useParams } from 'react-router-dom';
 import Container from '../../components/Container';
 import { Styled } from './styles';
 import { usePatients } from '../../hooks/contexts/PatientsProvider';
+import { useAddresses } from '../../hooks/contexts/AddressesProvider';
 import { validationSchema } from './validation';
 
 function CreatePatients() {
@@ -12,6 +13,11 @@ function CreatePatients() {
   const { id } = useParams()
   const { state } = useLocation()
   const { error, postPatients, putPatients } = usePatients();
+  const { addresses, getAddresses } = useAddresses();
+
+  function handleTextChange(e) {
+    getAddresses();
+  }
   
   useEffect(() => {
     console.log(state);
@@ -160,7 +166,7 @@ function CreatePatients() {
             id="cep"
             name="cep"
             placeholder="Digite seu CEP"
-            onChange={formik.handleChange}
+            onChange={e => { formik.handleChange(e); handleTextChange(e); }}
             isValid={formik.touched.cep && !formik.errors.cep}
             isInvalid={formik.errors.cep}
           />
@@ -171,6 +177,7 @@ function CreatePatients() {
           <Form.Control
             id="street"
             name="street"
+            value={addresses[0].street}
             placeholder="Digite seu logradouro"
             onChange={formik.handleChange}            
             isValid={formik.touched.street && !formik.errors.street}
@@ -183,6 +190,7 @@ function CreatePatients() {
           <Form.Control
             id="district"
             name="district"
+            value={addresses[0].district}
             placeholder="Digite seu bairro"
             onChange={formik.handleChange}            
             isValid={formik.touched.district && !formik.errors.district}
@@ -199,6 +207,7 @@ function CreatePatients() {
                 id="city"
                 name="city"
                 placeholder="Digite sua cidade"
+                value={addresses[0].city}
                 onChange={formik.handleChange}            
                 isValid={formik.touched.city && !formik.errors.city}
                 isInvalid={formik.errors.city}
@@ -212,6 +221,7 @@ function CreatePatients() {
               <Form.Control
                 id="estado"
                 name="estado"
+                value={addresses[0].estado}
                 placeholder="Digite seu estado"
                 onChange={formik.handleChange}            
                 isValid={formik.touched.estado && !formik.errors.estado}
@@ -277,7 +287,7 @@ function CreatePatients() {
         </Row>
       
         {AppError}
-        <Button variant="primary" type="submit">
+        <Button style={{backgroundColor: '#272343'}} variant="primary" type="submit">
           Cadastrar paciente
         </Button>
       </Form> 

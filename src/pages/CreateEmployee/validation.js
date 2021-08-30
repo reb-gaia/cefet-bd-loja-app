@@ -19,6 +19,7 @@ export const validationSchema = yup.object({
   estado: yup.string().required("O campo estado é obrigatório"),
 
   doctorType: yup.string().required("O campo especialidade é obrigatório"),
+  crm: yup.string().required("O campo CRM é obrigatório"),
   startDate: yup.date().required("O campo data de inicio é obrigatório"),
   salary: yup.string().required("O campo salário é obrigatório").matches(currencyRegex, 'Insira um salário válido'),
 }); 
