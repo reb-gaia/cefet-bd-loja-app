@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { FiLogIn, FiLogOut } from 'react-icons/fi'
 import { Styled } from './styled';
-import { Link } from 'react-router-dom';
 
 function NavBar() {
   const { auth, SignOut } = useAuth();
@@ -24,15 +23,14 @@ function NavBar() {
           <Styled.NavItem to="/create-addresses">Endereços</Styled.NavItem>
           {auth && <Styled.NavItem to="/create-employee">Funcionários</Styled.NavItem>}
           {auth && <Styled.NavItem to="/create-patients">Pacientes</Styled.NavItem>}
-          {auth && <Styled.NavItem to="/queries">Consultas</Styled.NavItem>}
           <Styled.NavItem to="/create-schedules">Agendamentos</Styled.NavItem>
+          {auth && <Styled.NavItem to="/queries">Consultas</Styled.NavItem>}
         </Nav>
         <Nav className="d-flex">
-          <Styled.NavItem onClick={handleClick} style={{marginTop: '8px'}}>
-              Entrar
-          </Styled.NavItem>
-          {auth && <Styled.NavItem onClick={SignOut} style={{marginTop: '8px'}}>
+          {auth ? <Styled.NavItem onClick={SignOut} style={{marginTop: '8px'}}>
               Sair
+          </Styled.NavItem> : <Styled.NavItem onClick={handleClick} style={{marginTop: '8px'}}>
+              Entrar
           </Styled.NavItem>}
           {" "}<Styled.NavIcon> {auth ? <FiLogOut onClick={SignOut}/> : <FiLogIn onClick={handleClick} /> }</Styled.NavIcon>
         </Nav>

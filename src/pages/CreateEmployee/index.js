@@ -31,6 +31,7 @@ function CreateEmployee() {
       estado: state ? state.employee.estado : "",
       doctorType: state ? state.employee.doctorType : "",
       isDoctor: state ? state.employee.isDoctor : "",
+      crm: state ? state.employee.crm : "",
       startDate: state ? state.employee.startDate : "",
       salary: state ? state.employee.salary : "",
     },
@@ -50,6 +51,7 @@ function CreateEmployee() {
           estado: values.estado,
           isDoctor: values.isDoctor,
           doctorType: values.doctorType,
+          crm: values.crm,
           startDate: values.startDate,
           salary: values.salary,
         });
@@ -130,7 +132,7 @@ function CreateEmployee() {
       title="Cadastrar funcionário"
       size="form"
     >
-      <Form onSubmit={formik.handleSubmit} style={{overflowY: "scroll"}}>
+      <Form onSubmit={formik.handleSubmit} style={{paddingRight: '15px',overflowY: "scroll"}}>
         <Form.Group className="mb-2">
           <Styled.ProfileLabel>Nome</Styled.ProfileLabel>
           <Form.Control

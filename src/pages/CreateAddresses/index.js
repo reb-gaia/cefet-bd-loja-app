@@ -90,7 +90,7 @@ function CreateAdresses() {
         title="Cadastrar novo endereço"
         size="form"
       >
-        <Form onSubmit={formik.handleSubmit} style={{overflowY: "scroll"}}>
+        <Form onSubmit={formik.handleSubmit} style={{paddingRight: '15px',overflowY: "scroll"}}>
           <Form.Group className="mb-2">
             <Styled.ProfileLabel>CEP</Styled.ProfileLabel>
             <Form.Control

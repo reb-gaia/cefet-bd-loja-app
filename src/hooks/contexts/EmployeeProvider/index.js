@@ -22,7 +22,7 @@ function EmployeeProvider({children}) {
   }, []);
   
   const postEmployee = useCallback(
-    async ({name, email, password, phone, cep, street, district, city, estado, isDoctor, doctorType, startDate, salary}) => {
+    async ({name, email, password, phone, cep, street, district, city, estado, isDoctor, doctorType, crm, startDate, salary}) => {
       try {
         await api.post('/employees', {
           name, 
@@ -36,6 +36,7 @@ function EmployeeProvider({children}) {
           estado,
           isDoctor,
           doctorType,
+          crm,
           startDate, 
           salary
         });
@@ -45,7 +46,7 @@ function EmployeeProvider({children}) {
   }, []);
 
   const putEmployee = useCallback(
-    async ({id, name, email, password, phone, cep, street, district, city, estado, isDoctor, doctorType, startDate, salary}) => {
+    async ({id, name, email, password, phone, cep, street, district, city, estado, isDoctor, doctorType, crm, startDate, salary}) => {
       try {
         await api.put(`/employees/${id}`, {
           id,
@@ -60,6 +61,7 @@ function EmployeeProvider({children}) {
           estado,
           isDoctor,
           doctorType,
+          crm,
           startDate, 
           salary
         });

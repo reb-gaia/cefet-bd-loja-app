@@ -94,7 +94,7 @@ function CreateSchedules() {
       title="Agendar uma consulta"
       size="form"
     >
-      <Form onSubmit={formik.handleSubmit} style={{overflowY: "scroll"}}>
+      <Form onSubmit={formik.handleSubmit} style={{paddingRight: '15px', overflowY: "scroll"}}>
         <Form.Group className="mb-2">
           <Styled.ProfileLabel>Especialidade</Styled.ProfileLabel>
           <Styled.ProfileSelect

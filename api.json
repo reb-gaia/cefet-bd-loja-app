@@ -1,8 +1,28 @@
 {
-  "employees": [],
+  "employees": [
+    {
+      "name": "Rebeca",
+      "email": "r@gmail.com",
+      "password": "123",
+      "phone": "2345678",
+      "cep": "32224454",
+      "street": "Rua",
+      "district": "Bairro",
+      "city": "Cidade",
+      "estado": "MG",
+      "isDoctor": [
+        "on"
+      ],
+      "doctorType": "male",
+      "crm": "12345",
+      "startDate": "2021-08-30",
+      "salary": "3.000,00",
+      "id": 1
+    }
+  ],
   "addresses": [
     {
-      "cep": "3324534",
+      "cep": "32223550",
       "street": "Rua Teste",
       "district": "Bairro",
       "city": "Cidade",
