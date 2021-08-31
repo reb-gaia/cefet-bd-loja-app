@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useState } from 'react';
+import React, { useMemo, useEffect, useState} from 'react';
 import { useFormik } from 'formik';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useHistory, useLocation, useParams } from 'react-router-dom';
@@ -16,10 +16,12 @@ function CreatePatients() {
   const [cep, setCep] = useState({});
 
   function handleTextChange(e) {
-    e.preventDefault();
-    fetch(`http://localhost:3002/addresses?cep=${e.target.value}`)
-    .then(res => res.json())
-    .then(res => setCep(res));
+    if(e.target.value.length > 7) {
+      e.preventDefault();
+      fetch(`http://localhost:3002/addresses?cep=${e.target.value}`)
+      .then(res => res.json())
+      .then(res => setCep(res[0]))
+    }    
   }
   
   useEffect(() => {

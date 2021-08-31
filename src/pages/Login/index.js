@@ -19,8 +19,10 @@ function Login() {
     validationSchema,
     onSubmit: async values => {
       await SignIn(values);
-      history.push("/");
-      history.go(0);
+      if(error === '') {
+        history.push("/");
+        history.go(0);
+      }
     }
   });
 

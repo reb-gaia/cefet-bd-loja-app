@@ -13,17 +13,18 @@ function CreateEmployee() {
   const { id } = useParams()
   const { state } = useLocation()
   const { error, postEmployee, putEmployee } = useEmployee();
-  const [cep, setCep] = useState({});
+  const [cep, setCep] = useState([{}]);
 
   function handleTextChange(e) {
-    e.preventDefault();
-    fetch(`http://localhost:3002/address?cep=${e.target.value}`)
-    .then(res => res.json())
-    .then(res => setCep(res));
+    if(e.target.value.length > 7) {
+      e.preventDefault();
+      fetch(`http://localhost:3002/addresses?cep=${e.target.value}`)
+      .then(res => res.json())
+      .then(res => setCep(res));
+    }
   }
 
   useEffect(() => {
-
   });
 
   const formik = useFormik({

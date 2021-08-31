@@ -17,10 +17,12 @@ function CreateAdresses() {
   const [cep, setCep] = useState({});
 
   function handleTextChange(e) {
-    e.preventDefault();
-    fetch(`https://viacep.com.br/ws/${e.target.value}/json`)
-    .then(res => res.json())
-    .then(res => setCep(res));
+    if(e.target.value.length > 7) {
+      e.preventDefault();
+      fetch(`https://viacep.com.br/ws/${e.target.value}/json`)
+      .then(res => res.json())
+      .then(res => setCep(res));
+    }
   }
      
   useEffect(() => {
