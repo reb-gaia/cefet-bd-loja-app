@@ -1,11 +1,10 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useHistory, useLocation, useParams } from 'react-router-dom';
 import Container from '../../components/Container';
 import { Styled } from './styles';
 import { usePatients } from '../../hooks/contexts/PatientsProvider';
-import { useAddresses } from '../../hooks/contexts/AddressesProvider';
 import { validationSchema } from './validation';
 import Swal from 'sweetalert2';
 
@@ -14,14 +13,16 @@ function CreatePatients() {
   const { id } = useParams()
   const { state } = useLocation()
   const { error, postPatients, putPatients } = usePatients();
-  const { addresses, getAddresses } = useAddresses();
+  const [cep, setCep] = useState({});
 
   function handleTextChange(e) {
-    getAddresses();
+    e.preventDefault();
+    fetch(`http://localhost:3002/addresses?cep=${e.target.value}`)
+    .then(res => res.json())
+    .then(res => setCep(res));
   }
   
   useEffect(() => {
-    console.log(state);
   });
 
   const formik = useFormik({
@@ -185,6 +186,7 @@ function CreatePatients() {
           <Form.Control
             id="street"
             name="street"
+            value={cep.street}
             placeholder="Digite seu logradouro"
             onChange={formik.handleChange}            
             isValid={formik.touched.street && !formik.errors.street}
@@ -197,6 +199,7 @@ function CreatePatients() {
           <Form.Control
             id="district"
             name="district"
+            value={cep.district}
             placeholder="Digite seu bairro"
             onChange={formik.handleChange}            
             isValid={formik.touched.district && !formik.errors.district}
@@ -212,6 +215,7 @@ function CreatePatients() {
               <Form.Control
                 id="city"
                 name="city"
+                value={cep.city}
                 placeholder="Digite sua cidade"
                 onChange={formik.handleChange}            
                 isValid={formik.touched.city && !formik.errors.city}
@@ -226,6 +230,7 @@ function CreatePatients() {
               <Form.Control
                 id="estado"
                 name="estado"
+                value={cep.estado}
                 placeholder="Digite seu estado"
                 onChange={formik.handleChange}            
                 isValid={formik.touched.estado && !formik.errors.estado}

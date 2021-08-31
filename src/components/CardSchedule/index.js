@@ -18,7 +18,7 @@ function CardSchedule({schedule}) {
     })
     
     swalWithBootstrapButtons.fire({
-      title: 'Você deseja excluuir esse produto?',
+      title: 'Você deseja esse agendamento?',
       text: "Caso exclua, será permanente!",
       icon: 'warning',
       showCancelButton: true,
@@ -30,7 +30,7 @@ function CardSchedule({schedule}) {
         deleteSchedule({id: schedule.id});
         swalWithBootstrapButtons.fire(
           'Excluido!',
-          'Seu produto foi excluido!',
+          'O agendamento foi excluido!',
           'Sucesso'
         )
       } else if (
@@ -39,7 +39,7 @@ function CardSchedule({schedule}) {
       ) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
-          'Seu produto foi salvo!',
+          'O agendamento foi excluido!',
           'Error'
         )
       }

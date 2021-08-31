@@ -13,7 +13,7 @@
       "isDoctor": [
         "on"
       ],
-      "doctorType": "male",
+      "doctorType": "cardiologia",
       "crm": "12345",
       "startDate": "2021-08-30",
       "salary": "3.000,00",
@@ -21,14 +21,6 @@
     }
   ],
   "addresses": [
-    {
-      "cep": "32223550",
-      "street": "Rua Teste",
-      "district": "Bairro",
-      "city": "Cidade",
-      "estado": "MG",
-      "id": 1
-    },
     {
       "cep": "32223550",
       "street": "Rua Rio Negro ",
@@ -44,6 +36,14 @@
       "city": "Belo Horizonte ",
       "estado": "MG ",
       "id": 3
+    },
+    {
+      "cep": "32223550",
+      "street": "Rua Rio Negro ",
+      "district": "Amazonas ",
+      "city": "Contagem ",
+      "estado": "MG ",
+      "id": 4
     }
   ],
   "patients": [
@@ -63,13 +63,13 @@
   ],
   "schedules": [
     {
-      "name": "Bruno",
+      "name": "Rebeca",
       "email": "b@gmail.com",
-      "phone": "3245654",
-      "doctorType": "male",
-      "doctor": "male",
-      "date": "2021-08-27",
-      "hour": "1",
+      "phone": "3115156555",
+      "doctorType": "dermatologia",
+      "doctor": "Selecione o médico",
+      "date": "2021-08-30",
+      "hour": "9",
       "id": 1
     }
   ]

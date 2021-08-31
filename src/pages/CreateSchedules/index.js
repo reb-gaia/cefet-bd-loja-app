@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { Form, Button, FormControl, Row, Col } from 'react-bootstrap';
 import { useHistory, useLocation, useParams } from 'react-router-dom';
@@ -13,9 +13,16 @@ function CreateSchedules() {
   const { id } = useParams()
   const { state } = useLocation();
   const { error, postSchedule, putSchedule } = useSchedule();
+  const [doctors, setDoctors] = useState([{}]);
+
+  function handleTextChange(e) {
+    e.preventDefault();
+    fetch(`http://localhost:3002/employees?doctorType=${e.target.value}`)
+    .then(res => res.json())
+    .then(res => setDoctors(res));
+  }
 
   useEffect(() => {
-    console.log(state);
   });
   
   const formik = useFormik({
@@ -100,43 +107,28 @@ function CreateSchedules() {
           <Styled.ProfileSelect
             id="doctorType"
             name="doctorType"
-            onChange={formik.handleChange}            
+            onChange={e => { formik.handleChange(e); handleTextChange(e); }}          
             isValid={formik.touched.doctorType && !formik.errors.doctorType}
             isInvalid={formik.errors.doctorType}>
-              <Styled.ProfileOption value="male">Selecione a especialidade</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Acupuntura</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Alergia e Imunologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Anestesiologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Angiologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Cardiologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Coloproctologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Dermatologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Endocrinologia e Metabologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Endoscopia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Gastroenterologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Genética Médica</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Geriatria</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Ginecologia e Obstetrícia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Hematologia e Hemoterapia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Homeopatia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Infectologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Mastologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Nefrologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Neurocirurgia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Neurologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Nutrologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Oftalmologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Oncologia Clínica</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Ortopedia e Traumatologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Otorrinolaringologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Patologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Pediatria</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Pneumologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Psiquiatria</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Radiologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Radioterapia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Reumatologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="male">Urologia</Styled.ProfileOption>
+              <Styled.ProfileOption>Selecione a especialidade</Styled.ProfileOption>
+              <Styled.ProfileOption value="cardiologia">Cardiologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="dermatologia">Dermatologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="gastroenterologia">Gastroenterologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="geriatria">Geriatria</Styled.ProfileOption>
+              <Styled.ProfileOption value="ginecologia">Ginecologia e Obstetrícia</Styled.ProfileOption>
+              <Styled.ProfileOption value="infectologia">Infectologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="neurocirurgia">Neurocirurgia</Styled.ProfileOption>
+              <Styled.ProfileOption value="neurologia">Neurologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="nutrologia">Nutrologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="oftalmologia">Oftalmologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="ortopedia">Ortopedia</Styled.ProfileOption>
+              <Styled.ProfileOption value="otorrinolaringologia">Otorrinolaringologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="pediatria">Pediatria</Styled.ProfileOption>
+              <Styled.ProfileOption value="pneumologia">Pneumologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="psiquiatria">Psiquiatria</Styled.ProfileOption>
+              <Styled.ProfileOption value="radiologia">Radiologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="reumatologia">Reumatologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="urologia">Urologia</Styled.ProfileOption>
           </Styled.ProfileSelect>
           {ValidationDoctorTypeError}
         </Form.Group>
@@ -149,7 +141,10 @@ function CreateSchedules() {
             onChange={formik.handleChange}            
             isValid={formik.touched.doctor && !formik.errors.doctor}
             isInvalid={formik.errors.doctor}>
-              <Styled.ProfileOption value="male">Selecione o médico</Styled.ProfileOption>
+              <Styled.ProfileOption>Selecione o médico</Styled.ProfileOption>
+              {doctors.length > 0 ? doctors.map(doctor => (
+                <Styled.ProfileOption value={doctor.id}>{doctor.name}</Styled.ProfileOption>
+              )) : <Styled.ProfileOption>Não há médicos disponiveis</Styled.ProfileOption>}
               
           </Styled.ProfileSelect>
           {ValidationDoctorError}
