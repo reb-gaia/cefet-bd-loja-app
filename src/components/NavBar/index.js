@@ -24,10 +24,16 @@ function NavBar() {
           {auth && <Nav.Link href="/create-employee">Funcionários</Nav.Link>}
           {auth && <Nav.Link href="/create-patients">Pacientes</Nav.Link>}
           <Nav.Link href="/create-schedules">Agendamentos</Nav.Link>
-          {auth && <Nav.Link href="/queries">Consultas</Nav.Link>}
+          <Nav.Link href="/queries">Consultas</Nav.Link>
         </Nav>
         <Nav className="d-flex">
-          <Styled.NavItem> {auth ? <FiLogOut onClick={SignOut}/> : <FiLogIn onClick={handleClick} /> }</Styled.NavItem>
+          <Nav.Link href="#" disabled>
+              Entrar
+          </Nav.Link>
+          {auth && <Nav.Link href="#" disabled>
+              Sair
+          </Nav.Link>}
+          {" "}<Styled.NavItem> {auth ? <FiLogOut onClick={SignOut}/> : <FiLogIn onClick={handleClick} /> }</Styled.NavItem>
         </Nav>
       </Container>
     </Navbar>

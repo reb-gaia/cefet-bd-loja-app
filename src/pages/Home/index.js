@@ -34,7 +34,10 @@ function Home() {
 
         <div className="row justify-content-center">
           <Styled.Img className="col-9">
-            <img src="https://img-premium.flaticon.com/png/512/1806/premium/1806299.png?token=exp=1629856467~hmac=4a2f79e88fc068a2c9d35b46a05381c2" alt="icon" />
+            <img 
+              src="undraw_medicine.svg" 
+              alt="Icon" 
+            />
           </Styled.Img>
 
           <Button className="col-3 align-self-center" variant="warning" href="/create-schedules">Agendar uma consulta</Button>{' '}
