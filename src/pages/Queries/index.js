@@ -77,7 +77,7 @@ function Queries() {
       </Styled.CardWrapper>}
 
       {filter === 'schedule' && <div>
-        <h2>{doctorName ? "Horarios de " + doctorName : ''}</h2>
+        <h4>{doctorName ? "Agenda - " + doctorName : ''}</h4>
         <Styled.CardWrapper>
           {schedules.map(schedule => (
             <CardSchedule

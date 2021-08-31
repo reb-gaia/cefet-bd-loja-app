@@ -84,5 +84,16 @@
     }
   ],
   "patients": [],
-  "schedules": []
+  "schedules": [
+    {
+      "name": "Rebeca2",
+      "email": "r2@gmail.com",
+      "phone": "1345677",
+      "doctorType": "Cardiologia",
+      "doctor": "1",
+      "date": "2021-09-07",
+      "hour": "8",
+      "id": 1
+    }
+  ]
 }

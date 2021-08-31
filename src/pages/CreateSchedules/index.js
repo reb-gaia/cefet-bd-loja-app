@@ -14,6 +14,7 @@ function CreateSchedules() {
   const { state } = useLocation();
   const { error, postSchedule, putSchedule } = useSchedule();
   const [doctors, setDoctors] = useState([{}]);
+  const [hours, updateHours] = useState(['8', '9', '10', '11', '12', '13', '14', '15', '16', '17']);
   let firstSelect = "Selecione o médico";
 
   function handleTextChange(e) {
@@ -21,6 +22,14 @@ function CreateSchedules() {
     fetch(`http://localhost:3002/employees?doctorType=${e.target.value}`)
     .then(res => res.json())
     .then(res => setDoctors(res));
+  }
+
+  function handleHourChange(e) {
+    updateHours(['8', '9', '10', '11', '12', '13', '14', '15', '16', '17']);
+    e.preventDefault();
+    fetch(`http://localhost:3002/schedules?doctor=${e.target.value}`)
+    .then(res => res.json())
+    .then(res => res.map(schedule => updateHours(hours.filter(item => item !== schedule.hour))));
   }
 
   useEffect(() => {
@@ -139,7 +148,7 @@ function CreateSchedules() {
           <Styled.ProfileSelect
             id="doctor"
             name="doctor"
-            onChange={formik.handleChange}            
+            onChange={e => { formik.handleChange(e); handleHourChange(e); }}             
             isValid={formik.touched.doctor && !formik.errors.doctor}
             isInvalid={formik.errors.doctor}>
               <Styled.ProfileOption>{firstSelect}</Styled.ProfileOption>
@@ -177,16 +186,8 @@ function CreateSchedules() {
                 isValid={formik.touched.hour && !formik.errors.hour}
                 isInvalid={formik.errors.hour}>
                   <Styled.ProfileOption>Selecione a hora</Styled.ProfileOption>
-                  <Styled.ProfileOption value='08:00'>08:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='09:00'>09:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='10:00'>10:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='11:00'>11:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='12:00'>12:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='13:00'>13:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='14:00'>14:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='15:00'>15:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='16:00'>16:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='17:00'>17:00</Styled.ProfileOption>
+                  {hours.map(hour => (
+                  <Styled.ProfileOption value={hour}>{hour}:00</Styled.ProfileOption>))}
               </Styled.ProfileSelect>
               {ValidationHourError}
             </Form.Group>
