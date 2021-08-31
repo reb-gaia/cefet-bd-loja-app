@@ -12,7 +12,7 @@ const AuthContext = createContext({});
 function AuthProvider({children}) {
   const [error, setError] = useState("");
   const [auth, setAuth] = useState(() => {
-    const token = sessionStorage.getItem('@Academia_login');
+    const token = sessionStorage.getItem('@Login');
     if(token) {
       return token;
     }
@@ -40,8 +40,12 @@ function AuthProvider({children}) {
           setError("Email e senha inválidos");
           return
         }
+       
+        if(data[0].doctorType !== '') {
+          sessionStorage.setItem('@Doctor', data[0].id);
+        } 
 
-        sessionStorage.setItem('@Academia_login', data[0].access_token);
+        sessionStorage.setItem('@Login', data[0].access_token);
         setAuth(data[0].access_token);
         api.defaults.headers.Authorization = `Bearer ${data[0].access_token}`
 
@@ -51,7 +55,7 @@ function AuthProvider({children}) {
   }, []);
 
   const SignOut = useCallback(() => {
-    sessionStorage.removeItem('@Academia_login');
+    sessionStorage.removeItem('@Login');
     setAuth("");
   }, []);
 

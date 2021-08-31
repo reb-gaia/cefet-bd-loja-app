@@ -57,6 +57,7 @@ function CardEmployee({employee}) {
         <Card.Subtitle className="mb-2 text-muted">{employee.street}</Card.Subtitle>
         <Card.Text>
           {employee.city}
+          {employee.isDoctor}
         </Card.Text>
         <Button variant="primary" onClick={handleDelete}>
           Excluir

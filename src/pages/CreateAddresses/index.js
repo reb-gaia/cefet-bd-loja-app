@@ -32,7 +32,7 @@ function CreateAdresses() {
   const formik = useFormik({  
     initialValues: {
       cep: state ? state.address.cep : "",
-      street: state ? state.address.street : "",
+      street: state ? state.address.street : cep.street,
       district: state ? state.address.district : "",
       city: state ? state.address.city : "",
       estado: state ? state.address.estado : "",

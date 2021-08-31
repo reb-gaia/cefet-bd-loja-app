@@ -6,5 +6,6 @@ export const validationSchema = yup.object({
   district: yup.string().required("O campo bairro é obrigatório"),
   city: yup.string().required("O campo cidade é obrigatório"),
   estado: yup.string().required("O campo estado é obrigatório"),
-}); 
+});
+
 

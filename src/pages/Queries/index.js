@@ -18,20 +18,29 @@ function Queries() {
   const { schedules, getSchedule } = useSchedule();
 
   const [ filter, setFilter ] = useState('schedule');
+  const [doctorName, setDoctorName] = useState();
 
-  // useEffect -> renderizar os produtos
+  const idDoctor = sessionStorage.getItem('@Doctor');
+
+  function handleTextChange() {
+    fetch(`http://localhost:3002/employees?id=${idDoctor}`)
+    .then(res => res.json())
+    .then(res => setDoctorName(res[0].name));
+    
+  }
+  
   useEffect(() => {
     getAddresses();
     getEmployee();
     getPatients();
-    getSchedule();
+    getSchedule(idDoctor);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div style={{margin: "100px"}}>
       <div className="d-grid gap-2 d-md-flex justify-content-md-center" style={{marginBottom: "50px", justifyContent:"center", }}>
-        <Button variant="primary" onClick={() => setFilter('schedule')}>Agendamentos</Button>{' '}
+        <Button variant="primary" onClick={() => { setFilter('schedule'); handleTextChange();}}>Agendamentos</Button>{' '}
         <Button variant="secondary" onClick={() => setFilter('patient')}>Pacientes</Button>{' '}
         <Button variant="success" onClick={() => setFilter('employee')}>Funcionários</Button>{' '}
         <Button variant="warning" onClick={() => setFilter('address')}>Endereços</Button>{' '}
@@ -67,15 +76,18 @@ function Queries() {
         ))}
       </Styled.CardWrapper>}
 
-      {filter === 'schedule' && <Styled.CardWrapper>
-        {schedules.map(schedule => (
-          <CardSchedule
-            key={schedule.id}
-            schedule={schedule}>
-              
-          </CardSchedule>
-        ))}
-      </Styled.CardWrapper>}
+      {filter === 'schedule' && <div>
+        <h2>{doctorName ? "Horarios de " + doctorName : ''}</h2>
+        <Styled.CardWrapper>
+          {schedules.map(schedule => (
+            <CardSchedule
+              key={schedule.id}
+              schedule={schedule}>
+            </CardSchedule>
+          ))}
+        </Styled.CardWrapper>
+      </div>
+      }
     </div>
   )
 }

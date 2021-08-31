@@ -11,9 +11,9 @@ function ScheduleProvider({children}) {
   
 
   const getSchedule = useCallback(
-    async () => {
+    async ({id}) => {
       try {
-        const { data } = await api.get('/schedules');
+        const { data } = id ? await api.get(`/schedules/doctor=${id}`) : await api.get('/schedules');
         setSchedules(data);
       } catch (error) {
         setError("Erro ao adquirir a lista de produtos");
