@@ -23,12 +23,15 @@ function EmployeeProvider({children}) {
   
   const postEmployee = useCallback(
     async ({name, email, password, phone, cep, street, district, city, estado, isDoctor, doctorType, crm, startDate, salary}) => {
+      let pessoa = {
+        name,
+        email,
+        phone
+      }
       try {
         await api.post('/employees', {
-          name, 
-          email, 
+          pessoa,
           password,
-          phone, 
           cep, 
           street, 
           district, 

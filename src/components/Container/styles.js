@@ -20,11 +20,13 @@ export const Styled = {
   ContainerSM,
   ContainerLG: styled(ContainerSM)` /* estende informações de SM */
     margin-top: 180px;
-    width: 400px;
+    width: 390px;
     border-radius: 15px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    padding: 50px 0;
+    
   `,
   Title: styled.h1`
     margin-bottom: 40px;

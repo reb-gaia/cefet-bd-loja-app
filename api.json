@@ -1,11 +1,12 @@
 {
   "employees": [
     {
+      "id": 1,
       "name": "Rebeca",
       "email": "r@gmail.com",
       "password": "123",
       "phone": "2345678",
-      "cep": "32224454",
+      "cep": "32223-550",
       "street": "Rua",
       "district": "Bairro",
       "city": "Cidade",
@@ -13,16 +14,36 @@
       "isDoctor": [
         "on"
       ],
-      "doctorType": "cardiologia",
+      "doctorType": "Cardiologia",
       "crm": "12345",
       "startDate": "2021-08-30",
+      "salary": "3.000,00"
+    },
+    {
+      "pessoa": {
+        "name": "Bruno",
+        "email": "b@gmail.com",
+        "phone": "123456"
+      },
+      "password": "teste",
+      "cep": "30493-165",
+      "street": "Rua Dr",
+      "district": "Buritis",
+      "city": "BH",
+      "estado": "MG",
+      "isDoctor": [
+        "on"
+      ],
+      "doctorType": "Ortopedia",
+      "crm": "9876",
+      "startDate": "2021-08-31",
       "salary": "3.000,00",
-      "id": 1
+      "id": 2
     }
   ],
   "addresses": [
     {
-      "cep": "32223550",
+      "cep": "32223-550",
       "street": "Rua Rio Negro ",
       "district": "Amazonas ",
       "city": "Contagem ",
@@ -38,39 +59,30 @@
       "id": 3
     },
     {
-      "cep": "32210110",
+      "cep": "32210-110",
       "street": "Avenida General David Sarnoff ",
       "district": "Cidade Industrial ",
       "city": "Contagem ",
       "estado": "MG ",
       "id": 5
+    },
+    {
+      "cep": "30140-002",
+      "street": "Avenida Brasil ",
+      "district": "Funcionários ",
+      "city": "Belo Horizonte ",
+      "estado": "MG ",
+      "id": 6
+    },
+    {
+      "cep": "30180-915",
+      "street": "Avenida Olegário Maciel 160",
+      "district": "Santo Agostinho ",
+      "city": "Belo Horizonte ",
+      "estado": "MG ",
+      "id": 7
     }
   ],
-  "patients": [
-    {
-      "name": "Bruno",
-      "email": "b@gmail.com",
-      "phone": "3094893",
-      "cep": "23345",
-      "street": "Rgfokgjij",
-      "district": "lekrm",
-      "city": "mkemfp",
-      "weight": "2245",
-      "height": "3456",
-      "bloodType": "A+",
-      "id": 1
-    }
-  ],
-  "schedules": [
-    {
-      "name": "Rebeca",
-      "email": "b@gmail.com",
-      "phone": "3115156555",
-      "doctorType": "dermatologia",
-      "doctor": "Selecione o médico",
-      "date": "2021-08-30",
-      "hour": "9",
-      "id": 1
-    }
-  ]
+  "patients": [],
+  "schedules": []
 }

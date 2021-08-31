@@ -110,7 +110,7 @@ function CreateAdresses() {
             <Form.Control
               id="street"
               name="street"
-              value={cep.logradouro}
+              defaultValue={cep.logradouro}
               placeholder="Digite seu logradouro"
               onChange={formik.handleChange}            
               isValid={formik.touched.street && !formik.errors.street}
@@ -123,7 +123,7 @@ function CreateAdresses() {
             <Form.Control
               id="district"
               name="district"
-              value={cep.bairro}
+              defaultValue={cep.bairro}
               placeholder="Digite seu bairro"
               onChange={formik.handleChange}            
               isValid={formik.touched.district && !formik.errors.district}
@@ -139,7 +139,7 @@ function CreateAdresses() {
                 <Form.Control
                   id="city"
                   name="city"
-                  value={cep.localidade}
+                  defaultValue={cep.localidade}
                   placeholder="Digite sua cidade"
                   onChange={formik.handleChange}            
                   isValid={formik.touched.city && !formik.errors.city}
@@ -154,7 +154,7 @@ function CreateAdresses() {
                 <Form.Control
                   id="estado"
                   name="estado"
-                  value={cep.uf}
+                  defaultValue={cep.uf}
                   placeholder="Digite seu estado"
                   onChange={formik.handleChange}            
                   isValid={formik.touched.estado && !formik.errors.estado}

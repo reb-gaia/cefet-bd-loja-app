@@ -14,6 +14,7 @@ function CreateSchedules() {
   const { state } = useLocation();
   const { error, postSchedule, putSchedule } = useSchedule();
   const [doctors, setDoctors] = useState([{}]);
+  let firstSelect = "Selecione o médico";
 
   function handleTextChange(e) {
     e.preventDefault();
@@ -111,24 +112,24 @@ function CreateSchedules() {
             isValid={formik.touched.doctorType && !formik.errors.doctorType}
             isInvalid={formik.errors.doctorType}>
               <Styled.ProfileOption>Selecione a especialidade</Styled.ProfileOption>
-              <Styled.ProfileOption value="cardiologia">Cardiologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="dermatologia">Dermatologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="gastroenterologia">Gastroenterologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="geriatria">Geriatria</Styled.ProfileOption>
-              <Styled.ProfileOption value="ginecologia">Ginecologia e Obstetrícia</Styled.ProfileOption>
-              <Styled.ProfileOption value="infectologia">Infectologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="neurocirurgia">Neurocirurgia</Styled.ProfileOption>
-              <Styled.ProfileOption value="neurologia">Neurologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="nutrologia">Nutrologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="oftalmologia">Oftalmologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="ortopedia">Ortopedia</Styled.ProfileOption>
-              <Styled.ProfileOption value="otorrinolaringologia">Otorrinolaringologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="pediatria">Pediatria</Styled.ProfileOption>
-              <Styled.ProfileOption value="pneumologia">Pneumologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="psiquiatria">Psiquiatria</Styled.ProfileOption>
-              <Styled.ProfileOption value="radiologia">Radiologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="reumatologia">Reumatologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="urologia">Urologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Cardiologia">Cardiologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Dermatologia">Dermatologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Gastroenterologia">Gastroenterologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Geriatria">Geriatria</Styled.ProfileOption>
+              <Styled.ProfileOption value="Ginecologia">Ginecologia e Obstetrícia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Infectologia">Infectologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Neurocirurgia">Neurocirurgia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Neurologia">Neurologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Nutrologia">Nutrologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Oftalmologia">Oftalmologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Ortopedia">Ortopedia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Otorrinolaringologia">Otorrinolaringologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Pediatria">Pediatria</Styled.ProfileOption>
+              <Styled.ProfileOption value="Pneumologia">Pneumologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Psiquiatria">Psiquiatria</Styled.ProfileOption>
+              <Styled.ProfileOption value="Radiologia">Radiologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Reumatologia">Reumatologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Urologia">Urologia</Styled.ProfileOption>
           </Styled.ProfileSelect>
           {ValidationDoctorTypeError}
         </Form.Group>
@@ -141,10 +142,11 @@ function CreateSchedules() {
             onChange={formik.handleChange}            
             isValid={formik.touched.doctor && !formik.errors.doctor}
             isInvalid={formik.errors.doctor}>
-              <Styled.ProfileOption>Selecione o médico</Styled.ProfileOption>
-              {doctors.length > 0 ? doctors.map(doctor => (
-                <Styled.ProfileOption value={doctor.id}>{doctor.name}</Styled.ProfileOption>
-              )) : <Styled.ProfileOption>Não há médicos disponiveis</Styled.ProfileOption>}
+              <Styled.ProfileOption>{firstSelect}</Styled.ProfileOption>
+              {doctors.length > 0 ?
+                doctors.map(doctor => (
+                  <Styled.ProfileOption value={doctor.id}>{doctor.name}</Styled.ProfileOption>
+                )) : firstSelect = "Desculpe, não há médicos disponiveis"}
               
           </Styled.ProfileSelect>
           {ValidationDoctorError}
@@ -175,16 +177,16 @@ function CreateSchedules() {
                 isValid={formik.touched.hour && !formik.errors.hour}
                 isInvalid={formik.errors.hour}>
                   <Styled.ProfileOption>Selecione a hora</Styled.ProfileOption>
-                  <Styled.ProfileOption value='8'>08:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='9'>09:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='10'>10:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='11'>11:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='12'>12:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='13'>13:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='14'>14:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='15'>15:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='16'>16:00</Styled.ProfileOption>
-                  <Styled.ProfileOption value='17'>17:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='08:00'>08:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='09:00'>09:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='10:00'>10:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='11:00'>11:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='12:00'>12:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='13:00'>13:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='14:00'>14:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='15:00'>15:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='16:00'>16:00</Styled.ProfileOption>
+                  <Styled.ProfileOption value='17:00'>17:00</Styled.ProfileOption>
               </Styled.ProfileSelect>
               {ValidationHourError}
             </Form.Group>

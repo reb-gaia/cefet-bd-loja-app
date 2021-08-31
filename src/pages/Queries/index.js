@@ -29,8 +29,8 @@ function Queries() {
   }, []);
 
   return (
-    <div style={{ margin: "100px"}}>
-      <div style={{marginBottom: "50px", justifyContent:"center", }}>
+    <div style={{margin: "100px"}}>
+      <div className="d-grid gap-2 d-md-flex justify-content-md-center" style={{marginBottom: "50px", justifyContent:"center", }}>
         <Button variant="primary" onClick={() => setFilter('schedule')}>Agendamentos</Button>{' '}
         <Button variant="secondary" onClick={() => setFilter('patient')}>Pacientes</Button>{' '}
         <Button variant="success" onClick={() => setFilter('employee')}>Funcionários</Button>{' '}

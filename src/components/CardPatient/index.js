@@ -11,7 +11,7 @@ function CardPatient({patient}) {
   const handleDelete = async () => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success',
+        confirmButton: 'btn btn-success m-3',
         cancelButton: 'btn btn-danger'
       },
       buttonsStyling: false
@@ -47,7 +47,7 @@ function CardPatient({patient}) {
   };
 
   const handleEdit = async () => {
-    history.push(`edit-patients/${patient.id}`, {patient});
+    history.push(`edit-patient/${patient.id}`, {patient});
   };
 
   return (

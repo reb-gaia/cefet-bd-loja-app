@@ -314,24 +314,24 @@ function CreateEmployee() {
             isValid={formik.touched.doctorType && !formik.errors.doctorType}
             isInvalid={formik.errors.doctorType}>
               <Styled.ProfileOption>Selecione sua especialidade</Styled.ProfileOption>
-              <Styled.ProfileOption value="cardiologia">Cardiologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="dermatologia">Dermatologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="gastroenterologia">Gastroenterologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="geriatria">Geriatria</Styled.ProfileOption>
-              <Styled.ProfileOption value="ginecologia">Ginecologia e Obstetrícia</Styled.ProfileOption>
-              <Styled.ProfileOption value="infectologia">Infectologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="neurocirurgia">Neurocirurgia</Styled.ProfileOption>
-              <Styled.ProfileOption value="neurologia">Neurologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="nutrologia">Nutrologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="oftalmologia">Oftalmologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="ortopedia">Ortopedia</Styled.ProfileOption>
-              <Styled.ProfileOption value="otorrinolaringologia">Otorrinolaringologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="pediatria">Pediatria</Styled.ProfileOption>
-              <Styled.ProfileOption value="pneumologia">Pneumologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="psiquiatria">Psiquiatria</Styled.ProfileOption>
-              <Styled.ProfileOption value="radiologia">Radiologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="reumatologia">Reumatologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="urologia">Urologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Cardiologia">Cardiologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Dermatologia">Dermatologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Gastroenterologia">Gastroenterologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Geriatria">Geriatria</Styled.ProfileOption>
+              <Styled.ProfileOption value="Ginecologia">Ginecologia e Obstetrícia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Infectologia">Infectologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Neurocirurgia">Neurocirurgia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Neurologia">Neurologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Nutrologia">Nutrologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Oftalmologia">Oftalmologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Ortopedia">Ortopedia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Otorrinolaringologia">Otorrinolaringologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Pediatria">Pediatria</Styled.ProfileOption>
+              <Styled.ProfileOption value="Pneumologia">Pneumologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Psiquiatria">Psiquiatria</Styled.ProfileOption>
+              <Styled.ProfileOption value="Radiologia">Radiologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Reumatologia">Reumatologia</Styled.ProfileOption>
+              <Styled.ProfileOption value="Urologia">Urologia</Styled.ProfileOption>
           </Styled.ProfileSelect>
         </Form.Group>
         <Form.Group className="mb-2">

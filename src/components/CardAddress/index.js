@@ -11,7 +11,7 @@ function CardAddress({address}) {
   const handleDelete = async () => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success',
+        confirmButton: 'btn btn-success m-3',
         cancelButton: 'btn btn-danger'
       },
       buttonsStyling: false
@@ -47,7 +47,7 @@ function CardAddress({address}) {
   };
 
   const handleEdit = async () => {
-    history.push(`edit-addresses/${address.id}`, {address});
+    history.push(`edit-address/${address.id}`, {address});
   };
 
   return (

@@ -20,10 +20,10 @@ function NavBar() {
         <Navbar.Brand href="/" style={{textColor: '#272343'}}>Clínica Médica</Navbar.Brand>
         <Nav className="me-auto">
           <Styled.NavItem to="/galery">Galeria</Styled.NavItem>
-          <Styled.NavItem to="/create-addresses">Endereços</Styled.NavItem>
+          <Styled.NavItem to="/create-address">Endereços</Styled.NavItem>
           {auth && <Styled.NavItem to="/create-employee">Funcionários</Styled.NavItem>}
-          {auth && <Styled.NavItem to="/create-patients">Pacientes</Styled.NavItem>}
-          <Styled.NavItem to="/create-schedules">Agendamentos</Styled.NavItem>
+          {auth && <Styled.NavItem to="/create-patient">Pacientes</Styled.NavItem>}
+          <Styled.NavItem to="/create-schedule">Agendamentos</Styled.NavItem>
           {auth && <Styled.NavItem to="/queries">Consultas</Styled.NavItem>}
         </Nav>
         <Nav className="d-flex">

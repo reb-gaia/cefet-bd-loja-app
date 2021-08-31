@@ -30,17 +30,17 @@ export default function Routes() {
           <Route path="/login" component={Login} />
 
           
-          <Route path="/create-addresses" component={CreateAddresses} />
-          <Route path="/edit-addresses/:id" component={CreateAddresses} />
+          <Route path="/create-address" component={CreateAddresses} />
+          <Route path="/edit-address/:id" component={CreateAddresses} />
 
-          <Route path="/create-schedules" component={CreateSchedules} />
-          <Route path="/edit-schedules/:id" component={CreateSchedules} />
+          <Route path="/create-schedule" component={CreateSchedules} />
+          <Route path="/edit-schedule/:id" component={CreateSchedules} />
         
           {auth && <Route path="/create-employee" component={CreateEmployee} />}
           {auth && <Route path="/edit-employee/:id" component={CreateEmployee} />}
 
-          {auth && <Route path="/create-patients" component={CreatePatients} />}
-          {auth && <Route path="/edit-patients/:id" component={CreatePatients} />}
+          {auth && <Route path="/create-patient" component={CreatePatients} />}
+          {auth && <Route path="/edit-patient/:id" component={CreatePatients} />}
 
           {auth && <Route path="/queries" component={Queries} />}
 

@@ -19,7 +19,7 @@ function Login() {
     validationSchema,
     onSubmit: async values => {
       await SignIn(values);
-      if(error === '') {
+      if(error !== 'Email e senha inválidos') {
         history.push("/");
         history.go(0);
       }
@@ -69,7 +69,7 @@ function Login() {
           {ValidationPasswordError}
         </Form.Group>
         {AppError}    
-        <Button variant="primary" type="submit">
+        <Button style={{backgroundColor: '#272343'}} variant="primary" type="submit" className="d-grid gap-2 col-6 mx-auto">
           Entrar
         </Button>
       </Form> 

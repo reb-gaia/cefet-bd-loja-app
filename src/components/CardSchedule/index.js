@@ -11,7 +11,7 @@ function CardSchedule({schedule}) {
   const handleDelete = async () => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success',
+        confirmButton: 'btn btn-success m-3',
         cancelButton: 'btn btn-danger'
       },
       buttonsStyling: false
@@ -47,7 +47,7 @@ function CardSchedule({schedule}) {
   };
 
   const handleEdit = async () => {
-    history.push(`edit-schedules/${schedule.id}`, {schedule});
+    history.push(`edit-schedule/${schedule.id}`, {schedule});
   };
 
   return (
