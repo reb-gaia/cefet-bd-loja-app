@@ -13,7 +13,7 @@ function Home() {
         </Styled.Box>
 
         <CardGroup style={{margin: '90px 200px 0 200px'}}>
-          <Card style={{padding: '40px'}}>
+          <Card style={{padding: '40px', margin: '10px'}}>
             <Card.Body>
               <Card.Title>Missão</Card.Title>
               <Card.Text style={{textAlign: 'justify'}}>
@@ -22,7 +22,7 @@ function Home() {
             </Card.Body>
           </Card>
 
-          <Card style={{padding: '40px'}}>
+          <Card style={{padding: '40px', margin: '10px'}}>
             <Card.Body>
               <Card.Title>Valores</Card.Title>
               <Card.Text style={{textAlign: 'justify'}}> 
@@ -33,14 +33,14 @@ function Home() {
         </CardGroup>
 
         <div className="row justify-content-center">
-          <Styled.Img className="col-9">
+          <Styled.Img className="col-10">
             <img 
-              src="undraw_medicine.svg" 
+              src="https://raw.githubusercontent.com/reb-gaia/cefet-clinica-medica/efdd4cf5f8639d03ef85f223b4dc058d4f5184b8/src/assets/undraw_medicine.svg" 
               alt="Icon" 
             />
           </Styled.Img>
 
-          <Button className="col-3 align-self-center" variant="warning" href="/create-schedules">Agendar uma consulta</Button>{' '}
+          <Button className="col-2 align-self-center" variant="warning" href="/create-schedules">Agendar uma consulta</Button>{' '}
         </div>
 
       </Styled.Container>

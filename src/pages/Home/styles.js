@@ -28,8 +28,8 @@ export const Styled = {
   Img: styled.div`
     background-color: #fffffe;
     padding: 30px;
-    margin: 60px 150px 0 60px;
-    width: 350px;    
+    margin: 60px 100px 0 60px;
+    width: 450px;    
     display: flex;
     flex-direction: column;
     align-self: center;
