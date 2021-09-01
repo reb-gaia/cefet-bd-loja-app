@@ -29,25 +29,28 @@ function AuthProvider({children}) {
           return
         }
 
-        const { data } = await api.get(`/employees?email=${email}`);
+        const { data } = await api.get(`/buscarLogin?email=${email}`);
 
+        console.log(data);
         if(data.length === 0) {
+          console.log(`a1qui`)
+          setError("Email e senha inválidos");
+          return
+        }
+        
+        if(data.senhaHash !== password) {
           setError("Email e senha inválidos");
           return
         }
 
-        if(data[0].password !== password) {
-          setError("Email e senha inválidos");
-          return
-        }
-       
-        if(data[0].doctorType !== '') {
-          sessionStorage.setItem('@Doctor', data[0].id);
+        const  data2  = await api.get(`/isMedico?funcionarioId=${data.pessoa.codigo}`);
+        if(data2.data.codigo) {
+          sessionStorage.setItem('@Doctor', data2.data.codigo);
         } 
 
-        sessionStorage.setItem('@Login', data[0].access_token);
-        setAuth(data[0].access_token);
-        api.defaults.headers.Authorization = `Bearer ${data[0].access_token}`
+        sessionStorage.setItem('@Login', data.access_token);
+        setAuth(data.access_token);
+        api.defaults.headers.Authorization = `Bearer ${data.access_token}`
 
       } catch (error) {
         setError("Email e senha inválidos");
@@ -56,6 +59,7 @@ function AuthProvider({children}) {
 
   const SignOut = useCallback(() => {
     sessionStorage.removeItem('@Login');
+    sessionStorage.removeItem('@Doctor')
     setAuth("");
   }, []);
 

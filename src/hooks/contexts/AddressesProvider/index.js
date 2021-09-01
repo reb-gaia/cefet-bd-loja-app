@@ -12,7 +12,7 @@ function AddressesProvider({children}) {
   const getAddresses = useCallback(
     async () => {
       try {
-        const { data } = await api.get('/addresses');
+        const { data } = await api.get('/listarEnderecos');
         setAddresses(data);
       } catch (error) {
         setError("Erro ao adquirir a lista de endereços");
@@ -23,11 +23,11 @@ function AddressesProvider({children}) {
   const postAddresses = useCallback(
     async ({cep, street, district, city, estado}) => {
       try {
-        await api.post('/addresses', {
+        await api.post('/cadastrarEndereco', {
           cep, 
-          street, 
-          district, 
-          city, 
+          logradouro:street, 
+          bairro:district, 
+          cidade:city, 
           estado       
         });
       } catch (error) {

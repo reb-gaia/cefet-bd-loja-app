@@ -18,9 +18,9 @@ function CreatePatients() {
   function handleTextChange(e) {
     if(e.target.value.length > 7) {
       e.preventDefault();
-      fetch(`http://localhost:3002/addresses?cep=${e.target.value}`)
+      fetch(`http://localhost:8080/buscarDadosCep?cep=${e.target.value}`)
       .then(res => res.json())
-      .then(res => setCep(res[0]))
+      .then(res => setCep(res))
     }    
   }
   
@@ -188,7 +188,7 @@ function CreatePatients() {
           <Form.Control
             id="street"
             name="street"
-            value={cep.street}
+            value={cep.logradouro}
             placeholder="Digite seu logradouro"
             onChange={formik.handleChange}            
             isValid={formik.touched.street && !formik.errors.street}
@@ -201,7 +201,7 @@ function CreatePatients() {
           <Form.Control
             id="district"
             name="district"
-            value={cep.district}
+            value={cep.bairro}
             placeholder="Digite seu bairro"
             onChange={formik.handleChange}            
             isValid={formik.touched.district && !formik.errors.district}
@@ -217,7 +217,7 @@ function CreatePatients() {
               <Form.Control
                 id="city"
                 name="city"
-                value={cep.city}
+                value={cep.cidade}
                 placeholder="Digite sua cidade"
                 onChange={formik.handleChange}            
                 isValid={formik.touched.city && !formik.errors.city}

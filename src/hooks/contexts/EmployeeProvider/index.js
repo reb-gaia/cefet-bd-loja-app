@@ -13,7 +13,7 @@ function EmployeeProvider({children}) {
   const getEmployee = useCallback(
     async () => {
       try {
-        const { data } = await api.get('/employees');
+        const { data } = await api.get('/listarFuncionarios');
         setEmployees(data);
       } catch (error) {
         setError("Erro ao adquirir a lista de produtos");
@@ -24,25 +24,33 @@ function EmployeeProvider({children}) {
   const postEmployee = useCallback(
     async ({name, email, password, phone, cep, street, district, city, estado, isDoctor, doctorType, crm, startDate, salary}) => {
       let pessoa = {
-        name,
+        nome:name,
         email,
-        phone
+        telefone:phone,
+        cep:cep,
+        logradouro:street,
+        bairro:district,
+        cidade:city,
+        estado
+      };
+      let funcionario = {
+        pessoa,
+        dataContrato:startDate,
+        senhaHash:password,
+        salario:salary,
       }
       try {
-        await api.post('/employees', {
-          pessoa,
-          password,
-          cep, 
-          street, 
-          district, 
-          city, 
-          estado,
-          isDoctor,
-          doctorType,
-          crm,
-          startDate, 
-          salary
-        });
+        if (crm) {
+          await api.post('/cadastrarMedico', {
+            funcionario,
+            especialidade:doctorType,
+            crm,
+          });
+        } else {
+          await api.post('/cadastrarFuncionario', {
+            ...funcionario,
+          });
+        }
       } catch (error) {
         setError("Erro ao postar um produto");
       }

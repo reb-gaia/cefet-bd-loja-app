@@ -53,17 +53,12 @@ function CardPatient({patient}) {
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>{patient.name}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{patient.email} | {patient.phone}</Card.Subtitle>
+        <Card.Title>{patient.pessoa.nome}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{patient.pessoa.email} | {patient.pessoa.telefone}</Card.Subtitle>
         <Card.Text>
-          {patient.weight} kg | {patient.height} m | {patient.bloodType}
+          {patient.peso} kg | {patient.altura} m | {patient.tipoSanguineo}
         </Card.Text>
-        <Button variant="primary" onClick={handleDelete}>
-          Excluir
-        </Button>{" "}
-        <Button variant="primary" type="submit" onClick={handleEdit}>
-          Editar
-        </Button>
+        
       </Card.Body>
     </Card>
   );

@@ -18,18 +18,11 @@ function Queries() {
   const { schedules, getSchedule } = useSchedule();
 
   const [ filter, setFilter ] = useState('schedule');
-  const [doctorName, setDoctorName] = useState();
 
   const idDoctor = sessionStorage.getItem('@Doctor');
-
-  function handleTextChange() {
-    fetch(`http://localhost:3002/employees?id=${idDoctor}`)
-    .then(res => res.json())
-    .then(res => setDoctorName(res[0].name));
-    
-  }
   
   useEffect(() => {
+    console.log(idDoctor);
     getAddresses();
     getEmployee();
     getPatients();
@@ -40,7 +33,7 @@ function Queries() {
   return (
     <div style={{margin: "100px"}}>
       <div className="d-grid gap-2 d-md-flex justify-content-md-center" style={{marginBottom: "50px", justifyContent:"center", }}>
-        <Button variant="primary" onClick={() => { setFilter('schedule'); handleTextChange();}}>Agendamentos</Button>{' '}
+        <Button variant="primary" onClick={() => { setFilter('schedule'); }}>Agendamentos</Button>{' '}
         <Button variant="secondary" onClick={() => setFilter('patient')}>Pacientes</Button>{' '}
         <Button variant="success" onClick={() => setFilter('employee')}>Funcionários</Button>{' '}
         <Button variant="warning" onClick={() => setFilter('address')}>Endereços</Button>{' '}
@@ -77,7 +70,6 @@ function Queries() {
       </Styled.CardWrapper>}
 
       {filter === 'schedule' && <div>
-        <h4>{doctorName ? "Agenda - " + doctorName : ''}</h4>
         <Styled.CardWrapper>
           {schedules.map(schedule => (
             <CardSchedule

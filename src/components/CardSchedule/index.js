@@ -53,17 +53,9 @@ function CardSchedule({schedule}) {
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>{schedule.name}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{schedule.date} às {schedule.hour}</Card.Subtitle>
-        <Card.Text>
-          {schedule.doctor}, {schedule.doctorType}
-        </Card.Text>
-        <Button variant="primary" onClick={handleDelete}>
-          Excluir
-        </Button>{" "}
-        <Button variant="primary" type="submit" onClick={handleEdit}>
-          Editar
-        </Button>
+        <Card.Title>{schedule.nome}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{schedule.data} às {schedule.horario}</Card.Subtitle>
+        
       </Card.Body>
     </Card>
   );

@@ -11,9 +11,10 @@ function ScheduleProvider({children}) {
   
 
   const getSchedule = useCallback(
-    async ({id}) => {
+    async (id) => {
+      console.log(id);
       try {
-        const { data } = id ? await api.get(`/schedules/doctor=${id}`) : await api.get('/schedules');
+        const { data } = id ? await api.get(`/listarAgendamentosPorMedico?idMedico=${id}`) : await api.get('/listarAgendamentos');
         setSchedules(data);
       } catch (error) {
         setError("Erro ao adquirir a lista de produtos");
@@ -24,14 +25,13 @@ function ScheduleProvider({children}) {
   const postSchedule = useCallback(
     async ({name, email, phone, doctorType, doctor, date, hour}) => {
       try {
-        await api.post('/schedules', {
-          name, 
+        await api.post('/cadastrarAgendamento', {
+          nome:name, 
           email, 
-          phone,
-          doctorType,
-          doctor, 
-          date, 
-          hour       
+          telefone:phone,
+          idMedico:doctor, 
+          data:date, 
+          horario:hour       
         });
       } catch (error) {
         setError("Erro ao postar um produto");

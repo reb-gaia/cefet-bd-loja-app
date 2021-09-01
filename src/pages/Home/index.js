@@ -9,7 +9,7 @@ function Home() {
       <Styled.Container>
         <Styled.Box>
           <Styled.Title>Clinica Médica</Styled.Title>
-          <Styled.Description>A Clínica Médica é a especialidade da Medicina focada no diagnóstico e tratamento clínico das patologias em adultos, ou seja, sem cirurgia. O médico desta especialidade é responsável por avaliar o paciente de maneira completa e está apto a resolver a maioria das enfermidades, além de gerenciar o cuidado do paciente indicando o especialista adequado, caso haja necessidade.</Styled.Description>
+          <Styled.Description>Mais que oferecer assistência completa e segura, a Clinica busca proporcionar conforto e comodidade aos seus clientes e acompanhantes. A Clinica é um complexo de saúde onde você encontra consultórios e clínicas divididos nas diversas especialidades médicas.</Styled.Description>
         </Styled.Box>
 
         <CardGroup style={{margin: '90px 200px 0 200px'}}>

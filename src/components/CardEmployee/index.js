@@ -53,18 +53,13 @@ function CardEmployee({employee}) {
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>{employee.name}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{employee.street}</Card.Subtitle>
+        <Card.Title>{employee.pessoa.nome}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{employee.pessoa.logradouro}</Card.Subtitle>
         <Card.Text>
-          {employee.city}
-          {employee.isDoctor}
+          {employee.cidade}
+          {employee.crm}
         </Card.Text>
-        <Button variant="primary" onClick={handleDelete}>
-          Excluir
-        </Button>{" "}
-        <Button variant="primary" type="submit" onClick={handleEdit}>
-          Editar
-        </Button>
+       
       </Card.Body>
     </Card>
   );

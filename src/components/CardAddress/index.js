@@ -54,16 +54,11 @@ function CardAddress({address}) {
     <Card style={{ width: '18rem' }}>
       <Card.Body>
         <Card.Title>{address.cep}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{address.street}{", "}{address.district}</Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted">{address.logradouro}{", "}{address.bairro}</Card.Subtitle>
         <Card.Text>
-          {address.city} - {address.estado} 
+          {address.cidade} - {address.estado} 
         </Card.Text>
-        <Button variant="primary" onClick={handleDelete}>
-          Excluir
-        </Button>{" "}
-        <Button variant="primary" type="submit" onClick={handleEdit}>
-          Editar
-        </Button>
+        
       </Card.Body>
     </Card>
   );

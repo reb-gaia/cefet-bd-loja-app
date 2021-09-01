@@ -14,26 +14,33 @@ function CreateSchedules() {
   const { state } = useLocation();
   const { error, postSchedule, putSchedule } = useSchedule();
   const [doctors, setDoctors] = useState([{}]);
-  const [hours, updateHours] = useState(['8', '9', '10', '11', '12', '13', '14', '15', '16', '17']);
-  let firstSelect = "Selecione o médico";
+  const [especialidades, setEspecialidades] = useState([]);
+  const [idMedico, setIdMedico] = useState([]);
+  const [hours, setHours] = useState([]);
 
   function handleTextChange(e) {
     e.preventDefault();
-    fetch(`http://localhost:3002/employees?doctorType=${e.target.value}`)
+    fetch(`http://localhost:8080/listarMedicosPorEspecialidade?especialidade=${e.target.value}`)
     .then(res => res.json())
     .then(res => setDoctors(res));
   }
 
-  function handleHourChange(e) {
-    updateHours(['8', '9', '10', '11', '12', '13', '14', '15', '16', '17']);
-    e.preventDefault();
-    fetch(`http://localhost:3002/schedules?doctor=${e.target.value}`)
+  function especialidadesChange() {
+    fetch(`http://localhost:8080/listarEspecialidades`)
     .then(res => res.json())
-    .then(res => res.map(schedule => updateHours(hours.filter(item => item !== schedule.hour))));
+    .then(res => setEspecialidades(res));
+  }
+
+  function handleHourChange(e) {
+    e.preventDefault();
+    fetch(`http://localhost:8080/listarHorariosDisponiveis?idMedico=${idMedico}&data=${e.target.value}`)
+    .then(res => res.json())
+    .then(res => setHours(res));
   }
 
   useEffect(() => {
-  });
+      especialidadesChange();
+  }, []);
   
   const formik = useFormik({
     initialValues: {
@@ -121,24 +128,10 @@ function CreateSchedules() {
             isValid={formik.touched.doctorType && !formik.errors.doctorType}
             isInvalid={formik.errors.doctorType}>
               <Styled.ProfileOption>Selecione a especialidade</Styled.ProfileOption>
-              <Styled.ProfileOption value="Cardiologia">Cardiologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="Dermatologia">Dermatologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="Gastroenterologia">Gastroenterologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="Geriatria">Geriatria</Styled.ProfileOption>
-              <Styled.ProfileOption value="Ginecologia">Ginecologia e Obstetrícia</Styled.ProfileOption>
-              <Styled.ProfileOption value="Infectologia">Infectologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="Neurocirurgia">Neurocirurgia</Styled.ProfileOption>
-              <Styled.ProfileOption value="Neurologia">Neurologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="Nutrologia">Nutrologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="Oftalmologia">Oftalmologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="Ortopedia">Ortopedia</Styled.ProfileOption>
-              <Styled.ProfileOption value="Otorrinolaringologia">Otorrinolaringologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="Pediatria">Pediatria</Styled.ProfileOption>
-              <Styled.ProfileOption value="Pneumologia">Pneumologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="Psiquiatria">Psiquiatria</Styled.ProfileOption>
-              <Styled.ProfileOption value="Radiologia">Radiologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="Reumatologia">Reumatologia</Styled.ProfileOption>
-              <Styled.ProfileOption value="Urologia">Urologia</Styled.ProfileOption>
+              {especialidades.length > 0 ?
+                especialidades.map(especialidade => (
+                  <Styled.ProfileOption value={especialidade}>{especialidade}</Styled.ProfileOption>
+                )) : null }
           </Styled.ProfileSelect>
           {ValidationDoctorTypeError}
         </Form.Group>
@@ -148,14 +141,15 @@ function CreateSchedules() {
           <Styled.ProfileSelect
             id="doctor"
             name="doctor"
-            onChange={e => { formik.handleChange(e); handleHourChange(e); }}             
+            onChange={e => { formik.handleChange(e); setIdMedico(e.target.value);}}             
             isValid={formik.touched.doctor && !formik.errors.doctor}
             isInvalid={formik.errors.doctor}>
-              <Styled.ProfileOption>{firstSelect}</Styled.ProfileOption>
+              <Styled.ProfileOption>Selecione o médico</Styled.ProfileOption>
               {doctors.length > 0 ?
                 doctors.map(doctor => (
-                  <Styled.ProfileOption value={doctor.id}>{doctor.name}</Styled.ProfileOption>
-                )) : firstSelect = "Desculpe, não há médicos disponiveis"}
+                  doctor.codigo ?
+                  <Styled.ProfileOption value={doctor.codigo}>{doctor.funcionario.pessoa.nome}</Styled.ProfileOption>:``
+                )) : null }
               
           </Styled.ProfileSelect>
           {ValidationDoctorError}
@@ -170,7 +164,7 @@ function CreateSchedules() {
                 name="date"
                 type="date"
                 data-date-format="DD/MM/YYYY"
-                onChange={formik.handleChange}            
+                onChange={e => { formik.handleChange(e); handleHourChange(e);}}           
                 isValid={formik.touched.date && !formik.errors.date}
                 isInvalid={formik.errors.date} />
               {ValidationDateError}
@@ -187,7 +181,7 @@ function CreateSchedules() {
                 isInvalid={formik.errors.hour}>
                   <Styled.ProfileOption>Selecione a hora</Styled.ProfileOption>
                   {hours.map(hour => (
-                  <Styled.ProfileOption value={hour}>{hour}:00</Styled.ProfileOption>))}
+                  <Styled.ProfileOption value={hour}>{hour}</Styled.ProfileOption>))}
               </Styled.ProfileSelect>
               {ValidationHourError}
             </Form.Group>

@@ -13,10 +13,10 @@ function PatientsProvider({children}) {
   const getPatients = useCallback(
     async () => {
       try {
-        const { data } = await api.get('/patients');
+        const { data } = await api.get('/listarPacientes');
         setPatients(data);
       } catch (error) {
-        setError("Erro ao adquirir a lista de produtos");
+        setError("Erro ao adquirir a lista de pacientes");
       }
     
   }, []);
@@ -24,18 +24,21 @@ function PatientsProvider({children}) {
   const postPatients = useCallback(
     async ({name, email, phone, cep, street, district, city, state, weight, height, bloodType}) => {
       try {
-        await api.post('/patients', {
-          name, 
-          email, 
-          phone, 
-          cep, 
-          street, 
-          district, 
-          city, 
-          state, 
-          weight, 
-          height, 
-          bloodType        
+        let pessoa = {
+          nome:name,
+          email,
+          telefone:phone,
+          cep:cep,
+          logradouro:street,
+          bairro:district,
+          cidade:city,
+          estado:state
+        };
+        await api.post('/cadastrarPaciente', {
+          pessoa,
+          peso:weight, 
+          altura:height, 
+          tipoSanguineo:bloodType        
         });
       } catch (error) {
         setError("Erro ao postar um produto");

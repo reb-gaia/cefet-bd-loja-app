@@ -12,5 +12,5 @@ export const validationSchema = yup.object({
   doctorType: yup.string().required("O campo especialidade é obrigatório"),
   doctor: yup.string().required("O campo médico é obrigatório"),
   date: yup.date().required("O campo data é obrigatório").min(today, 'A data não pode ser no passado'),
-  hour: yup.number().required("O campo horário é obrigatório")
+  hour: yup.string().required("O campo horário é obrigatório")
 }); 
