@@ -54,10 +54,10 @@ function CardEmployee({employee}) {
     <Card style={{ width: '18rem' }}>
       <Card.Body>
         <Card.Title>{employee.pessoa.nome}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{employee.pessoa.email} | {employee.pessoa.telefone}</Card.Subtitle>
         <Card.Subtitle className="mb-2 text-muted">{employee.pessoa.logradouro}</Card.Subtitle>
         <Card.Text>
-          {employee.cidade}
-          {employee.crm}
+          {employee.pessoa.cidade}, {employee.pessoa.estado}
         </Card.Text>
        
       </Card.Body>

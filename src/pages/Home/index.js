@@ -8,8 +8,8 @@ function Home() {
     <div style={{overflowY: "scroll"}}>
       <Styled.Container>
         <Styled.Box>
-          <Styled.Title>Clinica Médica</Styled.Title>
-          <Styled.Description>Mais que oferecer assistência completa e segura, a Clinica busca proporcionar conforto e comodidade aos seus clientes e acompanhantes. A Clinica é um complexo de saúde onde você encontra consultórios e clínicas divididos nas diversas especialidades médicas.</Styled.Description>
+          <Styled.Title>Clínica Hope</Styled.Title>
+          <Styled.Description>Mais que oferecer assistência completa e segura, a Clínica Hope busca proporcionar conforto e comodidade aos seus clientes e acompanhantes. A Clinica Hope é um complexo de saúde onde você encontra consultórios e clínicas divididos nas diversas especialidades médicas.</Styled.Description>
         </Styled.Box>
 
         <CardGroup style={{margin: '90px 200px 0 200px'}}>

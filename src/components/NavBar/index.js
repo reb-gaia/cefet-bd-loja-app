@@ -17,7 +17,7 @@ function NavBar() {
   return (
     <Navbar style={{backgroundColor: '#ffd803', textColor: '#272343'}} variant="dark" fixed="top">
       <Container>
-        <Navbar.Brand href="/" style={{textColor: '#272343'}}>Clínica Médica</Navbar.Brand>
+        <Navbar.Brand href="/" style={{textColor: '#272343'}}>Clínica Hope</Navbar.Brand>
         <Nav className="me-auto">
           <Styled.NavItem to="/galery">Galeria</Styled.NavItem>
           <Styled.NavItem to="/create-address">Endereços</Styled.NavItem>
