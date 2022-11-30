@@ -2,11 +2,7 @@
   "empresa": [
     {
       "id": 1,
-      "nome": "Meta"
-    },
-    {
-      "id": 2,
-      "nome": "Google"
+      "nome": "Facebook"
     },
     {
       "id": 3,
@@ -17,22 +13,26 @@
       "nome": "Inter"
     },
     {
-      "id": 5,
-      "nome": "Americanas"
-    },
-    {
       "nome": "Ifood",
       "id": 6
+    },
+    {
+      "nome": "Google",
+      "id": 7
+    },
+    {
+      "nome": "Accenture",
+      "id": 8
     }
   ],
   "app": [
     {
-      "id": 1,
-      "id_empresa": 1,
-      "nome": "Whatsapp",
+      "id_empresa": "3",
+      "nome": "Instagram",
       "descricao": "Aplicativo de fotos",
-      "versao": 1,
-      "valor": 50
+      "versao": "1",
+      "valor": "100",
+      "id": 1
     },
     {
       "id": 2,
@@ -52,30 +52,22 @@
     },
     {
       "id": 4,
-      "id_empresa": 4,
-      "nome": "Inter",
-      "descricao": "Banco",
-      "versao": 1,
-      "valor": 50
-    },
-    {
-      "id": 4,
       "id_empresa": 5,
       "nome": "Inter",
       "descricao": "Banco",
       "versao": 1,
       "valor": 50
+    },
+    {
+      "id_empresa": "3",
+      "nome": "Google Maps",
+      "descricao": "Aplicativo de mapas",
+      "versao": "2",
+      "valor": "15",
+      "id": 5
     }
   ],
   "usuario": [
-    {
-      "id": 1,
-      "nome": "João Silva"
-    },
-    {
-      "id": 2,
-      "nome": "Vinicios Souza"
-    },
     {
       "id": 3,
       "nome": "Maria Luiza"
@@ -91,30 +83,39 @@
     {
       "nome": "Bruno Xavier",
       "id": 6
+    },
+    {
+      "id": 7,
+      "nome": "Rebeca Gaia"
+    },
+    {
+      "nome": "Fernando",
+      "id": 8
     }
   ],
   "compra": [
     {
       "id": 1,
-      "id_app": 3,
-      "id_user": 1,
-      "data_compra": "01/01/2022",
-      "valor": 50
+      "id_app": "3",
+      "id_user": "1",
+      "data_compra": "12/01/2000",
+      "valor": "1000000"
     },
     {
-      "id_compra": 2,
       "id_app": 1,
       "id_user": 4,
-      "data_compra": "01/04/2022",
-      "valor": 10
+      "data_compra": "29/11/2022",
+      "valor": 50,
+      "id": 3
     }
   ],
   "avaliacao": [
     {
-      "id_compra": 1,
-      "id_app": 3,
-      "id_user": 1,
-      "nota": 1
+      "id_compra": "1",
+      "id_app": "2",
+      "id_user": "3",
+      "nota": "12",
+      "id": 1
     }
   ]
 }

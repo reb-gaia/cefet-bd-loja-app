@@ -19,7 +19,7 @@ function CardAvaliacoes({avaliacao}) {
     })
     
     swalWithBootstrapButtons.fire({
-      title: 'Você deseja excluir esse endereço?',
+      title: 'Você deseja excluir essa avaliação?',
       text: "Caso exclua, será permanente!",
       icon: 'warning',
       showCancelButton: true,
@@ -30,8 +30,8 @@ function CardAvaliacoes({avaliacao}) {
       if (result.isConfirmed) {
         deleteAvaliacoes({id: avaliacao.id_avaliacao});
         swalWithBootstrapButtons.fire(
-          'Excluido!',
-          'Endereço foi excluido!',
+          'Excluida!',
+          'Avaliação foi excluida!',
           'Sucesso'
         )
       } else if (
@@ -40,7 +40,7 @@ function CardAvaliacoes({avaliacao}) {
       ) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
-          'Endereço não foi excluido!',
+          'Avaliação não foi excluida!',
           'Error'
         )
       }
@@ -48,15 +48,15 @@ function CardAvaliacoes({avaliacao}) {
   };
 
   const handleEdit = async () => {
-    history.push(`edit-address/${avaliacao.id_avaliacao}`, {avaliacao});
+    history.push(`editar-avaliacao/${avaliacao.id}`, {avaliacao});
   };
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>{avaliacao.id_compra}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{avaliacao.id_app}</Card.Subtitle>
-        <Card.Subtitle className="mb-2 text-muted">{avaliacao.id_user}</Card.Subtitle>
-        <Card.Subtitle className="mb-2 text-muted">{avaliacao.nota}</Card.Subtitle>
+        <Card.Title>Nota: {avaliacao.nota}</Card.Title>
+        <p style={{marginBottom: '0.4rem'}}>Id App: {avaliacao.id_app}</p>
+        <p style={{marginBottom: '0.4rem'}}>Id Usuário: {avaliacao.id_user}</p>
+        <p >Id Compra: {avaliacao.id_compra}</p>
         <Button variant="primary" onClick={handleDelete}>
           Excluir
         </Button>{" "}

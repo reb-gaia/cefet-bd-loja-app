@@ -21,10 +21,10 @@ function UsuariosProvider({children}) {
   }, []);
   
   const postUsuarios = useCallback(
-    async ({id_usuario, nome}) => {
+    async ({id, nome}) => {
       try {
         await api.post('/usuario', {
-          id_usuario,
+          id,
           nome  
         });
       } catch (error) {
@@ -33,10 +33,10 @@ function UsuariosProvider({children}) {
   }, []);
 
   const putUsuarios = useCallback(
-    async ({id_usuario, nome}) => {
+    async ({id, nome}) => {
       try {
-        await api.put(`/usuario/${id_usuario}`, {
-          id_usuario, 
+        await api.put(`/usuario/${id}`, {
+          id, 
           nome
         });
       } catch (error) {

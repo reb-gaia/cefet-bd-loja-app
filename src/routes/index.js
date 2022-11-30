@@ -28,9 +28,16 @@ export default function Routes() {
           <Route path="/" exact component={Home} />
 
           <Route path="/criar-app" component={NovoApp} />
+          <Route path="/editar-app/:id" component={NovoApp} />
+
           <Route path="/criar-empresa" component={NovaEmpresa} />
+          <Route path="/editar-empresa/:id" component={NovaEmpresa} />
+
           <Route path="/criar-avaliacao" component={NovaAvaliacao} />
+          <Route path="/editar-avaliacao/:id" component={NovaAvaliacao} />
+          
           <Route path="/criar-usuario" component={NovoUsuario} />
+          <Route path="/editar-usuario/:id" component={NovoUsuario} />
           
           <Route path="/editar-compra/:id" component={EditarCompra} />
         

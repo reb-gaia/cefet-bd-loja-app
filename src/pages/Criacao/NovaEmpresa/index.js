@@ -39,7 +39,7 @@ function NovaEmpresa() {
         showConfirmButton: false,
         timer: 1500
       })
-      history.push("/");
+      history.push("/empresas");
     }
   });
 

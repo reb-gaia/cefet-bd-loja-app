@@ -1,14 +1,14 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
-import { useUsuarios } from '../../hooks/contexts/UsuariosProvider'
+import { useCompras } from '../../hooks/contexts/ComprasProvider'
 import Swal from 'sweetalert2';
 import { useHistory } from 'react-router-dom';
 
-function CardUsuario({usuario}) {
+function CardCompra({compra}) {
 
   const history = useHistory();
 
-  const { deleteUsuarios } = useUsuarios();
+  const { deleteCompras } = useCompras();
   const handleDelete = async () => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -19,7 +19,7 @@ function CardUsuario({usuario}) {
     })
     
     swalWithBootstrapButtons.fire({
-      title: 'Você deseja excluir esse usuário?',
+      title: 'Você deseja excluir essa compra?',
       text: "Caso exclua, será permanente!",
       icon: 'warning',
       showCancelButton: true,
@@ -28,10 +28,10 @@ function CardUsuario({usuario}) {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteUsuarios({id: usuario.id});
+        deleteCompras({id: compra.id});
         swalWithBootstrapButtons.fire(
           'Excluido!',
-          'Usuário foi excluido!',
+          'Compra foi excluida!',
           'Sucesso'
         )
       } else if (
@@ -40,7 +40,7 @@ function CardUsuario({usuario}) {
       ) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
-          'Usuário não foi excluido!',
+          'Compra não foi excluida!',
           'Error'
         )
       }
@@ -48,13 +48,16 @@ function CardUsuario({usuario}) {
   };
 
   const handleEdit = async () => {
-    history.push(`editar-usuario/${usuario.id}`, {usuario});
+    history.push(`editar-compra/${compra.id}`, {compra});
   };
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>{usuario.nome}</Card.Title>
-        <p>Id usuário: {usuario.id}</p>
+        <Card.Title>Id App: {compra.id_app}</Card.Title>
+        <Card.Subtitle className="mb-2 mt-2 text-muted">{compra.descricao}</Card.Subtitle>
+        <p style={{marginBottom: '0.4rem'}}>Id User: {compra.id_user}</p>
+        <p style={{marginBottom: '0.4rem'}}>Data: {compra.data_compra}</p>
+        <p>R$ {compra.valor},00</p>
         <Button variant="primary" onClick={handleDelete}>
           Excluir
         </Button>{" "}
@@ -66,4 +69,4 @@ function CardUsuario({usuario}) {
   );
 }
 
-export default CardUsuario;
+export default CardCompra;

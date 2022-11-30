@@ -19,7 +19,7 @@ function CardApps({app}) {
     })
     
     swalWithBootstrapButtons.fire({
-      title: 'Você deseja excluir essa compra?',
+      title: 'Você deseja excluir esse aplicativo?',
       text: "Caso exclua, será permanente!",
       icon: 'warning',
       showCancelButton: true,
@@ -31,7 +31,7 @@ function CardApps({app}) {
         deleteApps({id: app.id});
         swalWithBootstrapButtons.fire(
           'Excluido!',
-          'Compra foi excluida!',
+          'Aplicativo foi excluido!',
           'Sucesso'
         )
       } else if (
@@ -40,7 +40,7 @@ function CardApps({app}) {
       ) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
-          'Compra não foi excluida!',
+          'Aplicativo não foi excluid!',
           'Error'
         )
       }
@@ -48,17 +48,16 @@ function CardApps({app}) {
   };
 
   const handleEdit = async () => {
-    history.push(`editar-compra/${app.id}`, {app});
+    history.push(`editar-app/${app.id}`, {app});
   };
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
         <Card.Title>{app.nome}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">{app.id_empresa}</Card.Subtitle>
-          <Card.Text>
-            <p>{app.descricao}</p>
-            <strong>R$ {app.valor},00</strong>
-          </Card.Text>
+        <Card.Subtitle className="mb-3 mt-2 text-muted">{app.descricao}</Card.Subtitle>
+        <p style={{marginBottom: '0.4rem'}}>Id empresa: {app.id_empresa}</p>
+        <p>R$ {app.valor},00</p>
+
         <Button variant="primary" onClick={handleDelete}>
           Excluir
         </Button>{" "}

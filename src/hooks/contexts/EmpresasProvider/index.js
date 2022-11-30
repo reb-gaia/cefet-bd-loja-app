@@ -21,10 +21,10 @@ function EmpresasProvider({children}) {
   }, []);
   
   const postEmpresas = useCallback(
-    async ({id_empresa, nome}) => {
+    async ({id, nome}) => {
       try {
         await api.post('/empresa', {
-          id_empresa,
+          id,
           nome
         });
       } catch (error) {
@@ -33,10 +33,10 @@ function EmpresasProvider({children}) {
   }, []);
 
   const putEmpresas = useCallback(
-    async ({id_empresa, nome}) => {
+    async ({id, nome}) => {
       try {
-        await api.put(`/empresa/${id_empresa}`, {
-          id_empresa, 
+        await api.put(`/empresa/${id}`, {
+          id, 
           nome
         });
       } catch (error) {

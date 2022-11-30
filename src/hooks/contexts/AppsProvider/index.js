@@ -47,7 +47,7 @@ function AppsProvider({children}) {
           valor
         });
       } catch (error) {
-        setError("Erro ao editar o endereço");
+        setError("Erro ao editar o aplicativo");
       }
   }, []);
 
@@ -59,7 +59,7 @@ function AppsProvider({children}) {
           state => state.id !== id
         ));
       } catch (error) {
-        setError("Erro ao deletar o endereço");
+        setError("Erro ao deletar o aplicativo");
       }
   }, []);
 

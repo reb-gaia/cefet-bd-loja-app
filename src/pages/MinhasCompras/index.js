@@ -1,14 +1,14 @@
 import Footer from '../../components/Footer';
 import { Styled } from './styles';
 import React, { useEffect } from 'react';
-import { useApps } from '../../hooks/contexts/AppsProvider'
-import CardApps from '../../components/CardApps';
+import { useCompras } from '../../hooks/contexts/ComprasProvider'
+import CardCompra from '../../components/CardCompra';
 
 function MinhasCompras() {
-  const { apps, getApps } = useApps();
+  const { compras, getCompras } = useCompras();
   
   useEffect(() => {
-    getApps();
+    getCompras();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -18,11 +18,11 @@ function MinhasCompras() {
         <Styled.Title>Minhas compras</Styled.Title>
         <div style={{margin: "50px"}}>
           <Styled.CardWrapper>
-            {apps.map(app => (
-              <CardApps
-                key={app.id_app}
-                app={app}>
-              </CardApps>
+            {compras.map(compra => (
+              <CardCompra
+                key={compra.id}
+                compra={compra}>
+              </CardCompra>
             ))}
           </Styled.CardWrapper>
         </div>

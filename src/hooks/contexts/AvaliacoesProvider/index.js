@@ -21,9 +21,10 @@ function AvaliacoesProvider({children}) {
   }, []);
   
   const postAvaliacoes = useCallback(
-    async ({id_compra, id_app, id_user, nota}) => {
+    async ({id, id_compra, id_app, id_user, nota}) => {
       try {
         await api.post('/avaliacao', {
+          id,
           id_compra,
           id_app, 
           id_user, 
@@ -35,9 +36,9 @@ function AvaliacoesProvider({children}) {
   }, []);
 
   const putAvaliacoes = useCallback(
-    async ({id_compra, id_app, id_user, nota}) => {
+    async ({id, id_compra, id_app, id_user, nota}) => {
       try {
-        await api.put(`/avaliacao/${id_compra}`, {
+        await api.put(`/avaliacao/${id}`, {
           id_compra,
           id_app, 
           id_user, 

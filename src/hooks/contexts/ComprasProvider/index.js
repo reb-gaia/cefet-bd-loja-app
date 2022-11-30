@@ -21,10 +21,10 @@ function ComprasProvider({children}) {
   }, []);
   
   const postCompras = useCallback(
-    async ({id_compra, id_app, id_user, data_compra, valor}) => {
+    async ({id, id_app, id_user, data_compra, valor}) => {
       try {
         await api.post('/compra', {
-          id_compra,
+          id,
           id_app, 
           id_user, 
           data_compra, 
@@ -36,10 +36,10 @@ function ComprasProvider({children}) {
   }, []);
 
   const putCompras = useCallback(
-    async ({id_compra, id_app, id_user, data_compra, valor}) => {
+    async ({id, id_app, id_user, data_compra, valor}) => {
       try {
-        await api.put(`/compra/${id_compra}`, {
-          id_compra,
+        await api.put(`/compra/${id}`, {
+          id,
           id_app, 
           id_user, 
           data_compra, 

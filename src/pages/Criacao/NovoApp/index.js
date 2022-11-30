@@ -36,7 +36,7 @@ function NovoApp() {
           versao: values.versao,
           valor: values.valor,
         });
-        history.push("/");
+        history.push("/meus-aplicativos");
         return
       }
       await postApps(values);
@@ -47,7 +47,7 @@ function NovoApp() {
         showConfirmButton: false,
         timer: 1500
       })
-      history.push("/app");
+      history.push("/meus-aplicativos");
     }
   });
 

@@ -1,6 +1,6 @@
 import React, { useMemo, useEffect } from 'react';
 import { useFormik } from 'formik';
-import { Form, Button} from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { useHistory, useLocation, useParams } from 'react-router-dom';
 import Container from '../../../components/Container';
 import { Styled } from './styles';

@@ -19,7 +19,7 @@ function CardEmpresa({empresa}) {
     })
     
     swalWithBootstrapButtons.fire({
-      title: 'Você deseja excluir esse endereço?',
+      title: 'Você deseja excluir essa empresa?',
       text: "Caso exclua, será permanente!",
       icon: 'warning',
       showCancelButton: true,
@@ -28,10 +28,10 @@ function CardEmpresa({empresa}) {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteEmpresas({id: empresa.id_usuario});
+        deleteEmpresas({id: empresa.id});
         swalWithBootstrapButtons.fire(
-          'Excluido!',
-          'Endereço foi excluido!',
+          'Excluida!',
+          'Empresa foi excluida!',
           'Sucesso'
         )
       } else if (
@@ -40,7 +40,7 @@ function CardEmpresa({empresa}) {
       ) {
         swalWithBootstrapButtons.fire(
           'Cancelado',
-          'Endereço não foi excluido!',
+          'Empresa não foi excluida!',
           'Error'
         )
       }
@@ -48,13 +48,13 @@ function CardEmpresa({empresa}) {
   };
 
   const handleEdit = async () => {
-    history.push(`edit-address/${empresa.id_usuario}`, {empresa});
+    history.push(`editar-empresa/${empresa.id}`, {empresa});
   };
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
         <Card.Title>{empresa.nome}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{empresa.id_empresa}</Card.Subtitle>
+        <p>Id empresa: {empresa.id}</p>
         <Button variant="primary" onClick={handleDelete}>
           Excluir
         </Button>{" "}

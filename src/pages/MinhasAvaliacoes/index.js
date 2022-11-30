@@ -26,7 +26,7 @@ function MinhasAvaliacoes() {
           <Styled.CardWrapper>
             {avaliacoes.map(avaliacao => (
               <CardAvaliacao
-                key={avaliacao.id_usuario}
+                key={avaliacao.id}
                 avaliacao={avaliacao}>
               </CardAvaliacao>
             ))}

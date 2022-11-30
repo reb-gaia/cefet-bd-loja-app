@@ -28,8 +28,10 @@ function EditarCompra() {
     onSubmit: async values => {
       if(!!id) {
         await putCompras({
-          id,
-          nome: values.nome
+          id_app: values.id_app,
+          id_user: values.id_user,
+          data_compra: values.data_compra,
+          valor: values.valor,
         });
         history.push("/minhas-compras");
         return
