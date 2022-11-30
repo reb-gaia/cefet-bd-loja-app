@@ -7,22 +7,26 @@ function Footer () {
       <Container>
         <Row>
           <Column>
-            <Title>Contatos</Title>
-            <Paragraph>(31) 3256-9856</Paragraph>
-            <Paragraph>(31) 95892-9856</Paragraph>
+            <Title>Time</Title>
+            <Paragraph>Eduardo</Paragraph>
+            <Paragraph>Hugo</Paragraph>
+            <Paragraph>Pedro Vaz</Paragraph>
+            <Paragraph>Rebeca Gaia</Paragraph>
           </Column>
           
           <Column>
-            <Title>Email</Title>
-            <Paragraph>clinica@medica.com</Paragraph>
+            <Title>Fale conosco</Title>
+            <Paragraph>aplicativos@store.com</Paragraph>
           </Column>
+
           <Column>
-            <Title>Endereço</Title>
-            <Paragraph>Av. do Contorno, 9681 - 2º andar - Prado, Belo Horizonte - MG</Paragraph>
+            <Title>Disciplina</Title>
+            <Paragraph>Banco de Dados 1</Paragraph>
+            <Paragraph>Laboratório deBanco de Dados 1</Paragraph>
           </Column>
         </Row>
       </Container>
-      <Text style={{paddingTop: "40px"}}>Todos os direitos reservados © - 2021</Text>
+      <Text style={{paddingTop: "40px"}}>Todos os direitos reservados © - 2022</Text>
     </Box>
   );
 };

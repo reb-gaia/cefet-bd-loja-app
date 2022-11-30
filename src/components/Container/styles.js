@@ -4,11 +4,10 @@ import { mixins } from '../../styles/mixins';
 
 const ContainerSM = styled.div`
   margin: 80px 0;
-  width: 820px;
+  width: 530px;
   height: auto;
   background-color:${mixins.colors.secondary};
-  display: flex;
-  flex-direction: row;
+  
   align-self: center;
   border-radius: 3px;
   align-items: top;

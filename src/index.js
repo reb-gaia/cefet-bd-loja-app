@@ -4,24 +4,26 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'sweetalert2/src/sweetalert2.scss';
 import { AuthProvider } from './hooks/contexts/AuthProvider';
-import { AddressesProvider } from './hooks/contexts/AddressesProvider';
-import { EmployeeProvider } from './hooks/contexts/EmployeeProvider';
-import { PatientsProvider } from './hooks/contexts/PatientsProvider';
-import { ScheduleProvider } from './hooks/contexts/ScheduleProvider';
-
+import { AppsProvider } from './hooks/contexts/AppsProvider';
+import { UsuariosProvider } from './hooks/contexts/UsuariosProvider';
+import { EmpresasProvider } from './hooks/contexts/EmpresasProvider';
+import { ComprasProvider } from './hooks/contexts/ComprasProvider';
+import { AvaliacoesProvider } from './hooks/contexts/AvaliacoesProvider';
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <AddressesProvider>
-        <EmployeeProvider>
-          <PatientsProvider>
-            <ScheduleProvider>
-              <App />
-            </ScheduleProvider>
-          </PatientsProvider>
-        </EmployeeProvider>
-      </AddressesProvider>
+      <AppsProvider>
+        <UsuariosProvider>
+          <EmpresasProvider>
+            <ComprasProvider>
+              <AvaliacoesProvider>
+                <App />
+              </AvaliacoesProvider>
+            </ComprasProvider>
+          </EmpresasProvider>
+        </UsuariosProvider>
+      </AppsProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')

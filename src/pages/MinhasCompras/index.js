@@ -2,9 +2,9 @@ import Footer from '../../components/Footer';
 import { Styled } from './styles';
 import React, { useEffect } from 'react';
 import { useApps } from '../../hooks/contexts/AppsProvider'
-import CardAppsCompra from '../../components/CardAppsCompra';
+import CardApps from '../../components/CardApps';
 
-function Home() {
+function MinhasCompras() {
   const { apps, getApps } = useApps();
   
   useEffect(() => {
@@ -15,18 +15,14 @@ function Home() {
   return (
     <div style={{overflowY: "scroll"}}>
       <Styled.Container>
-        <Styled.Box>
-          <Styled.Title>Loja de Aplicativos</Styled.Title>
-          <Styled.Description>Compre aqui o seu novo aplicativo</Styled.Description>
-        </Styled.Box>
-
-        <div style={{margin: "100px"}}>
+        <Styled.Title>Minhas compras</Styled.Title>
+        <div style={{margin: "50px"}}>
           <Styled.CardWrapper>
             {apps.map(app => (
-              <CardAppsCompra
+              <CardApps
                 key={app.id_app}
                 app={app}>
-              </CardAppsCompra>
+              </CardApps>
             ))}
           </Styled.CardWrapper>
         </div>
@@ -36,4 +32,4 @@ function Home() {
   )
 }
 
-export default Home;
+export default MinhasCompras;
