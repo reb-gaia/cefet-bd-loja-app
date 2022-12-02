@@ -23,7 +23,7 @@ function Empresas() {
 
         <div style={{margin: "50px"}}>
           <Styled.CardWrapper>
-            {empresas.companies && empresas.companies.map(empresa => (
+            {empresas && empresas.map(empresa => (
               <CardEmpresa
                 key={empresa.id}
                 empresa={empresa}>

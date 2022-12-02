@@ -13,7 +13,7 @@ function EmpresasProvider({children}) {
     async () => {
       try {
         const { data } = await api.get('/companies/listAllCompanies');
-        setEmpresas(data);
+        setEmpresas(data.companies);
       } catch (error) {
         setError("Erro ao adquirir a lista de empresas");
       }
@@ -21,11 +21,12 @@ function EmpresasProvider({children}) {
   }, []);
   
   const postEmpresas = useCallback(
-    async ({id, nome}) => {
+    async (nome) => {
       try {
-        await api.post('/empresa', {
-          id,
-          nome
+        await api.post('/companies/addCompany', {
+          data: {
+            nome: nome
+          }
         });
       } catch (error) {
         setError("Erro ao postar uma empresa");
@@ -33,11 +34,10 @@ function EmpresasProvider({children}) {
   }, []);
 
   const putEmpresas = useCallback(
-    async ({id, nome}) => {
+    async (data) => {
       try {
-        await api.put(`/empresa/${id}`, {
-          id, 
-          nome
+        await api.put(`/companies/editCompany/${data.id}`, {
+          data
         });
       } catch (error) {
         setError("Erro ao editar a empresa");
@@ -47,7 +47,7 @@ function EmpresasProvider({children}) {
   const deleteEmpresas = useCallback(
     async ({id}) => {
       try {
-        await api.delete(`/empresa/${id}`);
+        await api.delete(`/companies/deleteCompany/${id}`);
         setEmpresas(pState => pState.filter(
           state => state.id !== id
         ));

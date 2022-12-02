@@ -31,7 +31,7 @@ function NovaEmpresa() {
         history.push("/empresas");
         return
       }
-      await postEmpresas(values);
+      await postEmpresas(values.nome);
       Swal.fire({
         position: 'top-center',
         icon: 'success',
