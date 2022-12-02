@@ -31,15 +31,17 @@ function NovoUsuario() {
         history.push("/usuarios");
         return
       }
-      await postUsuarios(values);
-      Swal.fire({
-        position: 'top-center',
-        icon: 'success',
-        title: 'Usuário cadastrado',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      history.push("/usuarios");
+      if(values.nome) {
+        await postUsuarios(values.nome);
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Usuário cadastrado',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        history.push("/usuarios");
+      }
     }
   });
 

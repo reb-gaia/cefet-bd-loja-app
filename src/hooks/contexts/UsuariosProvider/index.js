@@ -13,7 +13,7 @@ function UsuariosProvider({children}) {
     async () => {
       try {
         const { data } = await api.get('/users/listAllUsers');
-        setUsuarios(data);
+        setUsuarios(data.users);
       } catch (error) {
         setError("Erro ao adquirir a lista de usuarios");
       }
@@ -21,23 +21,25 @@ function UsuariosProvider({children}) {
   }, []);
   
   const postUsuarios = useCallback(
-    async ({id, nome}) => {
-      try {
-        await api.post('/users/addUser', {
-          id,
-          nome  
-        });
-      } catch (error) {
-        setError("Erro ao postar um usuario");
+    async (nome) => {
+      if(nome) {
+        try {
+          await api.post('/users/addUser', {
+            data: {
+              nome: nome
+            }
+          });
+        } catch (error) {
+          setError("Erro ao postar um usuario");
+        }
       }
   }, []);
 
   const putUsuarios = useCallback(
-    async ({id, nome}) => {
+    async (data) => {
       try {
-        await api.put(`/usuario/${id}`, {
-          id, 
-          nome
+        await api.put(`/users/editUser/${data.id}`, { 
+          data
         });
       } catch (error) {
         setError("Erro ao editar o usuario");
@@ -47,7 +49,7 @@ function UsuariosProvider({children}) {
   const deleteUsuarios = useCallback(
     async ({id}) => {
       try {
-        await api.delete(`/usuario/${id}`);
+        await api.delete(`/users/deleteUser/${id}`);
         setUsuarios(pState => pState.filter(
           state => state.id !== id
         ));
