@@ -3,6 +3,8 @@ import { Card, Button } from 'react-bootstrap';
 import { useCompras } from '../../hooks/contexts/ComprasProvider'
 import Swal from 'sweetalert2';
 import { useHistory } from 'react-router-dom';
+import moment from 'moment';
+
 
 function CardCompra({compra}) {
 
@@ -28,7 +30,7 @@ function CardCompra({compra}) {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteCompras({id: compra.id});
+        deleteCompras(compra.id);
         swalWithBootstrapButtons.fire(
           'Excluido!',
           'Compra foi excluida!',
@@ -50,14 +52,15 @@ function CardCompra({compra}) {
   const handleEdit = async () => {
     history.push(`editar-compra/${compra.id}`, {compra});
   };
+
+  const data = moment(compra.data_compra).format("MM/DD/YYYY");
+
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>Id App: {compra.id_app}</Card.Title>
-        <Card.Subtitle className="mb-2 mt-2 text-muted">{compra.descricao}</Card.Subtitle>
-        <p style={{marginBottom: '0.4rem'}}>Id User: {compra.id_user}</p>
-        <p style={{marginBottom: '0.4rem'}}>Data: {compra.data_compra}</p>
-        <p>R$ {compra.valor},00</p>
+        <Card.Title>{compra.nome}</Card.Title>
+        <p className="mb-2 mt-2 text-muted">Valor: R$ {compra.valor},00</p>
+        <p style={{marginBottom: '0.4rem'}}> Data: {data}</p>
         <Button variant="primary" onClick={handleDelete}>
           Excluir
         </Button>{" "}

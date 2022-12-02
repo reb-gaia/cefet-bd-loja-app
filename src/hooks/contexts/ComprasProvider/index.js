@@ -10,21 +10,10 @@ function ComprasProvider({children}) {
   const [error, setError] = useState("");
   
   const getCompras = useCallback(
-    async () => {
-      try {
-        const { data } = await api.get('/compra');
-        setCompras(data);
-      } catch (error) {
-        setError("Erro ao adquirir a lista de compras");
-      }
-    
-  }, []);
-
-  const getComprasUser = useCallback(
-    async ({id}) => {
+    async (id) => {
       try {
         const { data } = await api.get(`/purchases/getUserPurchases/${id}`);
-        setCompras(data);
+        setCompras(data.purchases);
       } catch (error) {
         setError("Erro ao adquirir a lista de compras");
       }
@@ -32,14 +21,10 @@ function ComprasProvider({children}) {
   }, []);
   
   const postCompras = useCallback(
-    async ({id, id_app, id_user, data_compra, valor}) => {
+    async (data) => {
       try {
-        await api.post('/compra', {
-          id,
-          id_app, 
-          id_user, 
-          data_compra, 
-          valor    
+        await api.post('/purchases/addPurchase', {
+          data
         });
       } catch (error) {
         setError("Erro ao postar uma compra");
@@ -49,7 +34,7 @@ function ComprasProvider({children}) {
   const putCompras = useCallback(
     async ({id, id_app, id_user, data_compra, valor}) => {
       try {
-        await api.put(`/compra/${id}`, {
+        await api.put(`/purchases/editPurchase/${id}`, {
           id,
           id_app, 
           id_user, 
@@ -62,9 +47,9 @@ function ComprasProvider({children}) {
   }, []);
 
   const deleteCompras = useCallback(
-    async ({id}) => {
+    async (id) => {
       try {
-        await api.delete(`/compra/${id}`);
+        await api.delete(`/purchases/deletePurchase/${id}`);
         setCompras(pState => pState.filter(
           state => state.id !== id
         ));
@@ -79,7 +64,6 @@ function ComprasProvider({children}) {
         compras, 
         error,
         getCompras,
-        getComprasUser,
         postCompras,
         putCompras,
         deleteCompras        

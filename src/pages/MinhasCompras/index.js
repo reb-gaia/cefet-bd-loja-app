@@ -5,10 +5,10 @@ import { useCompras } from '../../hooks/contexts/ComprasProvider'
 import CardCompra from '../../components/CardCompra';
 
 function MinhasCompras() {
-  const { compras, getComprasUser } = useCompras();
+  const { compras, getCompras } = useCompras();
   
   useEffect(() => {
-    getComprasUser(1);
+    getCompras(2);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -18,7 +18,7 @@ function MinhasCompras() {
         <Styled.Title>Minhas compras</Styled.Title>
         <div style={{margin: "50px"}}>
           <Styled.CardWrapper>
-            {compras.purchases && compras.purchases.map(compra => (
+            {compras && compras.map(compra => (
               <CardCompra
                 key={compra.id}
                 compra={compra}>

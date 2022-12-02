@@ -28,6 +28,7 @@ function EditarCompra() {
     onSubmit: async values => {
       if(!!id) {
         await putCompras({
+          id: id,
           id_app: values.id_app,
           id_user: values.id_user,
           data_compra: values.data_compra,

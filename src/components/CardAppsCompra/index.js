@@ -17,8 +17,8 @@ function CardAppsCompra({app}) {
 
   const mock = {
     id_app: 1,
-    id_user: 4, 
-    data_compra: moment(new Date()).format("DD/MM/YYYY"), 
+    id_user: 2, 
+    data_compra: moment(new Date()).format("MM/DD/YYYY"), 
     valor: app.valor
   }
 
@@ -40,7 +40,7 @@ function CardAppsCompra({app}) {
       <Card.Title>{app.nome}</Card.Title>
         <Card.Subtitle className="mb-3 mt-2 text-muted">{app.descricao}</Card.Subtitle>
         <p style={{marginBottom: '0.4rem'}}>Empresa: {app.nome_empresa}</p>
-        <p><strong>R$ {app.valor},00</strong></p>
+        <p>Valor: R$ {app.valor},00</p>
         
         <Button variant="primary" type="submit" onClick={handleCompra}>
           Comprar
