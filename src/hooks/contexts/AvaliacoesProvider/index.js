@@ -12,8 +12,8 @@ function AvaliacoesProvider({children}) {
   const getAvaliacoes = useCallback(
     async () => {
       try {
-        const { data } = await api.get('/avaliacao');
-        setAvaliacoes(data);
+        const { data } = await api.get('/reviews/listReview');
+        setAvaliacoes(data.avaliacao);
       } catch (error) {
         setError("Erro ao adquirir a lista de avaliacoes");
       }
@@ -21,14 +21,10 @@ function AvaliacoesProvider({children}) {
   }, []);
   
   const postAvaliacoes = useCallback(
-    async ({id, id_compra, id_app, id_user, nota}) => {
+    async (data) => {
       try {
-        await api.post('/avaliacao', {
-          id,
-          id_compra,
-          id_app, 
-          id_user, 
-          nota 
+        await api.post('/reviews/addReview', {
+          data
         });
       } catch (error) {
         setError("Erro ao postar uma avaliacao");
@@ -38,7 +34,8 @@ function AvaliacoesProvider({children}) {
   const putAvaliacoes = useCallback(
     async ({id, id_compra, id_app, id_user, nota}) => {
       try {
-        await api.put(`/avaliacao/${id}`, {
+        await api.put(`/reviews/editReview/${id}`, {
+          id,
           id_compra,
           id_app, 
           id_user, 
@@ -52,7 +49,7 @@ function AvaliacoesProvider({children}) {
   const deleteAvaliacoes = useCallback(
     async ({id}) => {
       try {
-        await api.delete(`/avaliacao/${id}`);
+        await api.delete(`/reviews/deleteReview/${id}`);
         setAvaliacoes(pState => pState.filter(
           state => state.id !== id
         ));

@@ -56,7 +56,7 @@ function CardApps({app}) {
         <Card.Title>{app.nome}</Card.Title>
         <Card.Subtitle className="mb-3 mt-2 text-muted">{app.descricao}</Card.Subtitle>
         <p style={{marginBottom: '0.4rem'}}>Id empresa: {app.nome_empresa}</p>
-        <p>R$ {app.preco},00</p>
+        <p>R$ {app.valor},00</p>
 
         <Button variant="primary" onClick={handleDelete}>
           Excluir

@@ -6,7 +6,6 @@ import CardAppsCompra from '../../components/CardAppsCompra';
 
 function Home() {
   const { apps, getApps } = useApps();
-  let aplicativos;
   
   useEffect(() => {
     getApps();
@@ -23,7 +22,7 @@ function Home() {
 
         <div style={{margin: "100px"}}>
           <Styled.CardWrapper>
-            {apps.apps && apps.apps.map(app => (
+            {apps && apps.map(app => (
               <CardAppsCompra
                 key={app.id}
                 app={app}>

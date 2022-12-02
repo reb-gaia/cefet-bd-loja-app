@@ -22,7 +22,7 @@ function Footer () {
           <Column>
             <Title>Disciplina</Title>
             <Paragraph>Banco de Dados 1</Paragraph>
-            <Paragraph>Laboratório deBanco de Dados 1</Paragraph>
+            <Paragraph>Laboratório de Banco de Dados 1</Paragraph>
           </Column>
         </Row>
       </Container>

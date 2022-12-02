@@ -28,7 +28,7 @@ function CardAvaliacoes({avaliacao}) {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteAvaliacoes({id: avaliacao.id_avaliacao});
+        deleteAvaliacoes({id: avaliacao.id});
         swalWithBootstrapButtons.fire(
           'Excluida!',
           'Avaliação foi excluida!',

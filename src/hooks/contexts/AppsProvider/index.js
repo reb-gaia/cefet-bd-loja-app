@@ -13,7 +13,7 @@ function AppsProvider({children}) {
     async () => {
       try {
         const { data } = await api.get('/apps/listAllApps');
-        setApps(data);
+        setApps(data.apps);
       } catch (error) {
         setError("Erro ao adquirir a lista de apps");
       }
@@ -21,15 +21,10 @@ function AppsProvider({children}) {
   }, []);
   
   const postApps = useCallback(
-    async ({id, id_empresa, nome, descricao, versao, valor}) => {
+    async (data) => {
       try {
-        await api.post('/apps', {
-          id,
-          id_empresa, 
-          nome, 
-          descricao, 
-          versao, 
-          valor    
+        await api.post('/apps/addNewApp', {
+          data
         });
       } catch (error) {
         setError("Erro ao postar um aplicativo");
@@ -39,11 +34,12 @@ function AppsProvider({children}) {
   const putApps = useCallback(
     async ({id, id_empresa, nome, descricao, versao, valor}) => {
       try {
-        await api.put(`/apps/${id}`, {
+        await api.put(`/apps/editAppInfo/${id}`, {
+          id,
           id_empresa, 
           nome, 
           descricao, 
-          versao, 
+          versao,
           valor
         });
       } catch (error) {
@@ -54,7 +50,7 @@ function AppsProvider({children}) {
   const deleteApps = useCallback(
     async ({id}) => {
       try {
-        await api.delete(`/apps/${id}`);
+        await api.delete(`/apps/deleteApp/${id}`);
         setApps(pState => pState.filter(
           state => state.id !== id
         ));
