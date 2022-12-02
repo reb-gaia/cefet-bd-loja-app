@@ -19,6 +19,17 @@ function ComprasProvider({children}) {
       }
     
   }, []);
+
+  const getComprasUser = useCallback(
+    async ({id}) => {
+      try {
+        const { data } = await api.get(`/purchases/getUserPurchases/${id}`);
+        setCompras(data);
+      } catch (error) {
+        setError("Erro ao adquirir a lista de compras");
+      }
+    
+  }, []);
   
   const postCompras = useCallback(
     async ({id, id_app, id_user, data_compra, valor}) => {
@@ -68,6 +79,7 @@ function ComprasProvider({children}) {
         compras, 
         error,
         getCompras,
+        getComprasUser,
         postCompras,
         putCompras,
         deleteCompras        

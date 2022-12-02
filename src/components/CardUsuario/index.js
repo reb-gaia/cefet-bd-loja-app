@@ -53,7 +53,7 @@ function CardUsuario({usuario}) {
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>{usuario.nome}</Card.Title>
+        <Card.Title>{usuario.name}</Card.Title>
         <p>Id usuário: {usuario.id}</p>
         <Button variant="primary" onClick={handleDelete}>
           Excluir

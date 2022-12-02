@@ -12,7 +12,7 @@ function EmpresasProvider({children}) {
   const getEmpresas = useCallback(
     async () => {
       try {
-        const { data } = await api.get('/empresa');
+        const { data } = await api.get('/companies/listAllCompanies');
         setEmpresas(data);
       } catch (error) {
         setError("Erro ao adquirir a lista de empresas");

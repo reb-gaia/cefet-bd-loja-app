@@ -24,9 +24,9 @@ function Usuarios() {
 
         <div style={{margin: "50px"}}>
           <Styled.CardWrapper>
-            {usuarios.map(usuario => (
+            {usuarios.users && usuarios.users.map(usuario => (
               <CardUsuario
-                key={usuario.id_usuario}
+                key={usuario.id}
                 usuario={usuario}>
               </CardUsuario>
             ))}

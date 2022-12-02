@@ -23,9 +23,9 @@ function MeusApps() {
         
         <div style={{margin: "50px"}}>
           <Styled.CardWrapper>
-            {apps.map(app => (
+            {apps.apps && apps.apps.map(app => (
               <CardApps
-                key={app.id_app}
+                key={app.id}
                 app={app}>
               </CardApps>
             ))}

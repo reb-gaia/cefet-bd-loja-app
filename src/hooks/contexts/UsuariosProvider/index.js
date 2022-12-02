@@ -12,7 +12,7 @@ function UsuariosProvider({children}) {
   const getUsuarios = useCallback(
     async () => {
       try {
-        const { data } = await api.get('/usuario');
+        const { data } = await api.get('/users/listAllUsers');
         setUsuarios(data);
       } catch (error) {
         setError("Erro ao adquirir a lista de usuarios");
@@ -23,7 +23,7 @@ function UsuariosProvider({children}) {
   const postUsuarios = useCallback(
     async ({id, nome}) => {
       try {
-        await api.post('/usuario', {
+        await api.post('/users/addUser', {
           id,
           nome  
         });
