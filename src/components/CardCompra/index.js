@@ -59,6 +59,7 @@ function CardCompra({compra}) {
     <Card style={{ width: '18rem' }}>
       <Card.Body>
         <Card.Title>{compra.nome}</Card.Title>
+        <p className="mb-2 mt-2 text-muted">Id Compra: {compra.id}</p>
         <p className="mb-2 mt-2 text-muted">Valor: R$ {compra.valor},00</p>
         <p style={{marginBottom: '0.4rem'}}> Data: {data}</p>
         <Button variant="primary" onClick={handleDelete}>
