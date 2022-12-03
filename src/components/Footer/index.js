@@ -8,8 +8,8 @@ function Footer () {
         <Row>
           <Column>
             <Title>Time</Title>
-            <Paragraph>Eduardo</Paragraph>
-            <Paragraph>Hugo</Paragraph>
+            <Paragraph>Eduardo Gomes</Paragraph>
+            <Paragraph>Hugo Pina</Paragraph>
             <Paragraph>Pedro Vaz</Paragraph>
             <Paragraph>Rebeca Gaia</Paragraph>
           </Column>

@@ -64,9 +64,6 @@ function CardCompra({compra}) {
         <Button variant="primary" onClick={handleDelete}>
           Excluir
         </Button>{" "}
-        <Button variant="primary" type="submit" onClick={handleEdit}>
-          Editar
-        </Button>
       </Card.Body>
     </Card>
   );

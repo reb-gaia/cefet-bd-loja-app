@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { FiLogIn, FiLogOut } from 'react-icons/fi'
 import { Styled } from './styled';
+import { MultiSelect } from "react-multi-select-component";
 
 function NavBar() {
   const { auth, SignOut } = useAuth();
@@ -24,15 +25,6 @@ function NavBar() {
           <Styled.NavItem to="/meus-aplicativos">Meus aplicativos</Styled.NavItem>
           <Styled.NavItem to="/usuarios">Usuários</Styled.NavItem>
           <Styled.NavItem to="/empresas">Empresas</Styled.NavItem>
-        </Nav>
-
-        <Nav className="d-flex">
-          {auth ? <Styled.NavItem onClick={SignOut} style={{marginTop: '8px'}}>
-              Sair
-          </Styled.NavItem> : <Styled.NavItem onClick={handleClick} style={{marginTop: '8px'}}>
-              Entrar
-          </Styled.NavItem>}
-          {" "}<Styled.NavIcon> {auth ? <FiLogOut onClick={SignOut}/> : <FiLogIn onClick={handleClick} /> }</Styled.NavIcon>
         </Nav>
       </Container>
     </Navbar>

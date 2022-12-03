@@ -54,8 +54,7 @@ function CardAvaliacoes({avaliacao}) {
     <Card style={{ width: '18rem' }}>
       <Card.Body>
         <Card.Title>Nota: {avaliacao.nota}</Card.Title>
-        <p style={{marginBottom: '0.4rem'}}>Id App: {avaliacao.id_app}</p>
-        <p style={{marginBottom: '0.4rem'}}>Id Usuário: {avaliacao.id_user}</p>
+        <p style={{marginBottom: '0.4rem'}}>App: {avaliacao.nome_app}</p>
         <p >Id Compra: {avaliacao.id_compra}</p>
         <Button variant="primary" onClick={handleDelete}>
           Excluir
